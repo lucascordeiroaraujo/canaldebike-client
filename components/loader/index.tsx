@@ -2,7 +2,7 @@ import React from 'react';
 
 import Loader from './style';
 
-const cpLoader: React.FC = () => (
+const loader: React.FC = () => (
   <Loader>
     <img
       src={require('~/public/images/canal-de-bike.png')}
@@ -16,4 +16,4 @@ const cpLoader: React.FC = () => (
   </Loader>
 );
 
-export default cpLoader;
+export default loader;

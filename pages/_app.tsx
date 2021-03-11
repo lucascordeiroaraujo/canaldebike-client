@@ -6,6 +6,8 @@ import Head from 'next/head';
 
 import GlobalStyles from '~/styles/global';
 
+import Icons from '~/styles/icons';
+
 import 'react-app-polyfill/ie9';
 
 import NProgress from 'nprogress';
@@ -132,11 +134,6 @@ class MyApp extends App<StoreProps> {
             href={require('~/public/images/icons/favicon-16x16.png')}
           />
 
-          <link
-            rel="manifest"
-            href={require('~/public/images/icons/manifest.json')}
-          />
-
           <meta
             name="msapplication-TileImage"
             content={require('~/public/images/icons/ms-icon-144x144.png')}
@@ -149,6 +146,8 @@ class MyApp extends App<StoreProps> {
 
         <>
           <GlobalStyles />
+
+          <Icons />
 
           <Component {...pageProps} />
         </>

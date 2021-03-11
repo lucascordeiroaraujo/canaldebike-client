@@ -31,7 +31,6 @@ export default createGlobalStyle`
     display: block;
   }
   input, select, textarea {
-    font-family: 'GothamMedium';
     outline: none;
   }
   body {
@@ -59,6 +58,15 @@ export default createGlobalStyle`
   table {
     border-collapse: collapse;
     border-spacing: 0;
+  }
+  @font-face{
+    font-family: 'BrandonGrotesqueMedium';
+    src: url(${require('./fonts/BrandonGrotesqueMedium/BrandonGrotesqueMedium.woff')}) format('woff'),
+      url(${require('./fonts/BrandonGrotesqueMedium/BrandonGrotesqueMedium.woff2')}) format('woff2'),
+      url(${require('./fonts/BrandonGrotesqueMedium/BrandonGrotesqueMedium.svg')}) format('svg');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
   }
   #nprogress {
 		pointer-events: none;
