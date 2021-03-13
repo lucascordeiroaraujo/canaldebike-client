@@ -1,61 +1,125 @@
-import React from 'react';
+import React, { MouseEvent } from 'react';
 
 import Header from './style';
 
 import { Container } from '~/styles/global';
 
-const header: React.FC = () => (
-  <Header>
-    <Container className="header-container">
-      <img
-        src={require('~/public/images/canal-de-bike.png')}
-        alt="Canal de Bike"
-        title="Canal de Bike"
-        width="307"
-        height="29"
-      />
+import OutsideClickHandler from 'react-outside-click-handler';
 
-      <div>
-        <ul>
-          <li className="active">
-            <a href="#" title="aa">
-              <span>Últimas Notícias</span>
-            </a>
-          </li>
+const header: React.FC = () => {
+  const [searchFormOpened, setSearchFormOpen] = React.useState(false);
 
-          <li>
-            <a href="#" title="aa">
-              <span>MTB</span>
-            </a>
-          </li>
+  const [menuMobileOpend, setMenuMobileOpen] = React.useState(false);
 
-          <li>
-            <a href="#" title="aa">
-              <span>Road Bike</span>
-            </a>
-          </li>
+  const handleClickSubmitFormButton = (e: MouseEvent) => {
+    e.preventDefault();
 
-          <li>
-            <a href="#" title="aa">
-              <span>Gravel</span>
-            </a>
-          </li>
+    if (window.innerWidth <= 1500 && !searchFormOpened) {
+      setSearchFormOpen(true);
 
-          <li>
-            <a href="#" title="aa" target="_blank" rel="noopener noreferrer">
-              <span>Loja do Canal</span>
-            </a>
-          </li>
-        </ul>
+      return;
+    }
 
-        <form action="#" method="post">
-          <input type="text" placeholder="buscar notícia" />
+    console.log('api search');
 
-          <button>pesquisar</button>
-        </form>
-      </div>
-    </Container>
-  </Header>
-);
+    handleCloseSearchForm();
+  };
+
+  const isSearchFormOpened = () => {
+    return searchFormOpened ? 'search-form-opened' : '';
+  };
+
+  const handleCloseSearchForm = () => {
+    setSearchFormOpen(false);
+  };
+
+  const handleCloseMenuMobile = () => {
+    setMenuMobileOpen(false);
+  };
+
+  const handleToggleMenuMobile = () => {
+    setMenuMobileOpen(!menuMobileOpend);
+  };
+
+  const isMenuMobileOpened = () => {
+    return menuMobileOpend ? 'menu-opened' : '';
+  };
+
+  return (
+    <Header>
+      <Container className="header-container">
+        <div>
+          <img
+            src={require('~/public/images/canal-de-bike.png')}
+            alt="Canal de Bike"
+            title="Canal de Bike"
+            width="307"
+            height="29"
+          />
+        </div>
+
+        <div>
+          <ul className={`${isSearchFormOpened()} ${isMenuMobileOpened()}`}>
+            <li className="active">
+              <a href="#" title="Confira as últimas notícias do Canal de Bike">
+                <span>Últimas Notícias</span>
+              </a>
+            </li>
+
+            <li>
+              <a href="#" title="Confira os posts da categoria MTB">
+                <span>MTB</span>
+              </a>
+            </li>
+
+            <li>
+              <a href="#" title="Confira os posts da categoria Road Bike">
+                <span>Road Bike</span>
+              </a>
+            </li>
+
+            <li>
+              <a href="#" title="Confira os posts da categoria Gravel">
+                <span>Gravel</span>
+              </a>
+            </li>
+
+            <li className="store">
+              <a
+                href="#"
+                title="Acessar a loja do Canal de Bike"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <span>Loja do Canal</span>
+              </a>
+            </li>
+          </ul>
+
+          <OutsideClickHandler onOutsideClick={handleCloseSearchForm}>
+            <form action="#" method="post">
+              <input
+                type="text"
+                placeholder="buscar notícia"
+                className={isSearchFormOpened()}
+              />
+
+              <button onClick={handleClickSubmitFormButton}>pesquisar</button>
+            </form>
+          </OutsideClickHandler>
+
+          <OutsideClickHandler onOutsideClick={handleCloseMenuMobile}>
+            <button
+              className={`menu-mobile ${isMenuMobileOpened()}`}
+              onClick={handleToggleMenuMobile}
+            >
+              <span></span>
+            </button>
+          </OutsideClickHandler>
+        </div>
+      </Container>
+    </Header>
+  );
+};
 
 export default header;
