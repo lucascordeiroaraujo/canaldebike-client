@@ -88,5 +88,8 @@ export const CopyRight = styled.div`
     text-transform: uppercase;
     color: #ffffff;
     text-align: center;
+    @media (max-width: 992px) {
+      font-size: 14px;
+    }
   }
 `;

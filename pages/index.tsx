@@ -1,15 +1,3 @@
-import React from 'react';
+import homePage from './home';
 
-import Header from '~/components/header';
-
-import Footer from '~/components/footer';
-
-export default function Index() {
-  return (
-    <>
-      <Header />
-
-      <Footer />
-    </>
-  );
-}
+export default homePage;

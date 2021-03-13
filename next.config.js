@@ -7,7 +7,7 @@ const withFonts = require('next-fonts');
 const withCSS = require('@zeit/next-css');
 
 const nextConfig = {
-  webpack: (config) => {
+  webpack: config => {
     config.node = {
       fs: 'empty',
     };
@@ -15,11 +15,11 @@ const nextConfig = {
   },
   images: {
     deviceSizes: [320, 640, 768, 1024, 1600],
-    domains: [''],
+    domains: ['picsum.photos'],
   },
 };
 
 module.exports = withPlugins(
   [[withImages], [withFonts], [withCSS]],
-  nextConfig
+  nextConfig,
 );
