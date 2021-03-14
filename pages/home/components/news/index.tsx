@@ -110,8 +110,8 @@ const news: React.FC = () => {
                     src={news.image}
                     alt={news.title}
                     title={news.title}
-                    width={430}
-                    height={260}
+                    width="430"
+                    height="260"
                     layout="responsive"
                   />
                 </a>

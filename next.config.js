@@ -15,7 +15,7 @@ const nextConfig = {
   },
   images: {
     deviceSizes: [320, 640, 768, 1024, 1600],
-    domains: ['picsum.photos'],
+    domains: ['picsum.photos', 'img.youtube.com'],
   },
 };
 

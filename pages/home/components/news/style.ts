@@ -7,8 +7,7 @@ export default styled.section`
   h1 {
     width: 100%;
     font-family: 'BrandonGrotesqueBlack';
-    font-size: 70px;
-    color: #90b13a;
+    color: ${props => props.theme.colors.primary};
     font-weight: normal;
     text-transform: uppercase;
     text-align: center;
@@ -60,16 +59,16 @@ export const Article = styled.article<IArticle>`
     margin-top: 15px;
     a {
       font-family: 'BrandonGrotesqueRegular';
-      color: #ffffff;
+      color: ${props => props.theme.colors.light};
       font-size: 12px;
       text-transform: uppercase;
       margin: 0px 10px 10px 0px;
       border-radius: 10px;
       padding: 2px 8px;
       transition: 0.5s;
-      background: #6e8e19;
+      background: ${props => props.theme.colors.secondary};
       &:hover {
-        background: ${shade(0.2, '#6e8e19')};
+        background: ${props => shade(0.2, props.theme.colors.secondary)};
       }
     }
   }
@@ -95,7 +94,7 @@ export const Article = styled.article<IArticle>`
     font-weight: normal;
     margin: 20px 0px 10px 0px;
     a {
-      color: #90b13a;
+      color: ${props => props.theme.colors.primary};
     }
   }
   p {
@@ -104,7 +103,7 @@ export const Article = styled.article<IArticle>`
     line-height: 26px;
     margin: 0px;
     a {
-      color: #222221;
+      color: ${props => props.theme.colors.text};
     }
   }
   @media (max-width: 992px) {

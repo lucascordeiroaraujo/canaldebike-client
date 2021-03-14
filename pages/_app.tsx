@@ -6,13 +6,15 @@ import Head from 'next/head';
 
 import GlobalStyles from '~/styles/global';
 
-import Icons from '~/styles/icons';
-
 import 'react-app-polyfill/ie9';
 
 import NProgress from 'nprogress';
 
 import Router from 'next/router';
+
+import { ThemeProvider } from 'styled-components';
+
+import lightTheme from '~/styles/themes/light';
 
 Router.events.on('routeChangeStart', () => {
   NProgress.start();
@@ -144,13 +146,13 @@ class MyApp extends App<StoreProps> {
           <meta name="theme-color" content="#81b228" />
         </Head>
 
-        <>
-          <GlobalStyles />
+        <ThemeProvider theme={lightTheme}>
+          <>
+            <GlobalStyles />
 
-          <Icons />
-
-          <Component {...pageProps} />
-        </>
+            <Component {...pageProps} />
+          </>
+        </ThemeProvider>
 
         <noscript>
           <style

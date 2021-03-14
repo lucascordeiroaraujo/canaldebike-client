@@ -4,6 +4,8 @@ import Footer, { CopyRight } from './style';
 
 import { Container } from '~/styles/global';
 
+import { FaInstagram, FaYoutube, FaFacebook, FaTwitter } from 'react-icons/fa';
+
 const footer: React.FC = () => {
   const [currentYear, setCurrentYear] = React.useState();
 
@@ -15,7 +17,7 @@ const footer: React.FC = () => {
 
   return (
     <Footer>
-      <Container className="footer-container">
+      <Container smallContainer className="footer-container">
         <div>
           <img
             src={require('~/public/images/canal-de-bike-footer.png')}
@@ -77,6 +79,18 @@ const footer: React.FC = () => {
           >
             revistaridebike@gmail.com
           </a>
+
+          <form action="#" method="post">
+            <strong>Newsletter</strong>
+
+            <p>Receba em primeira mão tudo sobre o mundo da bike</p>
+
+            <div>
+              <input type="text" placeholder="digite seu e-mail" />
+
+              <input type="submit" value="Assinar" />
+            </div>
+          </form>
         </div>
 
         <div>
@@ -84,6 +98,46 @@ const footer: React.FC = () => {
             Siga nas
             <br /> Redes Sociais
           </strong>
+
+          <div className="social-networking">
+            <a
+              href="#"
+              title="Confira as fotos no nosso Instagram"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <FaInstagram />
+            </a>
+
+            <a
+              href="#"
+              title="Inscreva-se no canal do YouTube"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="youtube"
+            >
+              <FaYoutube />
+            </a>
+
+            <a
+              href="#"
+              title="Curta nossa página no Facebook"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="facebook"
+            >
+              <FaFacebook />
+            </a>
+
+            <a
+              href="#"
+              title="Siga-nos no Twitter"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <FaTwitter />
+            </a>
+          </div>
         </div>
       </Container>
 

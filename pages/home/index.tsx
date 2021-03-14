@@ -4,6 +4,10 @@ import Header from '~/components/header';
 
 import News from './components/news';
 
+import Videos from './components/videos';
+
+import Instagram from './components/instagram';
+
 import Footer from '~/components/footer';
 
 export default function Index() {
@@ -12,6 +16,10 @@ export default function Index() {
       <Header />
 
       <News />
+
+      <Videos />
+
+      <Instagram />
 
       <Footer />
     </>

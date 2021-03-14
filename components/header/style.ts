@@ -7,7 +7,7 @@ export default styled.header`
   height: 120px;
   position: relative;
   overflow: hidden;
-  background: #222221;
+  background: ${props => props.theme.colors.dark};
   &:before {
     content: '';
     width: 50%;
@@ -15,14 +15,14 @@ export default styled.header`
     position: absolute;
     top: 0px;
     left: 0px;
-    background: #ffffff;
+    background: ${props => props.theme.colors.light};
   }
   div.header-container {
     display: flex;
     justify-content: space-between;
     align-items: center;
     height: 100%;
-    background: #222221;
+    background: ${props => props.theme.colors.dark};
     div {
       display: flex;
       justify-content: flex-start;
@@ -33,7 +33,7 @@ export default styled.header`
         padding-right: 77px;
         min-width: 270px;
         background: url(${require('~/public/images/header-background.png')})
-          right top no-repeat #ffffff;
+          right top no-repeat ${props => props.theme.colors.light};
         img {
           width: 100%;
           height: auto;
@@ -46,8 +46,14 @@ export default styled.header`
           min-width: 200px;
           max-width: 150px;
         }
+        @media (max-width: 520px) {
+          &.search-form-opened img {
+            opacity: 0.2;
+          }
+        }
       }
       &:last-child {
+        z-index: 2;
         justify-content: flex-end;
         ul {
           list-style: none;
@@ -70,7 +76,7 @@ export default styled.header`
               left: 0px;
               width: 100%;
               height: 5px;
-              background: #222221;
+              background: ${props => props.theme.colors.dark};
             }
             a {
               height: 100%;
@@ -80,14 +86,14 @@ export default styled.header`
               span {
                 width: 100%;
                 text-transform: uppercase;
-                color: #ffffff;
+                color: ${props => props.theme.colors.light};
                 text-align: center;
                 white-space: nowrap;
                 transition: 0.5s;
               }
             }
             &.active:before {
-              background: #90b13a;
+              background: ${props => props.theme.colors.primary};
             }
             &.store {
               a {
@@ -99,14 +105,15 @@ export default styled.header`
                   display: flex;
                   align-items: center;
                   transition: 0.5s;
-                  background: #90b13a;
+                  background: ${props => props.theme.colors.primary};
                   @media (max-width: 1500px) {
                     height: 35px;
                     padding: 0px 10px;
                   }
                 }
                 &:hover span {
-                  background: ${shade(0.2, '#90b13a')};
+                  background: ${props =>
+                    shade(0.2, props.theme.colors.primary)};
                 }
               }
               @media (max-width: 992px) and (min-width: 768px) {
@@ -114,7 +121,7 @@ export default styled.header`
               }
             }
             &:hover:not(.active) a span {
-              color: ${shade(0.2, '#ffffff')};
+              color: ${props => shade(0.2, props.theme.colors.light)};
             }
             @media (max-width: 1500px) {
               margin-left: 21px;
@@ -136,7 +143,7 @@ export default styled.header`
               }
             }
           }
-          @media (max-width: 1500px) {
+          @media (min-width: 576px) and (max-width: 1500px) {
             margin-right: 50px;
             &.search-form-opened {
               opacity: 0.2;
@@ -149,7 +156,7 @@ export default styled.header`
             top: 70px;
             left: 0px;
             margin: 0px;
-            background: #222221;
+            background: ${props => props.theme.colors.dark};
             z-index: 20;
             justify-content: center;
             align-items: center;
@@ -188,7 +195,15 @@ export default styled.header`
             cursor: pointer;
             border-radius: 50%;
             transition: 0.5s;
-            background: #000;
+            color: ${props => props.theme.colors.primary};
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 24px;
+            background: ${props => props.theme.colors.light};
+            &:hover {
+              color: ${props => shade(0.2, props.theme.colors.primary)};
+            }
           }
           @media (max-width: 1500px) {
             input {
@@ -199,6 +214,7 @@ export default styled.header`
               position: absolute;
               right: 0px;
               padding-right: 55px;
+              box-shadow: 0px 0px 10px rgb(0 0 0 / 50%);
               &.search-form-opened {
                 width: 255px;
                 opacity: 1;
@@ -210,6 +226,7 @@ export default styled.header`
               height: 35px;
               right: 0px;
               top: 0px;
+              font-size: 20px;
               transform: translate(0px, 0px);
               position: relative;
             }
@@ -234,7 +251,7 @@ export default styled.header`
             height: 4px;
             transition: 0.5s;
             border-radius: 5px;
-            background-color: #ffffff;
+            background-color: ${props => props.theme.colors.light};
           }
           &:before {
             top: 0px;

@@ -11,13 +11,13 @@ export default styled.div`
   align-items: center;
   flex-direction: column;
   padding: 2%;
-  background: #181818;
+  background: ${props => props.theme.colors.dark};
   img {
     margin-bottom: 20px;
   }
   p {
     font-family: 'GothamBold';
-    color: #81b228;
+    color: ${props => props.theme.colors.primary};
     font-size: 20px;
   }
 `;

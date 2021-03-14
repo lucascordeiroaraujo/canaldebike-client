@@ -6,6 +6,8 @@ import { Container } from '~/styles/global';
 
 import OutsideClickHandler from 'react-outside-click-handler';
 
+import { FaSearch } from 'react-icons/fa';
+
 const header: React.FC = () => {
   const [searchFormOpened, setSearchFormOpen] = React.useState(false);
 
@@ -48,7 +50,7 @@ const header: React.FC = () => {
   return (
     <Header>
       <Container className="header-container">
-        <div>
+        <div className={isSearchFormOpened()}>
           <img
             src={require('~/public/images/canal-de-bike.png')}
             alt="Canal de Bike"
@@ -104,7 +106,9 @@ const header: React.FC = () => {
                 className={isSearchFormOpened()}
               />
 
-              <button onClick={handleClickSubmitFormButton}>pesquisar</button>
+              <button onClick={handleClickSubmitFormButton}>
+                <FaSearch />
+              </button>
             </form>
           </OutsideClickHandler>
 

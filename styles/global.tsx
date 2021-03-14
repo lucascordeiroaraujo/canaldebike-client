@@ -97,6 +97,7 @@ export default createGlobalStyle`
     transition: 0.5s;
     font-family: 'BrandonGrotesqueMedium';
     font-size: 18px;
+    background: ${props => props.theme.colors.bg};
     input, select, textarea {
       font-family: 'BrandonGrotesqueMedium';
       border-radius: 30px;
@@ -108,6 +109,14 @@ export default createGlobalStyle`
       background: #ffffff;
       &::placeholder {
         color: #222221;
+      }
+      &[type='submit'] {
+        padding: 0px;
+        cursor: pointer;
+      }
+      &.has-error {
+        color: #f00;
+        background: #fce8e8;
       }
     }
   }
