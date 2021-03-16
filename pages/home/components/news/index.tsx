@@ -1,12 +1,10 @@
 import React from 'react';
 
-import News, { ArticlesContainer, Article } from './style';
+import News, { ArticlesContainer } from './style';
 
 import { Container } from '~/styles/global';
 
-import Image from 'next/image';
-
-import Link from 'next/link';
+import Post from '~/components/post';
 
 const news: React.FC = () => {
   const [newsList, _] = React.useState([
@@ -97,50 +95,13 @@ const news: React.FC = () => {
   return (
     <News>
       <Container smallContainer>
-        <h1>
+        <h1 className="default-title">
           Tudo sobre o<br /> mundo da bike
         </h1>
 
         <ArticlesContainer>
           {newsList.map(news => (
-            <Article hasCategories={!news.tags ? false : true} key={news.id}>
-              <Link href={`/noticia/${news.slug}`}>
-                <a title="Confira a matéria completa">
-                  <Image
-                    src={news.image}
-                    alt={news.title}
-                    title={news.title}
-                    width="430"
-                    height="260"
-                    layout="responsive"
-                  />
-                </a>
-              </Link>
-
-              {news.tags && (
-                <div className="category-link">
-                  {news.tags.map(tag => (
-                    <Link href={`/tag/${tag.slug}`}>
-                      <a title="Confira a matéria completa">{tag.title}</a>
-                    </Link>
-                  ))}
-                </div>
-              )}
-
-              <span>criado em {news.date}</span>
-
-              <h2>
-                <Link href={`/noticia/${news.slug}`}>
-                  <a title="Confira a matéria completa">{news.title}</a>
-                </Link>
-              </h2>
-
-              <p>
-                <Link href={`/noticia/${news.slug}`}>
-                  <a title="Confira a matéria completa">{news.description}</a>
-                </Link>
-              </p>
-            </Article>
+            <Post {...news} />
           ))}
         </ArticlesContainer>
       </Container>

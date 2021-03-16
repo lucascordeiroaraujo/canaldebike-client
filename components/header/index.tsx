@@ -1,6 +1,6 @@
 import React, { MouseEvent } from 'react';
 
-import Header from './style';
+import Header, { Logo, Menu, MenuItem, SearchForm, MenuMobile } from './style';
 
 import { Container } from '~/styles/global';
 
@@ -8,10 +8,18 @@ import OutsideClickHandler from 'react-outside-click-handler';
 
 import { FaSearch } from 'react-icons/fa';
 
+import Link from 'next/link';
+
+import { useRouter } from 'next/router';
+
 const header: React.FC = () => {
   const [searchFormOpened, setSearchFormOpen] = React.useState(false);
 
   const [menuMobileOpend, setMenuMobileOpen] = React.useState(false);
+
+  const router = useRouter();
+
+  console.log('router', router);
 
   const handleClickSubmitFormButton = (e: MouseEvent) => {
     e.preventDefault();
@@ -22,13 +30,9 @@ const header: React.FC = () => {
       return;
     }
 
-    console.log('api search');
+    // TODO: api search
 
     handleCloseSearchForm();
-  };
-
-  const isSearchFormOpened = () => {
-    return searchFormOpened ? 'search-form-opened' : '';
   };
 
   const handleCloseSearchForm = () => {
@@ -43,50 +47,65 @@ const header: React.FC = () => {
     setMenuMobileOpen(!menuMobileOpend);
   };
 
-  const isMenuMobileOpened = () => {
-    return menuMobileOpend ? 'menu-opened' : '';
+  const isCurrentCategory = (slug: string) => {
+    return router.query.slug === slug;
   };
 
   return (
     <Header>
       <Container className="header-container">
-        <div className={isSearchFormOpened()}>
-          <img
-            src={require('~/public/images/canal-de-bike.png')}
-            alt="Canal de Bike"
-            title="Canal de Bike"
-            width="307"
-            height="29"
-          />
-        </div>
+        <Logo searchFormOpened={searchFormOpened}>
+          <Link href="/">
+            <a title="Canal de Bike - Página Inicial">
+              <img
+                src={require('~/public/images/canal-de-bike.png')}
+                alt="Canal de Bike"
+                title="Canal de Bike"
+                width="307"
+                height="29"
+              />
+            </a>
+          </Link>
+        </Logo>
 
         <div>
-          <ul className={`${isSearchFormOpened()} ${isMenuMobileOpened()}`}>
-            <li className="active">
-              <a href="#" title="Confira as últimas notícias do Canal de Bike">
-                <span>Últimas Notícias</span>
-              </a>
-            </li>
+          <Menu
+            searchFormOpened={searchFormOpened}
+            menuMobileOpend={menuMobileOpend}
+          >
+            <MenuItem currentCategory={isCurrentCategory('ultimas-noticias')}>
+              <Link href="/categoria/ultimas-noticias">
+                <a title="Confira as últimas notícias do Canal de Bike">
+                  <span>Últimas Notícias</span>
+                </a>
+              </Link>
+            </MenuItem>
 
-            <li>
-              <a href="#" title="Confira os posts da categoria MTB">
-                <span>MTB</span>
-              </a>
-            </li>
+            <MenuItem currentCategory={isCurrentCategory('mtb')}>
+              <Link href="/categoria/mtb">
+                <a title="Confira os posts da categoria MTB">
+                  <span>MTB</span>
+                </a>
+              </Link>
+            </MenuItem>
 
-            <li>
-              <a href="#" title="Confira os posts da categoria Road Bike">
-                <span>Road Bike</span>
-              </a>
-            </li>
+            <MenuItem currentCategory={isCurrentCategory('road-bike')}>
+              <Link href="/categoria/road-bike">
+                <a title="Confira os posts da categoria Road Bike">
+                  <span>Road Bike</span>
+                </a>
+              </Link>
+            </MenuItem>
 
-            <li>
-              <a href="#" title="Confira os posts da categoria Gravel">
-                <span>Gravel</span>
-              </a>
-            </li>
+            <MenuItem currentCategory={isCurrentCategory('gravel')}>
+              <Link href="/categoria/gravel">
+                <a title="Confira os posts da categoria Gravel">
+                  <span>Gravel</span>
+                </a>
+              </Link>
+            </MenuItem>
 
-            <li className="store">
+            <MenuItem className="store">
               <a
                 href="#"
                 title="Acessar a loja do Canal de Bike"
@@ -95,30 +114,30 @@ const header: React.FC = () => {
               >
                 <span>Loja do Canal</span>
               </a>
-            </li>
-          </ul>
+            </MenuItem>
+          </Menu>
 
           <OutsideClickHandler onOutsideClick={handleCloseSearchForm}>
-            <form action="#" method="post">
-              <input
-                type="text"
-                placeholder="buscar notícia"
-                className={isSearchFormOpened()}
-              />
+            <SearchForm
+              searchFormOpened={searchFormOpened}
+              action="#"
+              method="post"
+            >
+              <input type="text" placeholder="buscar notícia" />
 
               <button onClick={handleClickSubmitFormButton}>
                 <FaSearch />
               </button>
-            </form>
+            </SearchForm>
           </OutsideClickHandler>
 
           <OutsideClickHandler onOutsideClick={handleCloseMenuMobile}>
-            <button
-              className={`menu-mobile ${isMenuMobileOpened()}`}
+            <MenuMobile
+              menuMobileOpend={menuMobileOpend}
               onClick={handleToggleMenuMobile}
             >
-              <span></span>
-            </button>
+              <span />
+            </MenuMobile>
           </OutsideClickHandler>
         </div>
       </Container>

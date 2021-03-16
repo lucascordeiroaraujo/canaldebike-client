@@ -129,11 +129,29 @@ export default createGlobalStyle`
 			left: 0;
 			width: 100%;
 			height: 5px;
-			background: #089ec3
+			background: ${props => props.theme.colors.primary}
 		}
 	}
   .react-reveal {
 		opacity: 0;
+  }
+  h1.default-title {
+    width: 100%;
+    font-family: 'BrandonGrotesqueBlack';
+    color: ${props => props.theme.colors.primary};
+    font-weight: normal;
+    text-transform: uppercase;
+    text-align: center;
+    font-size: calc(1.875rem + ((1vw - 2.5px) * 2.3952));
+    line-height: calc(1.875rem + ((1vw - 2.5px) * 2.3952));
+    margin: 0px 0px 100px 0px;
+    @media (min-width: 1920px) {
+      font-size: 70px;
+      line-height: 70px;
+    }
+    @media (max-width: 992px) {
+      margin: 0px 0px 50px 0px;
+    }
   }
 `;
 
