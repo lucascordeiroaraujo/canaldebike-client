@@ -161,6 +161,16 @@ class MyApp extends App<StoreProps> {
             }}
           />
         </noscript>
+
+        <div id="fb-root"></div>
+
+        <script
+          async
+          defer
+          crossOrigin="anonymous"
+          src="https://connect.facebook.net/pt_BR/sdk.js#xfbml=1&version=v10.0&appId=1015663685120991&autoLogAppEvents=1"
+          nonce="0OUFJuus"
+        ></script>
       </>
     );
   }
