@@ -7,39 +7,66 @@ import Image from 'next/image';
 import Link from 'next/link';
 
 interface IPost {
-  id: string;
+  id?: string;
   tags: Array<{
-    slug: string;
+    id: number;
     title: string;
+    slug: string;
   }>;
   slug: string;
   image: string;
   title: string;
   date: string;
   description: string;
+  nextImage?: boolean;
+  slider?: boolean;
 }
 
-const post = ({ id, tags, slug, image, title, date, description }: IPost) => {
+const post = ({
+  tags,
+  slug,
+  image,
+  title,
+  date,
+  description,
+  nextImage = true,
+  slider = false,
+}: IPost) => {
   return (
-    <Post hasCategories={!tags ? false : true} key={id}>
-      <Link href={`/noticia/${slug}`}>
-        <a title="Confira a matéria completa">
-          <Image
-            src={image}
-            alt={title}
-            title={title}
-            width="430"
-            height="260"
-            layout="responsive"
-            className="post-image"
-          />
-        </a>
-      </Link>
+    <Post hasCategories={!tags ? false : true} isSlider={slider}>
+      <div className="post-image-container">
+        <span className="call-to-action">Ver notícia</span>
+
+        <Link href={`/noticia/${slug}`}>
+          <a title="Confira a matéria completa">
+            {nextImage ? (
+              <Image
+                src={image}
+                alt={title}
+                title={title}
+                width="430"
+                height="260"
+                layout="responsive"
+                className="post-image"
+              />
+            ) : (
+              <img
+                src={image}
+                alt={title}
+                title={title}
+                width="430"
+                height="260"
+                className="post-image"
+              />
+            )}
+          </a>
+        </Link>
+      </div>
 
       {tags && (
         <div className="category-link">
           {tags.map(tag => (
-            <Link href={`/tag/${tag.slug}`}>
+            <Link key={tag.id} href={`/tag/${tag.slug}`}>
               <a title="Confira a matéria completa">{tag.title}</a>
             </Link>
           ))}

@@ -19,8 +19,6 @@ const header: React.FC = () => {
 
   const router = useRouter();
 
-  console.log('router', router);
-
   const handleClickSubmitFormButton = (e: MouseEvent) => {
     e.preventDefault();
 

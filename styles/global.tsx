@@ -135,7 +135,7 @@ export default createGlobalStyle`
   .react-reveal {
 		opacity: 0;
   }
-  h1.default-title {
+  .default-title {
     width: 100%;
     font-family: 'BrandonGrotesqueBlack';
     color: ${props => props.theme.colors.primary};

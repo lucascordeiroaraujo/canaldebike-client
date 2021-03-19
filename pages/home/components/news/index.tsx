@@ -1,6 +1,6 @@
 import React from 'react';
 
-import News, { ArticlesContainer } from './style';
+import News, { PostsContainer } from './style';
 
 import { Container } from '~/styles/global';
 
@@ -16,10 +16,12 @@ const news: React.FC = () => {
       image: 'https://picsum.photos/id/237/430/260',
       tags: [
         {
+          id: 1,
           title: 'Jaqueline Mourão',
           slug: '#',
         },
         {
+          id: 2,
           title: 'Trek Bikes',
           slug: '#',
         },
@@ -36,14 +38,17 @@ const news: React.FC = () => {
       image: 'https://picsum.photos/id/238/430/260',
       tags: [
         {
+          id: 1,
           title: 'Canyon 2021',
           slug: '#',
         },
         {
+          id: 2,
           title: 'Aeroad',
           slug: '#',
         },
         {
+          id: 3,
           title: 'Van der poel',
           slug: '#',
         },
@@ -60,10 +65,12 @@ const news: React.FC = () => {
       image: 'https://picsum.photos/id/239/430/260',
       tags: [
         {
+          id: 1,
           title: ' fox x-sync',
           slug: '#',
         },
         {
+          id: 2,
           title: 'x-sync',
           slug: '#',
         },
@@ -79,10 +86,12 @@ const news: React.FC = () => {
       image: 'https://picsum.photos/id/240/430/260',
       tags: [
         {
+          id: 1,
           title: ' SOUL CYCLES',
           slug: '#',
         },
         {
+          id: 2,
           title: 'ciclismo',
           slug: '#',
         },
@@ -98,10 +107,12 @@ const news: React.FC = () => {
       image: 'https://picsum.photos/id/137/430/260',
       tags: [
         {
+          id: 1,
           title: 'Jaqueline Mourão',
           slug: '#',
         },
         {
+          id: 2,
           title: 'Trek Bikes',
           slug: '#',
         },
@@ -118,14 +129,17 @@ const news: React.FC = () => {
       image: 'https://picsum.photos/id/1060/430/260',
       tags: [
         {
+          id: 1,
           title: 'Canyon 2021',
           slug: '#',
         },
         {
+          id: 2,
           title: 'Aeroad',
           slug: '#',
         },
         {
+          id: 3,
           title: 'Van der poel',
           slug: '#',
         },
@@ -142,10 +156,12 @@ const news: React.FC = () => {
       image: 'https://picsum.photos/id/804/430/260',
       tags: [
         {
+          id: 1,
           title: ' fox x-sync',
           slug: '#',
         },
         {
+          id: 2,
           title: 'x-sync',
           slug: '#',
         },
@@ -161,10 +177,12 @@ const news: React.FC = () => {
       image: 'https://picsum.photos/id/140/430/260',
       tags: [
         {
+          id: 1,
           title: ' SOUL CYCLES',
           slug: '#',
         },
         {
+          id: 2,
           title: 'ciclismo',
           slug: '#',
         },
@@ -180,10 +198,12 @@ const news: React.FC = () => {
       image: 'https://picsum.photos/id/870/430/260',
       tags: [
         {
+          id: 1,
           title: 'Jaqueline Mourão',
           slug: '#',
         },
         {
+          id: 2,
           title: 'Trek Bikes',
           slug: '#',
         },
@@ -202,11 +222,13 @@ const news: React.FC = () => {
           Tudo sobre o<br /> mundo da bike
         </h1>
 
-        <ArticlesContainer>
+        <PostsContainer>
           {newsList.map(news => (
-            <Post {...news} />
+            <div className="post-container">
+              <Post key={news.id} {...news} />
+            </div>
           ))}
-        </ArticlesContainer>
+        </PostsContainer>
 
         <Link href="/ultimas-noticias">
           <a title="Confira todas as notícias" className="button-all-news">

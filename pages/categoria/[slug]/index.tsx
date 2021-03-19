@@ -1,7 +1,5 @@
 import React from 'react';
 
-import Header from '~/components/header';
-
 import { Container } from '~/styles/global';
 
 import CategoryContainer from './style';
@@ -12,25 +10,17 @@ import CategoryPosts from './components/posts';
 
 import CategoryPagination from '~/components/pagination';
 
-import Footer from '~/components/footer';
-
 const category: React.FC = () => {
   return (
-    <>
-      <Header />
+    <Container smallContainer>
+      <CategoryContainer>
+        <CategoryHeader />
 
-      <Container smallContainer>
-        <CategoryContainer>
-          <CategoryHeader />
+        <CategoryPosts />
 
-          <CategoryPosts />
-
-          <CategoryPagination />
-        </CategoryContainer>
-      </Container>
-
-      <Footer />
-    </>
+        <CategoryPagination />
+      </CategoryContainer>
+    </Container>
   );
 };
 
