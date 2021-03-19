@@ -6,11 +6,11 @@ export default styled.article`
   justify-content: flex-start;
   flex-direction: column;
   text-align: left;
-  div.featured-image-container {
+  .featured-image-container {
     width: 100%;
     margin-bottom: 30px;
   }
-  div.post-date-and-author {
+  .post-date-and-author {
     width: 100%;
     display: flex;
     align-items: center;

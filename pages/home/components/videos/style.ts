@@ -13,13 +13,13 @@ export default styled.section`
       background: url(${require('~/public/images/background-videos.jpg')})
         center top repeat;
     `}
-  div.container {
+  .container {
     max-width: 947px;
     display: flex;
     justify-content: center;
     align-items: center;
   }
-  > a {
+  .youtube-link {
     font-family: 'BrandonGrotesqueBlack';
     text-transform: uppercase;
     color: ${props => props.theme.colors.light};
@@ -110,17 +110,17 @@ export const VideosThumbs = styled.div`
   align-items: flex-start;
   flex-wrap: wrap;
   margin-top: 40px;
-  article {
+  .video-thumb {
     width: 24%;
     position: relative;
-    div.icon-container,
-    div.icon-container:before {
+    .icon-container,
+    .icon-container:before {
       position: absolute;
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
     }
-    div.icon-container {
+    .icon-container {
       &:before {
         content: '';
         z-index: -1;
@@ -146,7 +146,7 @@ export const VideosThumbs = styled.div`
       &:nth-child(2) {
         margin-bottom: 15px;
       }
-      div.icon-container svg {
+      .icon-container svg {
         font-size: 30px;
       }
     }

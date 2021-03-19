@@ -29,45 +29,48 @@ const categoryHeader: React.FC = () => {
 
       <CategoryFilter>
         <OutsideClickHandler onOutsideClick={handleCloseSubCategories}>
-          <button onClick={handleToggleSubCategoriesList}>
+          <button
+            className="select-button"
+            onClick={handleToggleSubCategoriesList}
+          >
             <span>Todas as categorias</span>
 
             <FaCaretDown />
           </button>
         </OutsideClickHandler>
 
-        <ul className={isOpenedSubCategories()}>
-          <li>
+        <ul className={`select-button-list ${isOpenedSubCategories()}`}>
+          <li className="select-button-list-item">
             <a href="#" title="Confira os posts">
               Subcategoria 1
             </a>
           </li>
 
-          <li>
+          <li className="select-button-list-item">
             <a href="#" title="Confira os posts">
               Subcategoria 2
             </a>
           </li>
 
-          <li>
+          <li className="select-button-list-item">
             <a href="#" title="Confira os posts">
               Subcategoria 3
             </a>
           </li>
 
-          <li>
+          <li className="select-button-list-item">
             <a href="#" title="Confira os posts">
               Subcategoria 1
             </a>
           </li>
 
-          <li>
+          <li className="select-button-list-item">
             <a href="#" title="Confira os posts">
               Subcategoria 2
             </a>
           </li>
 
-          <li>
+          <li className="select-button-list-item">
             <a href="#" title="Confira os posts">
               Subcategoria 3
             </a>

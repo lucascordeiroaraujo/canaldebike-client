@@ -13,12 +13,12 @@ export default styled.article<IPost>`
   &:not(:last-child) {
     margin-bottom: 50px;
   }
-  img {
+  .post-image {
     width: 100%;
     height: auto;
     border-radius: 10px 10px 0px 0px;
   }
-  div.category-link {
+  .category-link {
     display: flex;
     justify-content: flex-start;
     align-items: center;
@@ -39,12 +39,12 @@ export default styled.article<IPost>`
       }
     }
   }
-  span,
-  h2,
-  p {
+  .post-date,
+  .post-title,
+  .post-description {
     width: 100%;
   }
-  span {
+  .post-date {
     font-size: 13px;
     font-family: 'BrandonGrotesqueRegular';
     ${props =>
@@ -54,7 +54,7 @@ export default styled.article<IPost>`
         margin-top: 15px;
       `}
   }
-  h2 {
+  .post-title {
     font-family: 'BrandonGrotesqueBlack';
     font-size: 24px;
     line-height: 30px;
@@ -64,7 +64,7 @@ export default styled.article<IPost>`
       color: ${props => props.theme.colors.primary};
     }
   }
-  p {
+  .post-description {
     font-family: 'BrandonGrotesqueLight';
     font-size: 16px;
     line-height: 26px;
@@ -79,7 +79,7 @@ export default styled.article<IPost>`
   @media (max-width: 576px) {
     width: 100%;
     text-align: center;
-    div.category-link {
+    .category-link {
       justify-content: center;
     }
   }

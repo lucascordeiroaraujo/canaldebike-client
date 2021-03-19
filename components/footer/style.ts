@@ -7,7 +7,7 @@ export default styled.footer`
   padding-top: 80px;
   margin-top: 100px;
   background: ${props => props.theme.colors.dark};
-  div.footer-container {
+  .footer-container {
     display: flex;
     justify-content: space-between;
     align-items: flex-start;

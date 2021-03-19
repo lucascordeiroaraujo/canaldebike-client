@@ -17,21 +17,22 @@ export default styled.header`
     left: 0px;
     background: ${props => props.theme.colors.light};
   }
-  div.header-container {
+  .header-container {
     display: flex;
     justify-content: space-between;
     align-items: center;
     height: 100%;
     background: ${props => props.theme.colors.dark};
-    div {
+    .logo-container,
+    .menu-container {
       display: flex;
       justify-content: flex-start;
       align-items: center;
       height: 100%;
-      &:last-child {
-        z-index: 2;
-        justify-content: flex-end;
-      }
+    }
+    .menu-container {
+      z-index: 2;
+      justify-content: flex-end;
     }
   }
   @media (max-width: 768px) {
@@ -209,7 +210,7 @@ interface ISearchForm {
 export const SearchForm = styled.form<ISearchForm>`
   position: relative;
   display: flex;
-  input {
+  .form-search-text-field {
     width: 255px;
     height: 45px;
     padding-right: 43px;
@@ -217,7 +218,7 @@ export const SearchForm = styled.form<ISearchForm>`
       width: 200px;
     }
   }
-  button {
+  .form-search-submit-button {
     width: 28px;
     height: 28px;
     position: absolute;
@@ -243,7 +244,7 @@ export const SearchForm = styled.form<ISearchForm>`
     }
   }
   @media (max-width: 1500px) {
-    input {
+    .form-search-text-field {
       width: 0px;
       height: 35px;
       opacity: 0;
@@ -253,7 +254,7 @@ export const SearchForm = styled.form<ISearchForm>`
       padding-right: 55px;
       box-shadow: 0px 0px 10px rgb(0 0 0 / 50%);
     }
-    button {
+    .form-search-submit-button {
       width: 35px;
       height: 35px;
       right: 0px;
@@ -265,7 +266,7 @@ export const SearchForm = styled.form<ISearchForm>`
     ${props =>
       props.searchFormOpened &&
       css`
-        input {
+        .form-search-text-field {
           width: 255px;
           opacity: 1;
           pointer-events: all;

@@ -5,17 +5,12 @@ export default styled.header`
   justify-content: space-between;
   align-items: center;
   margin: 100px 0px;
-  h1.default-title {
+  .default-title {
     margin: 0px;
     @media (min-width: 769px) {
       width: auto;
       text-align: left;
     }
-    /* @media (max-width: 768px) {
-      br {
-        display: none;
-      }
-    } */
   }
   @media (max-width: 768px) {
     flex-direction: column;
@@ -27,13 +22,13 @@ export const CategoryFilter = styled.div`
   width: 100%;
   max-width: 375px;
   position: relative;
-  button,
-  ul {
+  .select-button,
+  .select-button-list {
     display: flex;
     border: 1px solid ${props => props.theme.colors.dark};
   }
-  button,
-  ul li a {
+  .select-button,
+  .select-button-list li a {
     width: 100%;
     height: 60px;
     padding: 0px 17px;
@@ -44,7 +39,7 @@ export const CategoryFilter = styled.div`
     transition: 0.5s;
     align-items: center;
   }
-  button {
+  .select-button {
     justify-content: space-between;
     cursor: pointer;
     background: transparent;
@@ -56,7 +51,7 @@ export const CategoryFilter = styled.div`
       font-size: 25px;
     }
   }
-  ul {
+  .select-button-list {
     opacity: 0;
     pointer-events: none;
     position: absolute;
@@ -68,7 +63,7 @@ export const CategoryFilter = styled.div`
     flex-direction: column;
     overflow: auto;
     transition: 0.5s;
-    li {
+    .select-button-list-item {
       display: flex;
       width: 100%;
       &:not(:last-child) {

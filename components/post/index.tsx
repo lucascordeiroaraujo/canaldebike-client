@@ -31,6 +31,7 @@ const post = ({ id, tags, slug, image, title, date, description }: IPost) => {
             width="430"
             height="260"
             layout="responsive"
+            className="post-image"
           />
         </a>
       </Link>
@@ -45,15 +46,15 @@ const post = ({ id, tags, slug, image, title, date, description }: IPost) => {
         </div>
       )}
 
-      <span>criado em {date}</span>
+      <span className="post-date">criado em {date}</span>
 
-      <h2>
+      <h2 className="post-title">
         <Link href={`/noticia/${slug}`}>
           <a title="Confira a matéria completa">{title}</a>
         </Link>
       </h2>
 
-      <p>
+      <p className="post-description">
         <Link href={`/noticia/${slug}`}>
           <a title="Confira a matéria completa">{description}</a>
         </Link>

@@ -35,7 +35,7 @@ export default styled.section`
   );
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f09433', endColorstr='#bc1888',GradientType=1 );
   h1,
-  > a {
+  .instagram-link {
     width: 100%;
     color: ${props => props.theme.colors.light};
     font-weight: normal;
@@ -52,7 +52,7 @@ export default styled.section`
       line-height: 70px;
     }
   }
-  > a {
+  .instagram-link {
     font-size: 24px;
     margin: 0px;
     display: flex;
@@ -81,7 +81,7 @@ export const PhotosContainer = styled.div`
   align-items: flex-start;
   flex-wrap: wrap;
   margin-top: 95px;
-  div.image-container {
+  .image-container {
     width: 16.66%;
     @media (max-width: 1200px) {
       width: 33.33%;

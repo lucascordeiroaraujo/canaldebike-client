@@ -54,7 +54,7 @@ const header: React.FC = () => {
   return (
     <Header>
       <Container className="header-container">
-        <Logo searchFormOpened={searchFormOpened}>
+        <Logo searchFormOpened={searchFormOpened} className="logo-container">
           <Link href="/">
             <a title="Canal de Bike - Página Inicial">
               <img
@@ -68,7 +68,7 @@ const header: React.FC = () => {
           </Link>
         </Logo>
 
-        <div>
+        <div className="menu-container">
           <Menu
             searchFormOpened={searchFormOpened}
             menuMobileOpend={menuMobileOpend}
@@ -123,9 +123,16 @@ const header: React.FC = () => {
               action="#"
               method="post"
             >
-              <input type="text" placeholder="buscar notícia" />
+              <input
+                type="text"
+                placeholder="buscar notícia"
+                className="form-search-text-field"
+              />
 
-              <button onClick={handleClickSubmitFormButton}>
+              <button
+                className="form-search-submit-button"
+                onClick={handleClickSubmitFormButton}
+              >
                 <FaSearch />
               </button>
             </SearchForm>

@@ -6,7 +6,7 @@ export default styled.ul`
   justify-content: center;
   align-items: center;
   margin-top: 50px;
-  li {
+  .pagination-item {
     margin: 0px 3px;
     display: flex;
     a,

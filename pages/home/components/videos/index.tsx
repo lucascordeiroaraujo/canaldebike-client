@@ -28,7 +28,7 @@ const videos: React.FC = () => {
       </Container>
 
       <VideosThumbs>
-        <article>
+        <article className="video-thumb">
           <Image
             src="https://img.youtube.com/vi/YlhEU4IC2hA/mqdefault.jpg"
             alt="CAVALETE PARA MANUTENÇÃO DE BIKE, COMPACTO PRA SE TER EM CASA - BY NOMAD | Canal de Bike"
@@ -43,7 +43,7 @@ const videos: React.FC = () => {
           </div>
         </article>
 
-        <article>
+        <article className="video-thumb">
           <Image
             src="https://img.youtube.com/vi/9dewRHAwnNc/mqdefault.jpg"
             alt="ENTREVISTA COM ZÉ GABRIEL - MUITA DEDICAÇÃO DEFINE ESSE ATLETA | Canal de Bike"
@@ -58,7 +58,7 @@ const videos: React.FC = () => {
           </div>
         </article>
 
-        <article>
+        <article className="video-thumb">
           <Image
             src="https://img.youtube.com/vi/Mrj8Za1Je9E/mqdefault.jpg"
             alt="5 PIORES ERROS NA HORA DE SALTAR COM A BIKE | Canal de Bike"
@@ -73,7 +73,7 @@ const videos: React.FC = () => {
           </div>
         </article>
 
-        <article>
+        <article className="video-thumb">
           <Image
             src="https://img.youtube.com/vi/FHkznLwNtSQ/mqdefault.jpg"
             alt="COMO ESCOLHER A SAPATILHA CERTA PARA PEDALAR? | Canal de Bike"
@@ -89,7 +89,13 @@ const videos: React.FC = () => {
         </article>
       </VideosThumbs>
 
-      <a href="#" title="Inscreva-se no canal do YouTube">
+      <a
+        href="#"
+        title="Inscreva-se no canal do YouTube"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="youtube-link"
+      >
         <FaYoutube /> Ver mais vídeos do meu canal
       </a>
     </Videos>

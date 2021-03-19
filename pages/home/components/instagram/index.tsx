@@ -16,6 +16,7 @@ const instagram: React.FC = () => {
         title="Siga no Instagram"
         target="_blank"
         rel="noopener noreferrer"
+        className="instagram-link"
       >
         <FaInstagram />
         @canaldebike
