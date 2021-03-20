@@ -67,7 +67,7 @@ export const Cover = styled.div`
   top: 0px;
   left: 0px;
   background-size: cover;
-  background-position: center top;
+  background-position: center center;
   background-repeat: no-repeat;
   background-image: url(${require('~/public/images/background-popular-posts-cover.png')});
   background-attachment: fixed;

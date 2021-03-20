@@ -160,6 +160,12 @@ interface IContainerProps {
   smallContainer?: boolean;
 }
 
+export const AppBox = styled.div`
+  width: 100%;
+  max-width: 2560px;
+  margin: 0px auto;
+`;
+
 export const Container = styled.div<IContainerProps>`
   width: 96%;
   max-width: 1680px;

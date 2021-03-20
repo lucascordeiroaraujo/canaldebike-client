@@ -4,7 +4,7 @@ import App from 'next/app';
 
 import Head from 'next/head';
 
-import GlobalStyles from '~/styles/global';
+import GlobalStyles, { AppBox } from '~/styles/global';
 
 import 'react-app-polyfill/ie9';
 
@@ -166,11 +166,13 @@ class MyApp extends App<StoreProps> {
           <>
             <GlobalStyles />
 
-            <Header />
+            <AppBox>
+              <Header />
 
-            <Component {...pageProps} />
+              <Component {...pageProps} />
 
-            <Footer />
+              <Footer />
+            </AppBox>
           </>
         </ThemeProvider>
 
