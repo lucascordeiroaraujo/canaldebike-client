@@ -6,6 +6,8 @@ import { FaCaretDown } from 'react-icons/fa';
 
 import OutsideClickHandler from 'react-outside-click-handler';
 
+import Fade from 'react-reveal/Fade';
+
 const categoryHeader: React.FC = () => {
   const [openedSubCategories, setOpenedSubCategories] = React.useState(false);
 
@@ -23,9 +25,11 @@ const categoryHeader: React.FC = () => {
 
   return (
     <CategoryHeader>
-      <h1 className="default-title">
-        Tudo sobre o<br /> mundo da bike
-      </h1>
+      <Fade>
+        <h1 className="default-title">
+          Tudo sobre o<br /> mundo da bike
+        </h1>
+      </Fade>
 
       <CategoryFilter>
         <OutsideClickHandler onOutsideClick={handleCloseSubCategories}>

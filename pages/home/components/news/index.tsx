@@ -8,6 +8,10 @@ import Post from '~/components/post';
 
 import Link from 'next/link';
 
+import Fade from 'react-reveal/Fade';
+
+import Tada from 'react-reveal/Tada';
+
 const news: React.FC = () => {
   const [newsList, _] = React.useState([
     {
@@ -218,22 +222,28 @@ const news: React.FC = () => {
   return (
     <Container smallContainer>
       <News>
-        <h1 className="default-title">
-          Tudo sobre o<br /> mundo da bike
-        </h1>
+        <Fade bottom>
+          <h1 className="default-title">
+            Tudo sobre o<br /> mundo da bike
+          </h1>
+        </Fade>
 
         <PostsContainer>
-          {newsList.map(news => (
+          {newsList.map((news, index) => (
             <div className="post-container">
-              <Post key={news.id} {...news} />
+              <Fade delay={index * 150}>
+                <Post key={news.id} {...news} />
+              </Fade>
             </div>
           ))}
         </PostsContainer>
 
         <Link href="/ultimas-noticias">
-          <a title="Confira todas as notícias" className="button-all-news">
-            ver todas as notícias
-          </a>
+          <Tada>
+            <a title="Confira todas as notícias" className="button-all-news">
+              ver todas as notícias
+            </a>
+          </Tada>
         </Link>
       </News>
     </Container>

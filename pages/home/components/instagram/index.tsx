@@ -6,21 +6,27 @@ import { FaInstagram } from 'react-icons/fa';
 
 import Image from 'next/image';
 
+import Fade from 'react-reveal/Fade';
+
 const instagram: React.FC = () => {
   return (
     <Instagram>
-      <h1>Siga no Insta!</h1>
+      <Fade bottom>
+        <h1>Siga no Insta!</h1>
+      </Fade>
 
-      <a
-        href="#"
-        title="Siga no Instagram"
-        target="_blank"
-        rel="noopener noreferrer"
-        className="instagram-link"
-      >
-        <FaInstagram />
-        @canaldebike
-      </a>
+      <Fade bottom delay={200}>
+        <a
+          href="#"
+          title="Siga no Instagram"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="instagram-link"
+        >
+          <FaInstagram />
+          @canaldebike
+        </a>
+      </Fade>
 
       <PhotosContainer>
         <div className="image-container">

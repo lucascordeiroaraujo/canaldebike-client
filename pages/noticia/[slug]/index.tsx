@@ -14,18 +14,22 @@ import { FaLongArrowAltLeft } from 'react-icons/fa';
 
 import Link from 'next/link';
 
+import Fade from 'react-reveal/Fade';
+
 const news: React.FC = () => (
   <Container smallContainer>
     <News>
-      <div className="back-to-home-link-container">
-        <Link href="/">
-          <a title="Voltar para a página inicial">
-            <FaLongArrowAltLeft />
+      <Fade>
+        <div className="back-to-home-link-container">
+          <Link href="/">
+            <a title="Voltar para a página inicial">
+              <FaLongArrowAltLeft />
 
-            <span>Voltar para o ínicio</span>
-          </a>
-        </Link>
-      </div>
+              <span>Voltar para o ínicio</span>
+            </a>
+          </Link>
+        </div>
+      </Fade>
 
       <PostContainer>
         <Post />

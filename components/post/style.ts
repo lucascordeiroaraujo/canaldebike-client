@@ -86,23 +86,26 @@ export default styled.article<IPost>`
         margin-top: 15px;
       `}
   }
-  .post-title a,
-  .post-description a {
-    color: ${props =>
-      props.isSlider ? props.theme.colors.light : props.theme.colors.primary};
-  }
   .post-title {
     font-family: 'BrandonGrotesqueBlack';
     font-size: 24px;
     line-height: 30px;
     font-weight: normal;
     margin: 20px 0px 10px 0px;
+    a {
+      color: ${props =>
+        props.isSlider ? props.theme.colors.light : props.theme.colors.primary};
+    }
   }
   .post-description {
     font-family: 'BrandonGrotesqueLight';
     font-size: 16px;
     line-height: 26px;
     margin: 0px;
+    a {
+      color: ${props =>
+        props.isSlider ? props.theme.colors.light : props.theme.colors.dark};
+    }
   }
   @media (max-width: ${props => (props.isSlider ? 768 : 576)}px) {
     text-align: center;

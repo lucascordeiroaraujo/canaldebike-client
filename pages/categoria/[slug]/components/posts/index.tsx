@@ -4,6 +4,8 @@ import PostsContainer from './style';
 
 import Post from '~/components/post';
 
+import Fade from 'react-reveal/Fade';
+
 const posts: React.FC = () => {
   const [newsList, _] = React.useState([
     {
@@ -213,9 +215,11 @@ const posts: React.FC = () => {
 
   return (
     <PostsContainer>
-      {newsList.map(news => (
+      {newsList.map((news, index) => (
         <div className="post-container">
-          <Post key={news.id} {...news} />
+          <Fade delay={index * 150}>
+            <Post key={news.id} {...news} />
+          </Fade>
         </div>
       ))}
     </PostsContainer>

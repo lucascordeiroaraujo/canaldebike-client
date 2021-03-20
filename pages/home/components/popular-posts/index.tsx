@@ -10,6 +10,8 @@ import Post from '~/components/post';
 
 import { FaAngleLeft, FaAngleRight } from 'react-icons/fa';
 
+import Fade from 'react-reveal/Fade';
+
 const popularPosts: React.FC = () => {
   const sliderSettings: Settings = {
     dots: false,
@@ -150,7 +152,11 @@ const popularPosts: React.FC = () => {
       <Cover />
 
       <Container className="popular-posts">
-        <h1 className="popular-posts-title default-title">Os mais populares</h1>
+        <Fade bottom>
+          <h1 className="popular-posts-title default-title">
+            Os mais populares
+          </h1>
+        </Fade>
 
         <div className="popular-posts-container">
           <Slider ref={sliderRef} {...sliderSettings}>
@@ -161,13 +167,17 @@ const popularPosts: React.FC = () => {
         </div>
 
         <div className="popular-posts-slider-controls">
-          <button onClick={() => sliderPrevNext('prev')}>
-            <FaAngleLeft />
-          </button>
+          <Fade left>
+            <button onClick={() => sliderPrevNext('prev')}>
+              <FaAngleLeft />
+            </button>
+          </Fade>
 
-          <button onClick={() => sliderPrevNext('next')}>
-            <FaAngleRight />
-          </button>
+          <Fade right>
+            <button onClick={() => sliderPrevNext('next')}>
+              <FaAngleRight />
+            </button>
+          </Fade>
         </div>
       </Container>
     </PopularPosts>

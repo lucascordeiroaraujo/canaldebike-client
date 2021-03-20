@@ -12,6 +12,8 @@ import Link from 'next/link';
 
 import { useRouter } from 'next/router';
 
+import Fade from 'react-reveal/Fade';
+
 const header: React.FC = () => {
   const [searchFormOpened, setSearchFormOpen] = React.useState(false);
 
@@ -53,17 +55,19 @@ const header: React.FC = () => {
     <Header>
       <Container className="header-container">
         <Logo searchFormOpened={searchFormOpened} className="logo-container">
-          <Link href="/">
-            <a title="Canal de Bike - Página Inicial">
-              <img
-                src={require('~/public/images/canal-de-bike.png')}
-                alt="Canal de Bike"
-                title="Canal de Bike"
-                width="307"
-                height="29"
-              />
-            </a>
-          </Link>
+          <Fade>
+            <Link href="/">
+              <a title="Canal de Bike - Página Inicial">
+                <img
+                  src={require('~/public/images/canal-de-bike.png')}
+                  alt="Canal de Bike"
+                  title="Canal de Bike"
+                  width="307"
+                  height="29"
+                />
+              </a>
+            </Link>
+          </Fade>
         </Logo>
 
         <div className="menu-container">
@@ -72,68 +76,80 @@ const header: React.FC = () => {
             menuMobileOpend={menuMobileOpend}
           >
             <MenuItem currentCategory={isCurrentCategory('ultimas-noticias')}>
-              <Link href="/categoria/ultimas-noticias">
-                <a title="Confira as últimas notícias do Canal de Bike">
-                  <span>Últimas Notícias</span>
-                </a>
-              </Link>
+              <Fade bottom>
+                <Link href="/categoria/ultimas-noticias">
+                  <a title="Confira as últimas notícias do Canal de Bike">
+                    <span>Últimas Notícias</span>
+                  </a>
+                </Link>
+              </Fade>
             </MenuItem>
 
             <MenuItem currentCategory={isCurrentCategory('mtb')}>
-              <Link href="/categoria/mtb">
-                <a title="Confira os posts da categoria MTB">
-                  <span>MTB</span>
-                </a>
-              </Link>
+              <Fade bottom delay={50}>
+                <Link href="/categoria/mtb">
+                  <a title="Confira os posts da categoria MTB">
+                    <span>MTB</span>
+                  </a>
+                </Link>
+              </Fade>
             </MenuItem>
 
             <MenuItem currentCategory={isCurrentCategory('road-bike')}>
-              <Link href="/categoria/road-bike">
-                <a title="Confira os posts da categoria Road Bike">
-                  <span>Road Bike</span>
-                </a>
-              </Link>
+              <Fade bottom delay={100}>
+                <Link href="/categoria/road-bike">
+                  <a title="Confira os posts da categoria Road Bike">
+                    <span>Road Bike</span>
+                  </a>
+                </Link>
+              </Fade>
             </MenuItem>
 
             <MenuItem currentCategory={isCurrentCategory('gravel')}>
-              <Link href="/categoria/gravel">
-                <a title="Confira os posts da categoria Gravel">
-                  <span>Gravel</span>
-                </a>
-              </Link>
+              <Fade bottom delay={150}>
+                <Link href="/categoria/gravel">
+                  <a title="Confira os posts da categoria Gravel">
+                    <span>Gravel</span>
+                  </a>
+                </Link>
+              </Fade>
             </MenuItem>
 
             <MenuItem className="store">
-              <a
-                href="#"
-                title="Acessar a loja do Canal de Bike"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <span>Loja do Canal</span>
-              </a>
+              <Fade bottom delay={200}>
+                <a
+                  href="#"
+                  title="Acessar a loja do Canal de Bike"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <span>Loja do Canal</span>
+                </a>
+              </Fade>
             </MenuItem>
           </Menu>
 
           <OutsideClickHandler onOutsideClick={handleCloseSearchForm}>
-            <SearchForm
-              searchFormOpened={searchFormOpened}
-              action="#"
-              method="post"
-            >
-              <input
-                type="text"
-                placeholder="buscar notícia"
-                className="form-search-text-field"
-              />
-
-              <button
-                className="form-search-submit-button"
-                onClick={handleClickSubmitFormButton}
+            <Fade delay={250}>
+              <SearchForm
+                searchFormOpened={searchFormOpened}
+                action="#"
+                method="post"
               >
-                <FaSearch />
-              </button>
-            </SearchForm>
+                <input
+                  type="text"
+                  placeholder="buscar notícia"
+                  className="form-search-text-field"
+                />
+
+                <button
+                  className="form-search-submit-button"
+                  onClick={handleClickSubmitFormButton}
+                >
+                  <FaSearch />
+                </button>
+              </SearchForm>
+            </Fade>
           </OutsideClickHandler>
 
           <OutsideClickHandler onOutsideClick={handleCloseMenuMobile}>

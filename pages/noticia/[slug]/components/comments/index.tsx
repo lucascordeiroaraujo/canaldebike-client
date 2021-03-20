@@ -2,9 +2,13 @@ import React from 'react';
 
 import Comments from './style';
 
+import Fade from 'react-reveal/Fade';
+
 const comments: React.FC = () => (
   <Comments>
-    <strong className="title">Escreva um comentário</strong>
+    <Fade bottom>
+      <strong className="title">Escreva um comentário</strong>
+    </Fade>
 
     <div
       className="fb-comments"
