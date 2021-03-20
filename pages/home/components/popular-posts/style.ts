@@ -47,7 +47,7 @@ export default styled.section`
         box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.1);
         background: ${props => shade(0.2, props.theme.colors.dark)};
         &:hover {
-          background: #444444;
+          background: ${props => props.theme.colors.lightDark};
         }
       }
     }
