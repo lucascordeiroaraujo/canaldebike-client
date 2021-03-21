@@ -1,7 +1,5 @@
 import styled, { css } from 'styled-components';
 
-import { shade } from 'polished';
-
 interface IPost {
   hasCategories?: boolean;
   isSlider: boolean;
@@ -65,7 +63,7 @@ export default styled.article<IPost>`
       transition: 0.5s;
       background: ${props => props.theme.colors.secondary};
       &:hover {
-        background: ${props => shade(0.2, props.theme.colors.secondary)};
+        background: ${props => props.theme.colors.primary};
       }
     }
   }

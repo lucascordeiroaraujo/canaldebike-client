@@ -65,8 +65,8 @@ const post = ({
 
       {tags && (
         <div className="category-link">
-          {tags.map(tag => (
-            <Link key={tag.id} href={`/tag/${tag.slug}`}>
+          {tags.map((tag, index) => (
+            <Link key={index} href={`/tag/${tag.slug}`}>
               <a title="Confira a matéria completa">{tag.title}</a>
             </Link>
           ))}

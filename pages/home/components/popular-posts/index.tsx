@@ -8,7 +8,7 @@ import Slider, { Settings } from 'react-slick';
 
 import Post from '~/components/post';
 
-import { FaAngleLeft, FaAngleRight } from 'react-icons/fa';
+import { FaChevronLeft, FaChevronRight } from 'react-icons/fa';
 
 import Fade from 'react-reveal/Fade';
 
@@ -169,13 +169,13 @@ const popularPosts: React.FC = () => {
         <div className="popular-posts-slider-controls">
           <Fade left>
             <button onClick={() => sliderPrevNext('prev')}>
-              <FaAngleLeft />
+              <FaChevronLeft />
             </button>
           </Fade>
 
           <Fade right>
             <button onClick={() => sliderPrevNext('next')}>
-              <FaAngleRight />
+              <FaChevronRight />
             </button>
           </Fade>
         </div>

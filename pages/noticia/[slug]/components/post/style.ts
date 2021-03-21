@@ -6,27 +6,104 @@ export default styled.article`
   justify-content: flex-start;
   flex-direction: column;
   text-align: left;
-  .featured-image-container {
-    width: 100%;
-    margin-bottom: 30px;
-  }
-  .post-date-and-author {
-    width: 100%;
+`;
+
+export const FeaturedImage = styled.div`
+  width: 100%;
+  margin-bottom: 30px;
+`;
+
+export const CategoriesAndShared = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 10px;
+  > div {
+    width: 48%;
     display: flex;
     align-items: center;
-    font-size: 14px;
-    color: ${props => props.theme.colors.dark};
-    font-family: 'BrandonGrotesqueRegular';
-    margin-bottom: 20px;
-    a {
-      font-family: 'BrandonGrotesqueBlack';
-      font-size: 17px;
-      color: ${props => props.theme.colors.secondary};
-      margin-left: 3px;
-      &:hover {
-        color: ${props => props.theme.colors.primary};
+    flex-wrap: wrap;
+    &:first-child {
+      justify-content: flex-start;
+      a {
+        font-family: 'BrandonGrotesqueRegular';
+        color: ${props => props.theme.colors.light};
+        font-size: 12px;
+        text-transform: uppercase;
+        margin: 0px 10px 10px 0px;
+        border-radius: 10px;
+        padding: 2px 8px;
+        transition: 0.5s;
+        background: ${props => props.theme.colors.secondary};
+        &:hover {
+          background: ${props => props.theme.colors.primary};
+        }
       }
     }
+    &:last-child {
+      justify-content: flex-end;
+      strong {
+        font-family: 'BrandonGrotesqueBlack';
+        font-size: 16px;
+        line-height: 11px;
+        color: ${props => props.theme.colors.dark};
+        text-transform: uppercase;
+      }
+      a {
+        margin-left: 10px;
+        color: ${props => props.theme.colors.dark};
+        font-size: 20px;
+        line-height: 10px;
+        transition: 0.5s;
+        &:hover {
+          color: ${props => props.theme.colors.primary};
+        }
+      }
+    }
+  }
+  @media (max-width: 768px) {
+    justify-content: flex-start;
+    flex-direction: column;
+    margin-bottom: 20px;
+    > div {
+      width: 100%;
+      justify-content: flex-start !important;
+      &:first-child {
+        margin-bottom: 10px;
+      }
+    }
+  }
+`;
+
+export const PostDateAuthor = styled.div`
+  width: 100%;
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+  color: ${props => props.theme.colors.dark};
+  font-family: 'BrandonGrotesqueRegular';
+  margin-bottom: 20px;
+  a {
+    font-family: 'BrandonGrotesqueBlack';
+    font-size: 17px;
+    color: ${props => props.theme.colors.secondary};
+    margin-left: 3px;
+    &:hover {
+      color: ${props => props.theme.colors.primary};
+    }
+  }
+`;
+
+export const PostContent = styled.div`
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: column;
+  .title-separator {
+    width: 150px;
+    height: 3px;
+    margin-bottom: 30px;
+    background: ${props => props.theme.colors.secondary};
   }
   h1,
   h2,
@@ -42,14 +119,17 @@ export default styled.article`
     line-height: 40px;
     text-transform: uppercase;
     @media (max-width: 992px) {
-      font-size: 28px;
-      line-height: 35px;
+      font-size: 24px;
+      line-height: 30px;
     }
   }
   h2,
   h4 {
     font-size: 24px;
     color: ${props => props.theme.colors.secondary};
+  }
+  .sub-title {
+    margin-top: -10px;
   }
   p {
     width: 100%;

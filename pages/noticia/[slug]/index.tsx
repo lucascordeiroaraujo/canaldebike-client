@@ -8,6 +8,8 @@ import Post from './components/post';
 
 import Comments from './components/comments';
 
+import RelatedNews from './components/related-news';
+
 import Sidebar from './components/sidebar';
 
 import { FaLongArrowAltLeft } from 'react-icons/fa';
@@ -40,6 +42,8 @@ const news: React.FC = () => (
       <SidebarContainer>
         <Sidebar />
       </SidebarContainer>
+
+      <RelatedNews />
     </News>
   </Container>
 );

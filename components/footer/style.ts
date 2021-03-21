@@ -1,7 +1,5 @@
 import styled from 'styled-components';
 
-import { shade } from 'polished';
-
 export default styled.footer`
   width: 100%;
   padding-top: 80px;
@@ -86,8 +84,7 @@ export default styled.footer`
               margin-left: -40px;
               background: ${props => props.theme.colors.secondary};
               &:hover {
-                background: ${props =>
-                  shade(0.2, props.theme.colors.secondary)};
+                background: ${props => props.theme.colors.primary};
               }
             }
           }

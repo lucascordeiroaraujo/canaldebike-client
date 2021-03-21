@@ -172,14 +172,14 @@ export const MenuItem = styled.li<IMenuItem>`
         }
       }
       &:hover span {
-        background: ${props => shade(0.2, props.theme.colors.primary)};
+        background: ${props => props.theme.colors.secondary};
       }
     }
     @media (max-width: 992px) and (min-width: 768px) {
       display: none;
     }
   }
-  &:hover:not(.active) a span {
+  &:hover:not(.active):not(.store) a span {
     color: ${props => shade(0.2, props.theme.colors.light)};
   }
   @media (max-width: 1500px) {
@@ -240,7 +240,7 @@ export const SearchForm = styled.form<ISearchForm>`
     font-size: 24px;
     background: ${props => props.theme.colors.light};
     &:hover {
-      color: ${props => shade(0.2, props.theme.colors.primary)};
+      color: ${props => props.theme.colors.secondary};
     }
   }
   @media (max-width: 1500px) {
