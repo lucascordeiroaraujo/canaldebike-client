@@ -12,6 +12,8 @@ import Link from 'next/link';
 
 import { useRouter } from 'next/router';
 
+import { useMenu } from '~/hooks/menu';
+
 import Fade from 'react-reveal/Fade';
 
 const header: React.FC = () => {
@@ -20,6 +22,8 @@ const header: React.FC = () => {
   const [menuMobileOpend, setMenuMobileOpen] = React.useState(false);
 
   const router = useRouter();
+
+  const { menuData } = useMenu();
 
   const handleClickSubmitFormButton = (e: MouseEvent) => {
     e.preventDefault();
@@ -48,7 +52,7 @@ const header: React.FC = () => {
   };
 
   const isCurrentCategory = (slug: string) => {
-    return router.query.slug === slug;
+    return router.query.categorySlug === slug;
   };
 
   return (
@@ -75,58 +79,31 @@ const header: React.FC = () => {
             searchFormOpened={searchFormOpened}
             menuMobileOpend={menuMobileOpend}
           >
-            <MenuItem currentCategory={isCurrentCategory('ultimas-noticias')}>
-              <Fade bottom>
-                <Link href="/categoria/ultimas-noticias">
-                  <a title="Confira as últimas notícias do Canal de Bike">
-                    <span>Últimas Notícias</span>
-                  </a>
-                </Link>
-              </Fade>
-            </MenuItem>
-
-            <MenuItem currentCategory={isCurrentCategory('mtb')}>
-              <Fade bottom delay={50}>
-                <Link href="/categoria/mtb">
-                  <a title="Confira os posts da categoria MTB">
-                    <span>MTB</span>
-                  </a>
-                </Link>
-              </Fade>
-            </MenuItem>
-
-            <MenuItem currentCategory={isCurrentCategory('road-bike')}>
-              <Fade bottom delay={100}>
-                <Link href="/categoria/road-bike">
-                  <a title="Confira os posts da categoria Road Bike">
-                    <span>Road Bike</span>
-                  </a>
-                </Link>
-              </Fade>
-            </MenuItem>
-
-            <MenuItem currentCategory={isCurrentCategory('gravel')}>
-              <Fade bottom delay={150}>
-                <Link href="/categoria/gravel">
-                  <a title="Confira os posts da categoria Gravel">
-                    <span>Gravel</span>
-                  </a>
-                </Link>
-              </Fade>
-            </MenuItem>
-
-            <MenuItem className="store">
-              <Fade bottom delay={200}>
-                <a
-                  href="#"
-                  title="Acessar a loja do Canal de Bike"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <span>Loja do Canal</span>
-                </a>
-              </Fade>
-            </MenuItem>
+            {menuData.map(menuItem => (
+              <MenuItem
+                key={menuItem.id.toString()}
+                className={menuItem.classes.join(' ')}
+                currentCategory={isCurrentCategory(menuItem.slug)}
+              >
+                <Fade bottom>
+                  {menuItem.target === '_self' ? (
+                    <Link href={`/categoria/${menuItem.slug}`}>
+                      <a title={menuItem.attr_title}>
+                        <span>{menuItem.title}</span>
+                      </a>
+                    </Link>
+                  ) : (
+                    <a
+                      href={menuItem.slug}
+                      title={menuItem.attr_title}
+                      target={menuItem.target}
+                    >
+                      <span>{menuItem.title}</span>
+                    </a>
+                  )}
+                </Fade>
+              </MenuItem>
+            ))}
           </Menu>
 
           <OutsideClickHandler onOutsideClick={handleCloseSearchForm}>

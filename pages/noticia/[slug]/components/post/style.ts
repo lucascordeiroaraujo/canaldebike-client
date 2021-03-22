@@ -24,7 +24,7 @@ export const CategoriesAndShared = styled.div`
     display: flex;
     align-items: center;
     flex-wrap: wrap;
-    &:first-child {
+    &.categories-container {
       justify-content: flex-start;
       a {
         font-family: 'BrandonGrotesqueRegular';
@@ -41,8 +41,10 @@ export const CategoriesAndShared = styled.div`
         }
       }
     }
-    &:last-child {
-      justify-content: flex-end;
+    &.share-container {
+      &:not(.empty-categories) {
+        justify-content: flex-end;
+      }
       strong {
         font-family: 'BrandonGrotesqueBlack';
         font-size: 16px;
@@ -69,7 +71,7 @@ export const CategoriesAndShared = styled.div`
     > div {
       width: 100%;
       justify-content: flex-start !important;
-      &:first-child {
+      &.categories-container {
         margin-bottom: 10px;
       }
     }
@@ -135,7 +137,7 @@ export const PostContent = styled.div`
     width: 100%;
     color: ${props => props.theme.colors.dark};
     font-family: 'BrandonGrotesqueRegular';
-    font-size: 24px;
+    font-size: 22px;
     line-height: 40px;
     margin: 0px 0px 40px 0px;
     @media (max-width: 992px) {

@@ -69,7 +69,7 @@ export default styled.article<IPost>`
   }
   .post-date,
   .post-title,
-  .post-description {
+  .post-resume {
     width: 100%;
   }
   .post-date {
@@ -95,7 +95,7 @@ export default styled.article<IPost>`
         props.isSlider ? props.theme.colors.light : props.theme.colors.primary};
     }
   }
-  .post-description {
+  .post-resume {
     font-family: 'BrandonGrotesqueLight';
     font-size: 16px;
     line-height: 26px;

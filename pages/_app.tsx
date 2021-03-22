@@ -16,6 +16,8 @@ import { ThemeProvider } from 'styled-components';
 
 import lightTheme from '~/styles/themes/light';
 
+import AppProvider from '~/hooks';
+
 import Header from '~/components/header';
 
 import Footer from '~/components/footer';
@@ -167,11 +169,13 @@ class MyApp extends App<StoreProps> {
             <GlobalStyles />
 
             <AppBox>
-              <Header />
+              <AppProvider>
+                <Header />
 
-              <Component {...pageProps} />
+                <Component {...pageProps} />
 
-              <Footer />
+                <Footer />
+              </AppProvider>
             </AppBox>
           </>
         </ThemeProvider>

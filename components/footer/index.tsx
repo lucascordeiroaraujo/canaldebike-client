@@ -1,5 +1,7 @@
 import React from 'react';
 
+import { useAppInfo } from '~/hooks/app';
+
 import Footer, { CopyRight } from './style';
 
 import { Container } from '~/styles/global';
@@ -7,6 +9,8 @@ import { Container } from '~/styles/global';
 import { FaInstagram, FaYoutube, FaFacebook, FaTwitter } from 'react-icons/fa';
 
 const footer: React.FC = () => {
+  const { appInfo } = useAppInfo();
+
   const [currentYear, setCurrentYear] = React.useState();
 
   const getYear = () => setCurrentYear(new Date().getFullYear() as any);
@@ -72,13 +76,15 @@ const footer: React.FC = () => {
         <div>
           <strong>Contato</strong>
 
-          <a
-            href="mailto:revistaridebike@gmail.com"
-            title="Enviar e-mail"
-            className="contact-email"
-          >
-            revistaridebike@gmail.com
-          </a>
+          {appInfo.email_address && (
+            <a
+              href={`mailto:${appInfo.email_address}`}
+              title="Enviar e-mail"
+              className="contact-email"
+            >
+              {appInfo.email_address}
+            </a>
+          )}
 
           <form action="#" method="post">
             <strong>Newsletter</strong>
@@ -100,43 +106,51 @@ const footer: React.FC = () => {
           </strong>
 
           <div className="social-networking">
-            <a
-              href="#"
-              title="Confira as fotos no nosso Instagram"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <FaInstagram />
-            </a>
+            {appInfo.instagram && (
+              <a
+                href={appInfo.instagram}
+                title="Confira as fotos no nosso Instagram"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <FaInstagram />
+              </a>
+            )}
 
-            <a
-              href="#"
-              title="Inscreva-se no canal do YouTube"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="youtube"
-            >
-              <FaYoutube />
-            </a>
+            {appInfo.youtube && (
+              <a
+                href={appInfo.youtube}
+                title="Inscreva-se no canal do YouTube"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="youtube"
+              >
+                <FaYoutube />
+              </a>
+            )}
 
-            <a
-              href="#"
-              title="Curta nossa página no Facebook"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="facebook"
-            >
-              <FaFacebook />
-            </a>
+            {appInfo.facebook && (
+              <a
+                href={appInfo.facebook}
+                title="Curta nossa página no Facebook"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="facebook"
+              >
+                <FaFacebook />
+              </a>
+            )}
 
-            <a
-              href="#"
-              title="Siga-nos no Twitter"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <FaTwitter />
-            </a>
+            {appInfo.twitter && (
+              <a
+                href={appInfo.twitter}
+                title="Siga-nos no Twitter"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <FaTwitter />
+              </a>
+            )}
           </div>
         </div>
       </Container>

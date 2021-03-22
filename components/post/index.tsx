@@ -7,8 +7,8 @@ import Image from 'next/image';
 import Link from 'next/link';
 
 interface IPost {
-  id?: string;
-  tags: Array<{
+  id: Number;
+  categories: Array<{
     id: number;
     title: string;
     slug: string;
@@ -17,23 +17,23 @@ interface IPost {
   image: string;
   title: string;
   date: string;
-  description: string;
+  resume: string;
   nextImage?: boolean;
   slider?: boolean;
 }
 
 const post = ({
-  tags,
+  categories,
   slug,
   image,
   title,
   date,
-  description,
+  resume,
   nextImage = true,
   slider = false,
 }: IPost) => {
   return (
-    <Post hasCategories={!tags ? false : true} isSlider={slider}>
+    <Post hasCategories={!categories ? false : true} isSlider={slider}>
       <div className="post-image-container">
         <span className="call-to-action">Ver notícia</span>
 
@@ -63,11 +63,16 @@ const post = ({
         </Link>
       </div>
 
-      {tags && (
+      {categories && (
         <div className="category-link">
-          {tags.map((tag, index) => (
-            <Link key={index} href={`/tag/${tag.slug}`}>
-              <a title="Confira a matéria completa">{tag.title}</a>
+          {categories.map(category => (
+            <Link
+              key={category.id.toString()}
+              href={`/categoria/${'current-category'}/${category.slug}`}
+            >
+              <a title={`Confira as notícias da categoria ${category.title}`}>
+                {category.title}
+              </a>
             </Link>
           ))}
         </div>
@@ -81,9 +86,9 @@ const post = ({
         </Link>
       </h2>
 
-      <p className="post-description">
+      <p className="post-resume">
         <Link href={`/noticia/${slug}`}>
-          <a title="Confira a matéria completa">{description}</a>
+          <a title="Confira a matéria completa">{resume}</a>
         </Link>
       </p>
     </Post>
