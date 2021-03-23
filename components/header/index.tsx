@@ -81,7 +81,7 @@ const header: React.FC = () => {
           >
             {menuData.map(menuItem => (
               <MenuItem
-                key={menuItem.id.toString()}
+                key={menuItem.id}
                 className={menuItem.classes.join(' ')}
                 currentCategory={isCurrentCategory(menuItem.slug)}
               >

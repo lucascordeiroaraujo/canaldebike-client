@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { useCatPosts } from '~/hooks/catPosts';
+import { useCatPosts } from '~/hooks/category/catPosts';
 
 import PostsContainer from './style';
 
@@ -14,7 +14,7 @@ const posts: React.FC = () => {
   return (
     <PostsContainer>
       {catPosts.map((news, index) => (
-        <div key={news.id.toString()} className="post-container">
+        <div key={news.id} className="post-container">
           <Fade delay={index * 150}>
             <Post {...news} />
           </Fade>

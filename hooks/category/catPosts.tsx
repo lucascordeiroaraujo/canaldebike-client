@@ -6,11 +6,15 @@ interface ICatPostsContextData {
 }
 
 export interface ICatPostsState {
-  id: Number;
+  id: string;
   slug: string;
-  image: string;
+  image: {
+    url: string;
+    width: string;
+    height: string;
+  };
   categories: Array<{
-    id: number;
+    id: string;
     title: string;
     slug: string;
   }>;

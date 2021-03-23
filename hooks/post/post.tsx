@@ -6,7 +6,7 @@ interface ICurrentPostContextData {
 }
 
 export interface ICurrentPostState {
-  id: Number;
+  id: string;
   slug: string;
   image: {
     url: string;
@@ -15,12 +15,12 @@ export interface ICurrentPostState {
   };
   categories: Array<{
     parentSlug: string;
-    id: number;
+    id: string;
     title: string;
     slug: string;
   }>;
   author: {
-    id: Number;
+    id: string;
     name: string;
     slug: string;
   };

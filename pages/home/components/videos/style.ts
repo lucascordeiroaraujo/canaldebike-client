@@ -113,6 +113,10 @@ export const VideosThumbs = styled.div`
   .video-thumb {
     width: 24%;
     position: relative;
+    background: ${props => props.theme.colors.primary};
+    img {
+      transition: 0.5s;
+    }
     .icon-container,
     .icon-container:before {
       position: absolute;
@@ -133,6 +137,9 @@ export const VideosThumbs = styled.div`
         font-size: 70px;
         color: #ff0000;
       }
+    }
+    &:hover img {
+      opacity: 0.5;
     }
     @media (max-width: 992px) {
       width: 48%;

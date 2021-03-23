@@ -12,9 +12,13 @@ import {
   ICurrentCategoryState,
   useCurrentCategory,
   getCurrentCategoryData,
-} from '~/hooks/category';
+} from '~/hooks/category/category';
 
-import { ICatPostsState, useCatPosts, getPostsData } from '~/hooks/catPosts';
+import {
+  ICatPostsState,
+  useCatPosts,
+  getPostsData,
+} from '~/hooks/category/catPosts';
 
 import Loader from '~/components/loader';
 

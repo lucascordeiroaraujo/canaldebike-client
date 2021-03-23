@@ -6,11 +6,11 @@ interface ICurrentCategoryContextData {
 }
 
 export interface ICurrentCategoryState {
-  id: Number;
+  id: string;
   slug: string;
   name: string;
   subcategories: Array<{
-    id: Number;
+    id: string;
     slug: string;
     name: string;
   }>;

@@ -7,14 +7,18 @@ import Image from 'next/image';
 import Link from 'next/link';
 
 interface IPost {
-  id: Number;
+  id: string;
   categories: Array<{
-    id: number;
+    id: string;
     title: string;
     slug: string;
   }>;
   slug: string;
-  image: string;
+  image: {
+    url: string;
+    width: string;
+    height: string;
+  };
   title: string;
   date: string;
   resume: string;
@@ -41,21 +45,21 @@ const post = ({
           <a title="Confira a matéria completa">
             {nextImage ? (
               <Image
-                src={image}
+                src={image.url}
                 alt={title}
                 title={title}
-                width="430"
-                height="260"
+                width={image.width}
+                height={image.height}
                 layout="responsive"
                 className="post-image"
               />
             ) : (
               <img
-                src={image}
+                src={image.url}
                 alt={title}
                 title={title}
-                width="430"
-                height="260"
+                width={image.width}
+                height={image.height}
                 className="post-image"
               />
             )}
@@ -67,7 +71,7 @@ const post = ({
         <div className="category-link">
           {categories.map(category => (
             <Link
-              key={category.id.toString()}
+              key={category.id}
               href={`/categoria/${'current-category'}/${category.slug}`}
             >
               <a title={`Confira as notícias da categoria ${category.title}`}>

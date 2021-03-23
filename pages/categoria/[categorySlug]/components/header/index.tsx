@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { useCurrentCategory } from '~/hooks/category';
+import { useCurrentCategory } from '~/hooks/category/category';
 
 import CategoryHeader, { CategoryFilter } from './style';
 
@@ -59,10 +59,7 @@ const categoryHeader: React.FC = () => {
 
             <ul className={`select-button-list ${isOpenedSubCategories()}`}>
               {currentCategory.subcategories.map(category => (
-                <li
-                  key={category.id.toString()}
-                  className="select-button-list-item"
-                >
+                <li key={category.id} className="select-button-list-item">
                   <Link
                     href={`/categoria/${currentCategory.slug}/${category.slug}`}
                   >

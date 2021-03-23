@@ -1,5 +1,7 @@
 import React from 'react';
 
+import { usePosts } from '~/hooks/home/posts';
+
 import LatestNews, {
   SliderContainer,
   News,
@@ -17,6 +19,10 @@ import Slider, { Settings } from 'react-slick';
 import { FaChevronLeft, FaChevronRight } from 'react-icons/fa';
 
 const latestNews: React.FC = () => {
+  const { posts } = usePosts();
+
+  if (!posts) return null;
+
   const sliderSettings: Settings = {
     dots: false,
     arrows: false,
@@ -43,6 +49,8 @@ const latestNews: React.FC = () => {
     }
   };
 
+  const lastFourPosts = posts.slice(0, 4);
+
   return (
     <Container smallContainer>
       <LatestNews>
@@ -54,16 +62,16 @@ const latestNews: React.FC = () => {
 
         <SliderContainer>
           <Slider ref={sliderRef} {...sliderSettings}>
-            {[0, 1, 2, 3].map(index => (
-              <div key={index} className="news-slider-container">
+            {lastFourPosts.map(post => (
+              <div key={post.id} className="news-slider-container">
                 <News>
                   <NewsImage>
                     <img
-                      src="https://canaldebike.com.br/img/uploaded/main_dQ2h3M1614708635.jpeg"
-                      alt=""
-                      title=""
-                      width="980"
-                      height="550"
+                      src={post.image.url}
+                      alt={post.title}
+                      title={post.title}
+                      width={post.image.width}
+                      height={post.image.height}
                     />
 
                     <SliderControls>
@@ -79,45 +87,33 @@ const latestNews: React.FC = () => {
 
                   <NewsDescription>
                     <div className="news-description">
-                      <div className="news-description-categories">
-                        <Link href={`/tag/#`}>
-                          <a title="Confira a matéria completa">Capacetes</a>
-                        </Link>
-
-                        <Link href={`/tag/#`}>
-                          <a title="Confira a matéria completa">Segurança</a>
-                        </Link>
-
-                        <Link href={`/tag/#`}>
-                          <a title="Confira a matéria completa">Proteção</a>
-                        </Link>
-
-                        <Link href={`/tag/#`}>
-                          <a title="Confira a matéria completa">Dicas</a>
-                        </Link>
-                      </div>
+                      {post.categories && post.categories.length >= 1 && (
+                        <div className="news-description-categories">
+                          {post.categories.map(category => (
+                            <Link
+                              href={`/categoria/${category.parentSlug}/${category.slug}`}
+                            >
+                              <a
+                                title={`Confira as notícias da categoria ${category.title}`}
+                              >
+                                {category.title}
+                              </a>
+                            </Link>
+                          ))}
+                        </div>
+                      )}
 
                       <span className="news-description-date">
-                        criado em 02/03/2021
+                        criado em {post.date}
                       </span>
 
-                      <h1 className="news-description-title">
-                        Capacetes Giro unem conforto e proteção em todas as
-                        modalidades do ciclismo {index}.
-                      </h1>
+                      <h1 className="news-description-title">{post.title}</h1>
 
                       <span className="news-description-separator"></span>
 
-                      <p className="news-description-resume">
-                        Foi com o desejo de criar o capacete ideal que Jim
-                        Gentes criou, há mais de 30 anos, O Giro Prolight, o
-                        primeiro capacete moderno, ventilado e que parecia não
-                        pesar nada. Desde então a Giro é uma marca conhecida
-                        pela maioria dos ciclistas, principalmente pela sua
-                        ampla linha de capacetes.
-                      </p>
+                      <p className="news-description-resume">{post.resume}</p>
 
-                      <Link href="/noticia/jaqueline-mourao-entra-para-o-time-da-trek">
+                      <Link href={`/noticia/${post.slug}`}>
                         <a
                           className="news-description-call-to-action"
                           title="Confira a matéria completa"

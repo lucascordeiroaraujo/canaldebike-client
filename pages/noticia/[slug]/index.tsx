@@ -12,7 +12,7 @@ import {
   ICurrentPostState,
   useCurrentPost,
   getCurrentPostData,
-} from '~/hooks/post';
+} from '~/hooks/post/post';
 
 import { Container } from '~/styles/global';
 

@@ -4,11 +4,15 @@ import { AppInfoProvider } from './app';
 
 import { MenuProvider } from './menu';
 
-import { CurrentCategoryProvider } from './category';
+import { PostsProvider } from './home/posts';
 
-import { CatPostsProvider } from './catPosts';
+import { VideosProvider } from './home/videos';
 
-import { CurrentPostProvider } from './post';
+import { CurrentCategoryProvider } from './category/category';
+
+import { CatPostsProvider } from './category/catPosts';
+
+import { CurrentPostProvider } from './post/post';
 
 interface IProps {
   children: React.ReactNode;
@@ -17,11 +21,15 @@ interface IProps {
 const AppProvider = ({ children }: IProps) => (
   <AppInfoProvider>
     <MenuProvider>
-      <CurrentCategoryProvider>
-        <CatPostsProvider>
-          <CurrentPostProvider>{children}</CurrentPostProvider>
-        </CatPostsProvider>
-      </CurrentCategoryProvider>
+      <PostsProvider>
+        <VideosProvider>
+          <CurrentCategoryProvider>
+            <CatPostsProvider>
+              <CurrentPostProvider>{children}</CurrentPostProvider>
+            </CatPostsProvider>
+          </CurrentCategoryProvider>
+        </VideosProvider>
+      </PostsProvider>
     </MenuProvider>
   </AppInfoProvider>
 );
