@@ -2,7 +2,7 @@ import React from 'react';
 
 import { useVideos } from '~/hooks/home/videos';
 
-import { useAppInfo } from '~/hooks/app';
+import { useAppInfo } from '~/hooks/app/app';
 
 import Videos, { Cover, FullVideo, VideosThumbs } from './style';
 

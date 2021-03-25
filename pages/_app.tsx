@@ -174,7 +174,7 @@ class MyApp extends App<StoreProps> {
 
                 <Component {...pageProps} />
 
-                <Footer />
+                {/* <Footer /> */}
               </AppProvider>
             </AppBox>
           </>

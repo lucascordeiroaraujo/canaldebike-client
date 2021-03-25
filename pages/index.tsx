@@ -4,9 +4,9 @@ import { GetStaticPropsResult } from 'next';
 
 import { useRouter } from 'next/router';
 
-import { IAppInfoState, useAppInfo, getAppInfoData } from '~/hooks/app';
+import { IAppInfoState, useAppInfo, getAppInfoData } from '~/hooks/app/app';
 
-import { IMenuState, useMenu, getMenuData } from '~/hooks/menu';
+import { IMenuState, useMenu, getMenuData } from '~/hooks/app/menu';
 
 import { IPostsState, usePosts, getPostsData } from '~/hooks/home/posts';
 

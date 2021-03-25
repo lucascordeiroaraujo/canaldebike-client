@@ -4,9 +4,9 @@ import { GetStaticPaths, GetStaticPropsResult } from 'next';
 
 import { useRouter } from 'next/router';
 
-import { IAppInfoState, useAppInfo, getAppInfoData } from '~/hooks/app';
+import { IAppInfoState, useAppInfo, getAppInfoData } from '~/hooks/app/app';
 
-import { IMenuState, useMenu, getMenuData } from '~/hooks/menu';
+import { IMenuState, useMenu, getMenuData } from '~/hooks/app/menu';
 
 import {
   ICurrentPostState,
@@ -88,7 +88,7 @@ export default function IndexPage({ appInfo, menuItens, post }: IPostProps) {
           <Sidebar />
         </SidebarContainer>
 
-        <RelatedNews />
+        {/* <RelatedNews /> */}
       </News>
     </Container>
   );

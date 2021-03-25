@@ -1,37 +1,29 @@
 import React from 'react';
 
-import { AppInfoProvider } from './app';
+import SiteProvider from './app';
 
-import { MenuProvider } from './menu';
+import CategoryProvider from './category';
 
-import { PostsProvider } from './home/posts';
+import HomeProvider from './home';
 
-import { VideosProvider } from './home/videos';
+import PostProvider from './post';
 
-import { CurrentCategoryProvider } from './category/category';
-
-import { CatPostsProvider } from './category/catPosts';
-
-import { CurrentPostProvider } from './post/post';
+import SearchProvider from './search';
 
 interface IProps {
   children: React.ReactNode;
 }
 
 const AppProvider = ({ children }: IProps) => (
-  <AppInfoProvider>
-    <MenuProvider>
-      <PostsProvider>
-        <VideosProvider>
-          <CurrentCategoryProvider>
-            <CatPostsProvider>
-              <CurrentPostProvider>{children}</CurrentPostProvider>
-            </CatPostsProvider>
-          </CurrentCategoryProvider>
-        </VideosProvider>
-      </PostsProvider>
-    </MenuProvider>
-  </AppInfoProvider>
+  <SiteProvider>
+    <HomeProvider>
+      <CategoryProvider>
+        <PostProvider>
+          <SearchProvider>{children}</SearchProvider>
+        </PostProvider>
+      </CategoryProvider>
+    </HomeProvider>
+  </SiteProvider>
 );
 
 export default AppProvider;

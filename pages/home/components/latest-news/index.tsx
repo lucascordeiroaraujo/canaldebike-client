@@ -91,6 +91,7 @@ const latestNews: React.FC = () => {
                         <div className="news-description-categories">
                           {post.categories.map(category => (
                             <Link
+                              key={category.id}
                               href={`/categoria/${category.parentSlug}/${category.slug}`}
                             >
                               <a

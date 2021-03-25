@@ -4,9 +4,9 @@ import { GetStaticPaths, GetStaticPropsResult } from 'next';
 
 import { useRouter } from 'next/router';
 
-import { IAppInfoState, useAppInfo, getAppInfoData } from '~/hooks/app';
+import { IAppInfoState, useAppInfo, getAppInfoData } from '~/hooks/app/app';
 
-import { IMenuState, useMenu, getMenuData } from '~/hooks/menu';
+import { IMenuState, useMenu, getMenuData } from '~/hooks/app/menu';
 
 import {
   ICurrentCategoryState,
@@ -26,9 +26,9 @@ import { Container } from '~/styles/global';
 
 import CategoryContainer from './style';
 
-import CategoryHeader from './components/header';
+import CategoryHeader from '~/pages/categoria/[categorySlug]/components/header';
 
-import CategoryPosts from './components/posts';
+import CategoryPosts from '~/pages/categoria/[categorySlug]/components/posts';
 
 import CategoryPagination from '~/components/pagination';
 

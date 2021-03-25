@@ -1,0 +1,26 @@
+import styled from 'styled-components';
+
+export default styled.header`
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  flex-direction: column;
+  margin: 100px 0px;
+  .default-title {
+    margin: 0px;
+    @media (min-width: 769px) {
+      width: auto;
+      text-align: left;
+    }
+  }
+  p {
+    margin: 15px 0px 0px 0px;
+    strong {
+      font-family: 'BrandonGrotesqueBlack';
+    }
+  }
+  @media (max-width: 768px) {
+    flex-direction: column;
+    margin: 50px 0px;
+  }
+`;

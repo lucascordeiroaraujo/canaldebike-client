@@ -6,12 +6,12 @@ interface IMenuContextData {
 }
 
 export interface IMenuState {
-  id: Number;
+  id: string;
   title: string;
   classes: Array<string>;
   attr_title: string;
   category_info: {
-    id: Number;
+    id: string;
     name: string;
   };
   slug: string;

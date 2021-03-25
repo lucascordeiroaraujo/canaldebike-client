@@ -12,11 +12,13 @@ import Link from 'next/link';
 
 import { useRouter } from 'next/router';
 
-import { useMenu } from '~/hooks/menu';
+import { useMenu } from '~/hooks/app/menu';
 
 import Fade from 'react-reveal/Fade';
 
 const header: React.FC = () => {
+  const [searchText, setSearchText] = React.useState('');
+
   const [searchFormOpened, setSearchFormOpen] = React.useState(false);
 
   const [menuMobileOpend, setMenuMobileOpen] = React.useState(false);
@@ -34,7 +36,7 @@ const header: React.FC = () => {
       return;
     }
 
-    // TODO: api search
+    router.push(`/pesquisa/${searchText}`);
 
     handleCloseSearchForm();
   };
@@ -53,6 +55,10 @@ const header: React.FC = () => {
 
   const isCurrentCategory = (slug: string) => {
     return router.query.categorySlug === slug;
+  };
+
+  const handleSetSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setSearchText(e.target.value);
   };
 
   return (
@@ -75,36 +81,38 @@ const header: React.FC = () => {
         </Logo>
 
         <div className="menu-container">
-          <Menu
-            searchFormOpened={searchFormOpened}
-            menuMobileOpend={menuMobileOpend}
-          >
-            {menuData.map(menuItem => (
-              <MenuItem
-                key={menuItem.id}
-                className={menuItem.classes.join(' ')}
-                currentCategory={isCurrentCategory(menuItem.slug)}
-              >
-                <Fade bottom>
-                  {menuItem.target === '_self' ? (
-                    <Link href={`/categoria/${menuItem.slug}`}>
-                      <a title={menuItem.attr_title}>
+          {menuData && (
+            <Menu
+              searchFormOpened={searchFormOpened}
+              menuMobileOpend={menuMobileOpend}
+            >
+              {menuData.map(menuItem => (
+                <MenuItem
+                  key={menuItem.id}
+                  className={menuItem.classes.join(' ')}
+                  currentCategory={isCurrentCategory(menuItem.slug)}
+                >
+                  <Fade bottom>
+                    {menuItem.target === '_self' ? (
+                      <Link href={`/categoria/${menuItem.slug}`}>
+                        <a title={menuItem.attr_title}>
+                          <span>{menuItem.title}</span>
+                        </a>
+                      </Link>
+                    ) : (
+                      <a
+                        href={menuItem.slug}
+                        title={menuItem.attr_title}
+                        target={menuItem.target}
+                      >
                         <span>{menuItem.title}</span>
                       </a>
-                    </Link>
-                  ) : (
-                    <a
-                      href={menuItem.slug}
-                      title={menuItem.attr_title}
-                      target={menuItem.target}
-                    >
-                      <span>{menuItem.title}</span>
-                    </a>
-                  )}
-                </Fade>
-              </MenuItem>
-            ))}
-          </Menu>
+                    )}
+                  </Fade>
+                </MenuItem>
+              ))}
+            </Menu>
+          )}
 
           <OutsideClickHandler onOutsideClick={handleCloseSearchForm}>
             <Fade delay={250}>
@@ -117,6 +125,7 @@ const header: React.FC = () => {
                   type="text"
                   placeholder="buscar notícia"
                   className="form-search-text-field"
+                  onChange={handleSetSearch}
                 />
 
                 <button
