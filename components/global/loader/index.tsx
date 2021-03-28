@@ -5,7 +5,7 @@ import Loader from './style';
 const loader: React.FC = () => (
   <Loader>
     <img
-      src={require('~/public/images/canal-de-bike.png')}
+      src={require('../../../public/images/canal-de-bike.png')}
       alt="Canal de Bike"
       title="Canal de Bike"
       width="200"

@@ -20,17 +20,17 @@ import {
   getPostsData,
 } from '~/hooks/category/catPosts';
 
-import Loader from '~/components/loader';
+import Loader from '~/components/global/loader';
 
 import { Container } from '~/styles/global';
 
 import CategoryContainer from './style';
 
-import CategoryHeader from '~/pages/categoria/[categorySlug]/components/header';
+import CategoryHeader from '~/components/pages/category/header';
 
-import CategoryPosts from '~/pages/categoria/[categorySlug]/components/posts';
+import CategoryPosts from '~/components/pages/category/posts';
 
-import CategoryPagination from '~/components/pagination';
+import CategoryPagination from '~/components/global/pagination';
 
 interface ICategoryProps {
   appInfo: IAppInfoState;

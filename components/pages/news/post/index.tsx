@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { useCurrentPost } from '~/hooks/post/post';
+import { useCurrentPost } from '../../../../hooks/post/post';
 
 import Post, {
   FeaturedImage,

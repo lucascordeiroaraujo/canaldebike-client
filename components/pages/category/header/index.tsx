@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { useCurrentCategory } from '~/hooks/category/category';
+import { useCurrentCategory } from '../../../../hooks/category/category';
 
 import CategoryHeader, { CategoryFilter } from './style';
 

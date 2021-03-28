@@ -18,15 +18,15 @@ import { Container } from '~/styles/global';
 
 import News, { PostContainer, SidebarContainer } from './style';
 
-import Loader from '~/components/loader';
+import Loader from '~/components/global/loader';
 
-import Post from './components/post';
+import Post from '~/components/pages/news/post';
 
-import Comments from './components/comments';
+import Comments from '~/components/pages/news/comments';
 
-import Sidebar from './components/sidebar';
+import Sidebar from '~/components/pages/news/sidebar';
 
-import RelatedNews from './components/related-news';
+import RelatedNews from '~/components/pages/news/related-news';
 
 import { FaLongArrowAltLeft } from 'react-icons/fa';
 

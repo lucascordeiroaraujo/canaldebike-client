@@ -6,7 +6,7 @@ import News, { PostsContainer } from './style';
 
 import { Container } from '~/styles/global';
 
-import Post from '~/components/post';
+import Post from '~/components/global/post';
 
 import Link from 'next/link';
 

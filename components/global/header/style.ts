@@ -48,8 +48,8 @@ export const Logo = styled.div<ILogo>`
   position: relative;
   padding-right: 77px;
   min-width: 270px;
-  background: url(${require('~/public/images/header-background.png')}) right top
-    no-repeat ${props => props.theme.colors.light};
+  background: url(${require('../../../public/images/header-background.png')})
+    right top no-repeat ${props => props.theme.colors.light};
   img {
     width: 100%;
     height: auto;

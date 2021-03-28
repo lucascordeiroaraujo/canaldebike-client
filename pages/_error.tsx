@@ -2,7 +2,7 @@ import React from 'react';
 
 import { useRouter } from 'next/router';
 
-import Loader from '~/components/loader';
+import Loader from '~/components/global/loader';
 
 const cpError: React.FC = () => {
   const router = useRouter();
@@ -11,8 +11,7 @@ const cpError: React.FC = () => {
     router.push(`/`).then(() => window.scrollTo(0, 0));
   }, []);
 
-  return <Loader />
-
+  return <Loader />;
 };
 
 export default cpError;

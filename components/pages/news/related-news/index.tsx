@@ -6,7 +6,7 @@ import RelatedNews from './style';
 
 import { Container } from '~/styles/global';
 
-import Post from '~/components/post';
+import Post from '../../../global/post';
 
 import Fade from 'react-reveal/Fade';
 

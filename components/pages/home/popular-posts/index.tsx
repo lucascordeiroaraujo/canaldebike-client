@@ -6,7 +6,7 @@ import { Container } from '~/styles/global';
 
 import Slider, { Settings } from 'react-slick';
 
-import Post from '~/components/post';
+import Post from '~/components/global/post';
 
 import { FaChevronLeft, FaChevronRight } from 'react-icons/fa';
 

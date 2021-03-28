@@ -12,7 +12,7 @@ import Link from 'next/link';
 
 import { useRouter } from 'next/router';
 
-import { useMenu } from '~/hooks/app/menu';
+import { useMenu } from '../../../hooks/app/menu';
 
 import Fade from 'react-reveal/Fade';
 
@@ -36,9 +36,11 @@ const header: React.FC = () => {
       return;
     }
 
-    router.push(`/pesquisa/${searchText}`);
-
     handleCloseSearchForm();
+
+    setSearchText('');
+
+    router.push(`/pesquisa/${searchText}`);
   };
 
   const handleCloseSearchForm = () => {

@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { useAppInfo } from '~/hooks/app/app';
+import { useAppInfo } from '../../../hooks/app/app';
 
 import Footer, { CopyRight } from './style';
 

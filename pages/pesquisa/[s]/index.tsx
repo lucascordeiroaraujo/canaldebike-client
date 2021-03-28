@@ -14,17 +14,17 @@ import {
   getSearchPostsData,
 } from '~/hooks/search/posts';
 
-import Loader from '~/components/loader';
+import Loader from '~/components/global/loader';
 
 import { Container } from '~/styles/global';
 
 import SearchContainer from './style';
 
-import SearchHeader from './components/header';
+import SearchHeader from '~/components/pages/search/header';
 
-import SearchPosts from './components/posts';
+import SearchPosts from '~/components/pages/search/posts';
 
-import SearchPagination from '~/components/pagination';
+import SearchPagination from '~/components/global/pagination';
 
 interface ICategoryProps {
   appInfo: IAppInfoState;
