@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 
 import { useAppInfo } from '../../../hooks/app/app';
 
@@ -8,14 +8,14 @@ import { Container } from '~/styles/global';
 
 import { FaInstagram, FaYoutube, FaFacebook, FaTwitter } from 'react-icons/fa';
 
-const footer: React.FC = () => {
+const footer = () => {
   const { appInfo } = useAppInfo();
 
-  const [currentYear, setCurrentYear] = React.useState();
+  const [currentYear, setCurrentYear] = useState();
 
   const getYear = () => setCurrentYear(new Date().getFullYear() as any);
 
-  React.useEffect(() => {
+  useEffect(() => {
     getYear();
   }, []);
 

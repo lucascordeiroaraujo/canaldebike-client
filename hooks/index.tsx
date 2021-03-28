@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { ReactNode } from 'react';
 
 import SiteProvider from './app';
 
@@ -11,7 +11,7 @@ import PostProvider from './post';
 import SearchProvider from './search';
 
 interface IProps {
-  children: React.ReactNode;
+  children: ReactNode;
 }
 
 const AppProvider = ({ children }: IProps) => (

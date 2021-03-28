@@ -1,4 +1,4 @@
-import React, { MouseEvent } from 'react';
+import React, { MouseEvent, useState, ChangeEvent } from 'react';
 
 import Header, { Logo, Menu, MenuItem, SearchForm, MenuMobile } from './style';
 
@@ -16,12 +16,12 @@ import { useMenu } from '../../../hooks/app/menu';
 
 import Fade from 'react-reveal/Fade';
 
-const header: React.FC = () => {
-  const [searchText, setSearchText] = React.useState('');
+const header = () => {
+  const [searchText, setSearchText] = useState('');
 
-  const [searchFormOpened, setSearchFormOpen] = React.useState(false);
+  const [searchFormOpened, setSearchFormOpen] = useState(false);
 
-  const [menuMobileOpend, setMenuMobileOpen] = React.useState(false);
+  const [menuMobileOpend, setMenuMobileOpen] = useState(false);
 
   const router = useRouter();
 
@@ -59,7 +59,7 @@ const header: React.FC = () => {
     return router.query.categorySlug === slug;
   };
 
-  const handleSetSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleSetSearch = (e: ChangeEvent<HTMLInputElement>) => {
     setSearchText(e.target.value);
   };
 

@@ -1,11 +1,11 @@
-import React from 'react';
+import React, { ReactNode } from 'react';
 
 import { AppInfoProvider } from './app';
 
 import { MenuProvider } from './menu';
 
 interface IProps {
-  children: React.ReactNode;
+  children: ReactNode;
 }
 
 const SiteProvider = ({ children }: IProps) => (

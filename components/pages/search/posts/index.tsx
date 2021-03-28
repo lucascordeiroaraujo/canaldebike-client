@@ -8,7 +8,7 @@ import Post from '~/components/global/post';
 
 import Fade from 'react-reveal/Fade';
 
-const posts: React.FC = () => {
+const posts = () => {
   const { searchPosts } = useSearchPosts();
 
   return (

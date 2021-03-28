@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
 import { GetStaticPropsResult } from 'next';
 
@@ -53,7 +53,7 @@ export default function IndexPage({
 
   const { handleSetVideos } = useVideos();
 
-  React.useEffect(() => {
+  useEffect(() => {
     handleSetAppInfo(appInfo);
 
     handleSetMenuData(menuItens);

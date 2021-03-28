@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import { useCurrentCategory } from '../../../../hooks/category/category';
 
@@ -12,12 +12,12 @@ import Fade from 'react-reveal/Fade';
 
 import Link from 'next/link';
 
-const categoryHeader: React.FC = () => {
+const categoryHeader = () => {
   const { currentCategory } = useCurrentCategory();
 
-  const [openedSubCategories, setOpenedSubCategories] = React.useState(false);
+  const [openedSubCategories, setOpenedSubCategories] = useState(false);
 
-  const [selectedCategory, setSelectedCategoty] = React.useState(
+  const [selectedCategory, setSelectedCategoty] = useState(
     'Todas as categorias',
   );
 

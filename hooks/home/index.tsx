@@ -1,11 +1,11 @@
-import React from 'react';
+import React, { ReactNode } from 'react';
 
 import { PostsProvider } from './posts';
 
 import { VideosProvider } from './videos';
 
 interface IProps {
-  children: React.ReactNode;
+  children: ReactNode;
 }
 
 const HomeProvider = ({ children }: IProps) => (

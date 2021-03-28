@@ -1,4 +1,10 @@
-import React, { createContext, useCallback, useState, useContext } from 'react';
+import React, {
+  createContext,
+  useCallback,
+  useState,
+  useContext,
+  ReactNode,
+} from 'react';
 
 interface ICurrentPostContextData {
   currentPost: ICurrentPostState;
@@ -58,7 +64,7 @@ const CurrentPostContext = createContext<ICurrentPostContextData>(
 );
 
 interface ICurrentPostProviderProps {
-  children: React.ReactNode;
+  children: ReactNode;
 }
 
 export const getCurrentPostData = async (postSlug: string) => {

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
 import { GetStaticPaths, GetStaticPropsResult } from 'next';
 
@@ -55,7 +55,7 @@ export default function CategoryPage({
 
   const { handleSetCatPosts } = useCatPosts();
 
-  React.useEffect(() => {
+  useEffect(() => {
     handleSetAppInfo(appInfo);
 
     handleSetMenuData(menuItens);

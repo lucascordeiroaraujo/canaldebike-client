@@ -1,4 +1,10 @@
-import React, { createContext, useCallback, useState, useContext } from 'react';
+import React, {
+  createContext,
+  useCallback,
+  useState,
+  useContext,
+  ReactNode,
+} from 'react';
 
 interface IMenuContextData {
   menuData: IMenuState[];
@@ -21,7 +27,7 @@ export interface IMenuState {
 const MenuContext = createContext<IMenuContextData>({} as IMenuContextData);
 
 interface IMenuProviderProps {
-  children: React.ReactNode;
+  children: ReactNode;
 }
 
 export const getMenuData = async () => {

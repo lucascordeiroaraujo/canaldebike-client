@@ -10,7 +10,7 @@ import Post from '../../../global/post';
 
 import Fade from 'react-reveal/Fade';
 
-const relatedNews: React.FC = () => {
+const relatedNews = () => {
   const { currentPost } = useCurrentPost();
 
   if (!currentPost) return null;

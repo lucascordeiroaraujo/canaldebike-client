@@ -1,9 +1,9 @@
-import React from 'react';
+import React, { ReactNode } from 'react';
 
 import { CurrentPostProvider } from './post';
 
 interface IProps {
-  children: React.ReactNode;
+  children: ReactNode;
 }
 
 const PostProvider = ({ children }: IProps) => (

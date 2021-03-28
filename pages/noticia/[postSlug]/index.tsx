@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
 import { GetStaticPaths, GetStaticPropsResult } from 'next';
 
@@ -59,7 +59,7 @@ export default function IndexPage({
 
   const { handleSetCurrentPost } = useCurrentPost();
 
-  React.useEffect(() => {
+  useEffect(() => {
     handleSetAppInfo(appInfo);
 
     handleSetMenuData(menuItens);

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
 import { GetStaticPaths, GetStaticPropsResult } from 'next';
 
@@ -47,7 +47,7 @@ export default function SearchPage({
 
   const { handleSetSearchPosts } = useSearchPosts();
 
-  React.useEffect(() => {
+  useEffect(() => {
     handleSetAppInfo(appInfo);
 
     handleSetMenuData(menuItens);

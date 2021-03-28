@@ -1,4 +1,10 @@
-import React, { createContext, useCallback, useState, useContext } from 'react';
+import React, {
+  createContext,
+  useCallback,
+  useState,
+  useContext,
+  ReactNode,
+} from 'react';
 
 interface IAppInfoContextData {
   appInfo: IAppInfoState;
@@ -19,7 +25,7 @@ const AppInfoContext = createContext<IAppInfoContextData>(
 );
 
 interface IAppInfoProviderProps {
-  children: React.ReactNode;
+  children: ReactNode;
 }
 
 export const getAppInfoData = async () => {

@@ -1,4 +1,10 @@
-import React, { createContext, useCallback, useState, useContext } from 'react';
+import React, {
+  createContext,
+  useCallback,
+  useState,
+  useContext,
+  ReactNode,
+} from 'react';
 
 interface ICatPostsContextData {
   catPosts: ICatPostsState[];
@@ -28,7 +34,7 @@ const CatPostsContext = createContext<ICatPostsContextData>(
 );
 
 interface ICatPostsProviderProps {
-  children: React.ReactNode;
+  children: ReactNode;
 }
 
 export const getPostsData = async (categorySlug: string) => {

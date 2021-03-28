@@ -1,10 +1,10 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 
 import { AppProps } from 'next/app';
 
 import Head from 'next/head';
 
-import GlobalStyles, { AppBox } from '~/styles/global';
+import GlobalStyles, { AppBox, SwitchTheme } from '~/styles/global';
 
 import 'react-app-polyfill/ie9';
 
@@ -15,6 +15,8 @@ import Router from 'next/router';
 import { ThemeProvider } from 'styled-components';
 
 import lightTheme from '~/styles/themes/light';
+
+import darkTheme from '~/styles/themes/dark';
 
 import AppProvider from '~/hooks';
 
@@ -31,6 +33,24 @@ Router.events.on('routeChangeComplete', () => NProgress.done());
 Router.events.on('routeChangeError', () => NProgress.done());
 
 export default function MyApp({ Component, pageProps }: AppProps) {
+  const [theme, setTheme] = useState('light');
+
+  const handleToggleTheme = () => {
+    const newTheme = theme === 'light' ? 'dark' : 'light';
+
+    localStorage.setItem('@CanalDeBike:theme', newTheme);
+
+    setTheme(newTheme);
+  };
+
+  useEffect(function () {
+    const selectedTheme = localStorage.getItem('@CanalDeBike:theme');
+
+    if (selectedTheme) {
+      setTheme(selectedTheme);
+    }
+  }, []);
+
   return (
     <>
       <Head>
@@ -140,12 +160,17 @@ export default function MyApp({ Component, pageProps }: AppProps) {
         />
       </Head>
 
-      <ThemeProvider theme={lightTheme}>
+      <ThemeProvider theme={theme == 'light' ? lightTheme : darkTheme}>
         <>
           <GlobalStyles />
 
           <AppBox>
             <AppProvider>
+              <SwitchTheme onClick={handleToggleTheme}>
+                Alterar
+                <br /> Tema
+              </SwitchTheme>
+
               <Header />
 
               <Component {...pageProps} />

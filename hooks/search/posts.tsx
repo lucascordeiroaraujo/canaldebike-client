@@ -1,4 +1,10 @@
-import React, { createContext, useCallback, useState, useContext } from 'react';
+import React, {
+  createContext,
+  useCallback,
+  useState,
+  useContext,
+  ReactNode,
+} from 'react';
 
 interface ISearchPostsContextData {
   searchPosts: ISearchPostsState[];
@@ -28,7 +34,7 @@ const SearchPostsContext = createContext<ISearchPostsContextData>(
 );
 
 interface ISearchPostsProviderProps {
-  children: React.ReactNode;
+  children: ReactNode;
 }
 
 export const getSearchPostsData = async (searchTerm: string) => {

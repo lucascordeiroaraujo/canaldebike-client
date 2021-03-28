@@ -8,7 +8,7 @@ import Image from 'next/image';
 
 import Fade from 'react-reveal/Fade';
 
-const instagram: React.FC = () => {
+const instagram = () => {
   return (
     <Instagram>
       <Fade bottom>

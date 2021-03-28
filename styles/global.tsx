@@ -183,3 +183,37 @@ export const Container = styled.div<IContainerProps>`
       max-width: 1440px;
     `}
 `;
+
+export const SwitchTheme = styled.button`
+  position: fixed;
+  z-index: 20;
+  top: 50%;
+  right: -47px;
+  transform: translate(0px, -50%);
+  padding: 8px;
+  transition: 0.5s;
+  border: none;
+  cursor: pointer;
+  text-align: center;
+  color: ${props => props.theme.colors.light};
+  background: ${props => props.theme.colors.primary};
+  &:hover {
+    right: 0px;
+  }
+  &:before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: -7px;
+    transform: translate(0px, -50%);
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 10px;
+    width: 0;
+    height: 0;
+
+    border-top: 8px solid transparent;
+    border-bottom: 8px solid transparent;
+    border-right: 8px solid ${props => props.theme.colors.primary};
+  }
+`;

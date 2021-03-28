@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef } from 'react';
 
 import { usePosts } from '~/hooks/home/posts';
 
@@ -18,7 +18,7 @@ import Slider, { Settings } from 'react-slick';
 
 import { FaChevronLeft, FaChevronRight } from 'react-icons/fa';
 
-const latestNews: React.FC = () => {
+const latestNews = () => {
   const { posts } = usePosts();
 
   if (!posts) return null;
@@ -35,7 +35,7 @@ const latestNews: React.FC = () => {
     adaptiveHeight: true,
   };
 
-  const sliderRef = React.useRef<Slider | null>(null);
+  const sliderRef = useRef<Slider | null>(null);
 
   const sliderPrevNext = (direction: 'prev' | 'next') => {
     const sliderElement = sliderRef.current;

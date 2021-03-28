@@ -4,7 +4,7 @@ import Banner from './style';
 
 import Slider, { Settings } from 'react-slick';
 
-const banner: React.FC = () => {
+const banner = () => {
   const sliderSettings: Settings = {
     dots: true,
     arrows: false,

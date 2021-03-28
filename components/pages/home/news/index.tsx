@@ -14,7 +14,7 @@ import Fade from 'react-reveal/Fade';
 
 import Tada from 'react-reveal/Tada';
 
-const news: React.FC = () => {
+const news = () => {
   const { posts } = usePosts();
 
   if (!posts) return null;

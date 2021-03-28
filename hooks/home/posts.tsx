@@ -1,4 +1,10 @@
-import React, { createContext, useCallback, useState, useContext } from 'react';
+import React, {
+  createContext,
+  useCallback,
+  useState,
+  useContext,
+  ReactNode,
+} from 'react';
 
 interface IPostsContextData {
   posts: IPostsState[];
@@ -27,7 +33,7 @@ export interface IPostsState {
 const PostsContext = createContext<IPostsContextData>({} as IPostsContextData);
 
 interface IPostsProviderProps {
-  children: React.ReactNode;
+  children: ReactNode;
 }
 
 export const getPostsData = async () => {

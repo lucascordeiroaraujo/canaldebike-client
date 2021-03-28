@@ -1,9 +1,9 @@
-import React from 'react';
+import React, { ReactNode } from 'react';
 
 import { SearchPostsProvider } from './posts';
 
 interface IProps {
-  children: React.ReactNode;
+  children: ReactNode;
 }
 
 const SearchProvider = ({ children }: IProps) => (

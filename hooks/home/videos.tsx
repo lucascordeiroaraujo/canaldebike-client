@@ -1,4 +1,10 @@
-import React, { createContext, useCallback, useState, useContext } from 'react';
+import React, {
+  createContext,
+  useCallback,
+  useState,
+  useContext,
+  ReactNode,
+} from 'react';
 
 interface IVideosContextData {
   videos: IVideosState[];
@@ -20,7 +26,7 @@ const VideosContext = createContext<IVideosContextData>(
 );
 
 interface IVideosProviderProps {
-  children: React.ReactNode;
+  children: ReactNode;
 }
 
 export const getVideosData = async () => {

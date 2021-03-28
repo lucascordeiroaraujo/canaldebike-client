@@ -1,4 +1,10 @@
-import React, { createContext, useCallback, useState, useContext } from 'react';
+import React, {
+  createContext,
+  useCallback,
+  useState,
+  useContext,
+  ReactNode,
+} from 'react';
 
 interface ICurrentCategoryContextData {
   currentCategory: ICurrentCategoryState;
@@ -21,7 +27,7 @@ const CurrentCategoryContext = createContext<ICurrentCategoryContextData>(
 );
 
 interface ICurrentCategoryProviderProps {
-  children: React.ReactNode;
+  children: ReactNode;
 }
 
 export const getCurrentCategoryData = async (categorySlug: string) => {

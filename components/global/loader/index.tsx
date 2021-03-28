@@ -2,7 +2,7 @@ import React from 'react';
 
 import Loader from './style';
 
-const loader: React.FC = () => (
+const loader = () => (
   <Loader>
     <img
       src={require('../../../public/images/canal-de-bike.png')}

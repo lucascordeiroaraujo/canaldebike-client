@@ -1,11 +1,11 @@
-import React from 'react';
+import React, { ReactNode } from 'react';
 
 import { CurrentCategoryProvider } from './category';
 
 import { CatPostsProvider } from './catPosts';
 
 interface IProps {
-  children: React.ReactNode;
+  children: ReactNode;
 }
 
 const CategoryProvider = ({ children }: IProps) => (

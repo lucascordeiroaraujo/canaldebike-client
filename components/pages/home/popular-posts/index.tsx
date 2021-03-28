@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useRef } from 'react';
 
 import PopularPosts, { Cover } from './style';
 
@@ -12,7 +12,7 @@ import { FaChevronLeft, FaChevronRight } from 'react-icons/fa';
 
 import Fade from 'react-reveal/Fade';
 
-const popularPosts: React.FC = () => {
+const popularPosts = () => {
   const sliderSettings: Settings = {
     dots: false,
     arrows: false,
@@ -39,7 +39,7 @@ const popularPosts: React.FC = () => {
     ],
   };
 
-  const [newsList, _] = React.useState([
+  const [newsList, _] = useState([
     {
       id: '237',
       slug: 'jaqueline-mourao-entra-para-o-time-da-trek',
@@ -149,7 +149,7 @@ const popularPosts: React.FC = () => {
     },
   ]);
 
-  const sliderRef = React.useRef<Slider | null>(null);
+  const sliderRef = useRef<Slider | null>(null);
 
   const sliderPrevNext = (direction: 'prev' | 'next') => {
     const sliderElement = sliderRef.current;

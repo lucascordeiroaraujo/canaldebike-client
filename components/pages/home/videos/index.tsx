@@ -14,7 +14,7 @@ import { FaYoutube } from 'react-icons/fa';
 
 import Fade from 'react-reveal/Fade';
 
-const videos: React.FC = () => {
+const videos = () => {
   const { videos } = useVideos();
 
   const { appInfo } = useAppInfo();

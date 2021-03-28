@@ -12,7 +12,7 @@ import { FaInstagram, FaYoutube, FaFacebook, FaTwitter } from 'react-icons/fa';
 
 import Fade from 'react-reveal/Fade';
 
-const sidebar: React.FC = () => {
+const sidebar = () => {
   const { appInfo } = useAppInfo();
 
   if (!appInfo) return null;
