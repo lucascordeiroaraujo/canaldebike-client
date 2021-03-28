@@ -20,6 +20,7 @@ const nextConfig = {
       'picsum.photos',
       'img.youtube.com',
       'canaldebike.com.br',
+      'adm.canaldebike.com.br',
     ],
   },
 };

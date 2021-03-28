@@ -28,6 +28,24 @@ export interface ICurrentPostState {
   title: string;
   subtitle: string;
   description: string;
+  relateds: Array<{
+    id: string;
+    slug: string;
+    image: {
+      url: string;
+      width: string;
+      height: string;
+    };
+    categories: Array<{
+      parentSlug: string;
+      id: string;
+      title: string;
+      slug: string;
+    }>;
+    date: string;
+    title: string;
+    resume: string;
+  }>;
 }
 
 const CurrentPostContext = createContext<ICurrentPostContextData>(

@@ -59,7 +59,7 @@ const post = ({ postUrl }: IPost) => {
         {hasCategories() && (
           <div className="categories-container">
             {categories.map(category => (
-              <Fade>
+              <Fade key={category.id}>
                 <Link
                   href={`/categoria/${category.parentSlug}/${category.slug}`}
                 >

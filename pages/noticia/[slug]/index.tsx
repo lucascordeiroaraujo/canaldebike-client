@@ -24,9 +24,9 @@ import Post from './components/post';
 
 import Comments from './components/comments';
 
-import RelatedNews from './components/related-news';
-
 import Sidebar from './components/sidebar';
+
+import RelatedNews from './components/related-news';
 
 import { FaLongArrowAltLeft } from 'react-icons/fa';
 
@@ -59,6 +59,10 @@ export default function IndexPage({ appInfo, menuItens, post }: IPostProps) {
 
   const mountPostUrl = `${process.env.APP_URL}/noticia/${post.slug}`;
 
+  const hasRelatedNews = () => {
+    return post && post.relateds && post.relateds.length;
+  };
+
   if (isFallback) {
     return <Loader />;
   }
@@ -88,7 +92,7 @@ export default function IndexPage({ appInfo, menuItens, post }: IPostProps) {
           <Sidebar />
         </SidebarContainer>
 
-        {/* <RelatedNews /> */}
+        {hasRelatedNews() && <RelatedNews />}
       </News>
     </Container>
   );
@@ -99,8 +103,8 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
   const result = await response.json();
 
-  const paths = result.map((slug: string) => {
-    return { params: { slug } };
+  const paths = result.map((postSlug: string) => {
+    return { params: { slug: postSlug } };
   });
 
   return {
