@@ -16,7 +16,7 @@ const comments = ({ postUrl }: IProps) => (
 
     <div
       className="fb-comments"
-      data-href={`https://developers.facebook.com/docs/plugins/comments#configurator`}
+      data-href={postUrl}
       data-width="100%"
       data-numposts="5"
     ></div>
