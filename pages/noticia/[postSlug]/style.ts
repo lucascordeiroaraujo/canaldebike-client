@@ -17,7 +17,7 @@ export default styled.section`
       align-items: center;
       font-family: 'BrandonGrotesqueBlack';
       text-transform: uppercase;
-      color: ${props => props.theme.colors.text};
+      color: #fff;
       font-size: 16px;
       transition: 0.5s;
       svg {
@@ -25,7 +25,7 @@ export default styled.section`
         margin-right: 10px;
       }
       &:hover {
-        color: ${props => props.theme.colors.primary};
+        color: #90b13a;
       }
     }
     @media (max-width: 992px) {
