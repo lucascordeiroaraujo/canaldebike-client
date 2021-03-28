@@ -55,9 +55,14 @@ export default function IndexPage({ appInfo, menuItens, post }: IPostProps) {
     handleSetMenuData(menuItens);
 
     handleSetCurrentPost(post);
-  }, [handleSetAppInfo, handleSetMenuData, handleSetCurrentPost]);
-
-  const mountPostUrl = `${process.env.APP_URL}/noticia/${post.slug}`;
+  }, [
+    handleSetAppInfo,
+    handleSetMenuData,
+    handleSetCurrentPost,
+    appInfo,
+    menuItens,
+    post,
+  ]);
 
   const hasRelatedNews = () => {
     return post && post.relateds && post.relateds.length;
@@ -83,9 +88,9 @@ export default function IndexPage({ appInfo, menuItens, post }: IPostProps) {
         </Fade>
 
         <PostContainer>
-          <Post postUrl={mountPostUrl} />
+          <Post />
 
-          <Comments postUrl={mountPostUrl} />
+          <Comments />
         </PostContainer>
 
         <SidebarContainer>
@@ -103,8 +108,8 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
   const result = await response.json();
 
-  const paths = result.map((postSlug: string) => {
-    return { params: { slug: postSlug } };
+  const paths = result.map((postSlug2: string) => {
+    return { params: { postSlug: postSlug2 } };
   });
 
   return {
@@ -115,20 +120,20 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
 interface IStaticProps {
   params: {
-    slug: string;
+    postSlug: string;
   };
 }
 
 export async function getStaticProps({
   params,
 }: IStaticProps): Promise<GetStaticPropsResult<IPostProps>> {
-  const { slug } = params;
+  const { postSlug } = params;
 
   return {
     props: {
       appInfo: await getAppInfoData(),
       menuItens: await getMenuData(),
-      post: await getCurrentPostData(slug),
+      post: await getCurrentPostData(postSlug),
     },
     revalidate: 10,
   };

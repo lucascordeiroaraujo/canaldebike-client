@@ -62,7 +62,10 @@ export default function IndexPage({
     handleSetMenuData,
     handleSetPosts,
     handleSetVideos,
+    appInfo,
+    menuItens,
     posts,
+    videos,
   ]);
 
   if (isFallback) {

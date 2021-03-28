@@ -66,7 +66,9 @@ export default function SubCategoryPage({
   }, [
     handleSetAppInfo,
     handleSetMenuData,
+    handleSetCurrentCategory,
     handleSetCatPosts,
+    appInfo,
     menuItens,
     category,
     posts,

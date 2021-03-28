@@ -2,6 +2,7 @@ import styled from 'styled-components';
 
 export default styled.div`
   position: fixed;
+  z-index: 50;
   top: 0px;
   left: 0px;
   width: 100vw;

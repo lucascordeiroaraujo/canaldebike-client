@@ -66,7 +66,9 @@ export default function CategoryPage({
   }, [
     handleSetAppInfo,
     handleSetMenuData,
+    handleSetCurrentCategory,
     handleSetCatPosts,
+    appInfo,
     menuItens,
     category,
     posts,
