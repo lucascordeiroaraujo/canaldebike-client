@@ -17,7 +17,7 @@ export default styled.section`
       align-items: center;
       font-family: 'BrandonGrotesqueBlack';
       text-transform: uppercase;
-      color: ${props => props.theme.colors.dark};
+      color: ${props => props.theme.colors.text};
       font-size: 16px;
       transition: 0.5s;
       svg {

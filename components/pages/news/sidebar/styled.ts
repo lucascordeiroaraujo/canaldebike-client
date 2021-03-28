@@ -25,7 +25,7 @@ export default styled.aside`
         font-family: 'BrandonGrotesqueBlack';
         font-size: 24px;
         line-height: 24px;
-        color: ${props => props.theme.colors.dark};
+        color: ${props => props.theme.colors.text};
         text-transform: uppercase;
         margin-bottom: 15px;
       }
@@ -36,7 +36,7 @@ export default styled.aside`
         align-items: center;
         a {
           margin: 0px 15px 15px 0px;
-          color: ${props => props.theme.colors.dark};
+          color: ${props => props.theme.colors.text};
           font-size: 30px;
           line-height: 10px;
           transition: 0.5s;

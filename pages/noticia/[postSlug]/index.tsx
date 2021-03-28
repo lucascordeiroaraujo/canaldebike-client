@@ -75,7 +75,7 @@ export default function IndexPage({
   ]);
 
   const hasRelatedNews = () => {
-    return post && post.relateds && post.relateds.length;
+    return post && post.relateds && post.relateds.length ? true : false;
   };
 
   if (isFallback) {

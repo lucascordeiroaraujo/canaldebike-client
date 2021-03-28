@@ -49,12 +49,12 @@ export const CategoriesAndShared = styled.div`
         font-family: 'BrandonGrotesqueBlack';
         font-size: 16px;
         line-height: 11px;
-        color: ${props => props.theme.colors.dark};
+        color: ${props => props.theme.colors.text};
         text-transform: uppercase;
       }
       a {
         margin-left: 10px;
-        color: ${props => props.theme.colors.dark};
+        color: ${props => props.theme.colors.text};
         font-size: 20px;
         line-height: 10px;
         transition: 0.5s;
@@ -83,7 +83,7 @@ export const PostDateAuthor = styled.div`
   display: flex;
   align-items: center;
   font-size: 14px;
-  color: ${props => props.theme.colors.dark};
+  color: ${props => props.theme.colors.text};
   font-family: 'BrandonGrotesqueRegular';
   margin-bottom: 20px;
   a {
@@ -91,6 +91,7 @@ export const PostDateAuthor = styled.div`
     font-size: 17px;
     color: ${props => props.theme.colors.secondary};
     margin-left: 3px;
+    transition: 0.5s;
     &:hover {
       color: ${props => props.theme.colors.primary};
     }
@@ -114,7 +115,7 @@ export const PostContent = styled.div`
     width: 100%;
     font-family: 'BrandonGrotesqueBlack';
     margin: 0px 0px 30px 0px;
-    color: ${props => props.theme.colors.dark};
+    color: ${props => props.theme.colors.text};
   }
   h1 {
     font-size: 35px;
@@ -135,7 +136,7 @@ export const PostContent = styled.div`
   }
   p {
     width: 100%;
-    color: ${props => props.theme.colors.dark};
+    color: ${props => props.theme.colors.text};
     font-family: 'BrandonGrotesqueRegular';
     font-size: 22px;
     line-height: 40px;
