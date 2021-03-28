@@ -25,7 +25,7 @@ export default styled.section<IRelatedNewsProps>`
     }
   }
   ${props =>
-    typeof props.lessThan3Posts &&
+    props.lessThan3Posts &&
     css`
       @media (min-width: 992px) {
         justify-content: center;

@@ -15,6 +15,8 @@ import Fade from 'react-reveal/Fade';
 const sidebar: React.FC = () => {
   const { appInfo } = useAppInfo();
 
+  if (!appInfo) return null;
+
   return (
     <Sidebar>
       {appInfo.store_link && (

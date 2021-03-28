@@ -14,6 +14,8 @@ import { IVideosState, useVideos, getVideosData } from '~/hooks/home/videos';
 
 import Loader from '~/components/global/loader';
 
+import Seo, { ISeoProps } from '~/components/Seo';
+
 import Banner from '~/components/pages/home/banner';
 
 import LatestNews from '~/components/pages/home/latest-news';
@@ -31,6 +33,7 @@ interface IHomeProps {
   menuItens: IMenuState[];
   posts: IPostsState[];
   videos: IVideosState[];
+  seoInfo: ISeoProps;
 }
 
 export default function IndexPage({
@@ -38,6 +41,7 @@ export default function IndexPage({
   menuItens,
   posts,
   videos,
+  seoInfo,
 }: IHomeProps) {
   const { isFallback } = useRouter();
 
@@ -74,6 +78,8 @@ export default function IndexPage({
 
   return (
     <>
+      <Seo {...seoInfo} />
+
       <Banner />
 
       <LatestNews />
@@ -92,12 +98,21 @@ export default function IndexPage({
 export async function getStaticProps(): Promise<
   GetStaticPropsResult<IHomeProps>
 > {
+  const appInfo = await getAppInfoData();
+
   return {
     props: {
-      appInfo: await getAppInfoData(),
+      appInfo,
       menuItens: await getMenuData(),
       posts: await getPostsData(),
       videos: await getVideosData(),
+      seoInfo: {
+        seo_title: process.env.SEO_TITLE || '',
+        seo_description: process.env.SEO_DESCRIPTION || '',
+        seo_image: process.env.SEO_IMAGE || '',
+        appUrl: process.env.APP_URL || '',
+        twitter: appInfo.twitter || '',
+      },
     },
     revalidate: 10,
   };

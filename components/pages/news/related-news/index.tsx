@@ -13,6 +13,8 @@ import Fade from 'react-reveal/Fade';
 const relatedNews: React.FC = () => {
   const { currentPost } = useCurrentPost();
 
+  if (!currentPost) return null;
+
   const { relateds } = currentPost;
 
   if (!relateds) return null;

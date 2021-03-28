@@ -17,8 +17,14 @@ import Fade from 'react-reveal/Fade';
 
 import { FaFacebook, FaTwitter, FaWhatsapp } from 'react-icons/fa';
 
-const post = () => {
+interface IProps {
+  postUrl: string;
+}
+
+const post = ({ postUrl }: IProps) => {
   const { currentPost } = useCurrentPost();
+
+  if (!currentPost) return null;
 
   const {
     image,
@@ -33,8 +39,6 @@ const post = () => {
   const hasCategories = () => {
     return categories && categories.length >= 1;
   };
-
-  const postUrl = `${process.env.APP_URL}/noticia/${currentPost.slug}`;
 
   return (
     <Post>

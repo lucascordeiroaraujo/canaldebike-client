@@ -46,6 +46,11 @@ export interface ICurrentPostState {
     title: string;
     resume: string;
   }>;
+  seo: {
+    title: string;
+    description: string;
+    image: string;
+  };
 }
 
 const CurrentPostContext = createContext<ICurrentPostContextData>(

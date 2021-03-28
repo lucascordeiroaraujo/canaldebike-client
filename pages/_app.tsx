@@ -170,7 +170,7 @@ export default function MyApp({ Component, pageProps }: AppProps) {
         async
         defer
         crossOrigin="anonymous"
-        src="https://connect.facebook.net/pt_BR/sdk.js#xfbml=1&version=v10.0&appId=1015663685120991&autoLogAppEvents=1"
+        src="https://connect.facebook.net/pt_BR/sdk.js#xfbml=1&version=v10.0&appId=405606819649320&autoLogAppEvents=1"
         nonce="0OUFJuus"
       ></script>
     </>
