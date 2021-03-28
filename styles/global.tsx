@@ -188,7 +188,7 @@ export const SwitchTheme = styled.button`
   position: fixed;
   z-index: 20;
   top: 50%;
-  right: -47px;
+  right: -40px;
   transform: translate(0px, -50%);
   padding: 8px;
   transition: 0.5s;

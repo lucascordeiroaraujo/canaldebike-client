@@ -25,7 +25,11 @@ export const CategoryFilter = styled.div`
   .select-button,
   .select-button-list {
     display: flex;
-    border: 1px solid ${props => props.theme.colors.dark};
+    border: 1px solid
+      ${props =>
+        props.theme.name === 'dark'
+          ? props.theme.colors.light
+          : props.theme.colors.dark};
   }
   .select-button,
   .select-button-list li a {
@@ -35,9 +39,15 @@ export const CategoryFilter = styled.div`
     text-transform: uppercase;
     font-family: 'BrandonGrotesqueBlack';
     font-size: 16px;
-    color: ${props => props.theme.colors.dark};
+    color: ${props =>
+      props.theme.name === 'dark'
+        ? props.theme.colors.light
+        : props.theme.colors.dark};
     transition: 0.5s;
     align-items: center;
+  }
+  .select-button-list li a {
+    color: ${props => props.theme.colors.dark};
   }
   .select-button {
     justify-content: space-between;
@@ -67,7 +77,11 @@ export const CategoryFilter = styled.div`
       display: flex;
       width: 100%;
       &:not(:last-child) {
-        border-bottom: 1px solid ${props => props.theme.colors.dark};
+        border-bottom: 1px solid
+          ${props =>
+            props.theme.name === 'dark'
+              ? props.theme.colors.light
+              : props.theme.colors.dark};
       }
       background: #e8e8e8;
       a {

@@ -75,8 +75,14 @@ export default styled.article<IPost>`
   .post-date {
     font-size: 13px;
     font-family: 'BrandonGrotesqueRegular';
-    color: ${props =>
-      props.isSlider ? props.theme.colors.light : props.theme.colors.dark};
+    ${props =>
+      props.isSlider
+        ? css`
+            color: ${props.theme.colors.light};
+          `
+        : css`
+            color: ${props.theme.colors.text};
+          `}
     ${props =>
       typeof props.hasCategories !== undefined &&
       props.hasCategories === false &&
@@ -101,8 +107,14 @@ export default styled.article<IPost>`
     line-height: 26px;
     margin: 0px;
     a {
-      color: ${props =>
-        props.isSlider ? props.theme.colors.light : props.theme.colors.dark};
+      ${props =>
+        props.isSlider
+          ? css`
+              color: ${props.theme.colors.light};
+            `
+          : css`
+              color: ${props.theme.colors.text};
+            `}
     }
   }
   @media (max-width: ${props => (props.isSlider ? 768 : 576)}px) {

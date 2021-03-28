@@ -12,11 +12,15 @@ import Link from 'next/link';
 
 import { useRouter } from 'next/router';
 
+import { useTheme } from 'styled-components';
+
 import { useMenu } from '../../../hooks/app/menu';
 
 import Fade from 'react-reveal/Fade';
 
 const header = () => {
+  const theme = useTheme();
+
   const [searchText, setSearchText] = useState('');
 
   const [searchFormOpened, setSearchFormOpen] = useState(false);
@@ -70,13 +74,23 @@ const header = () => {
           <Fade>
             <Link href="/">
               <a title="Canal de Bike - Página Inicial">
-                <img
-                  src={require('~/public/images/canal-de-bike.png')}
-                  alt="Canal de Bike"
-                  title="Canal de Bike"
-                  width="307"
-                  height="29"
-                />
+                {theme.name === 'dark' ? (
+                  <img
+                    src={require(`~/public/images/canal-de-bike-dark-theme.png`)}
+                    alt="Canal de Bike"
+                    title="Canal de Bike"
+                    width="307"
+                    height="29"
+                  />
+                ) : (
+                  <img
+                    src={require(`~/public/images/canal-de-bike.png`)}
+                    alt="Canal de Bike"
+                    title="Canal de Bike"
+                    width="307"
+                    height="29"
+                  />
+                )}
               </a>
             </Link>
           </Fade>

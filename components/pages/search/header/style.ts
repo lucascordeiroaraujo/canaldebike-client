@@ -15,6 +15,7 @@ export default styled.header`
   }
   p {
     margin: 15px 0px 0px 0px;
+    color: ${props => props.theme.colors.text};
     strong {
       font-family: 'BrandonGrotesqueBlack';
     }

@@ -19,7 +19,7 @@ export default styled.ul`
       justify-content: center;
       align-items: center;
       transition: 0.5s;
-      color: ${props => props.theme.colors.dark};
+      color: ${props => props.theme.colors.text};
     }
     &.current-page a,
     span {

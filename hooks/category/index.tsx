@@ -2,7 +2,7 @@ import React, { ReactNode } from 'react';
 
 import { CurrentCategoryProvider } from './category';
 
-import { CatPostsProvider } from './catPosts';
+import { CatPostsProvider } from './cat-posts';
 
 interface IProps {
   children: ReactNode;

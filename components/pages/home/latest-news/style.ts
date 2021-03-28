@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 import { shade } from 'polished';
 
@@ -11,7 +11,7 @@ export default styled.section`
     width: 100%;
     text-align: center;
     font-family: 'BrandonGrotesqueBlack';
-    color: ${props => props.theme.colors.dark};
+    color: ${props => props.theme.colors.text};
     margin: 25px 0px 0px 0px;
     line-height: 24px;
   }
@@ -56,7 +56,7 @@ export const NewsImage = styled.div`
     left: 0px;
     width: calc(100% - 10px);
     height: 100%;
-    background: ${props => props.theme.colors.dark};
+    background: ${props => props.theme.colors.text};
   }
   @media (max-width: 1200px) {
     width: 600px;
@@ -138,14 +138,22 @@ export const NewsDescription = styled.div`
     &-date {
       font-family: 'BrandonGrotesqueRegular';
       font-size: 13px;
-      color: ${props => props.theme.colors.lightDark};
+      ${props => css`
+        color: ${props.theme.name === 'dark'
+          ? props.theme.colors.text
+          : props.theme.colors.lightDark};
+      `};
       margin-bottom: 20px;
     }
     &-title {
       font-size: 30px;
       line-height: 35px;
       font-family: 'BrandonGrotesqueBlack';
-      color: ${props => props.theme.colors.lightDark};
+      ${props => css`
+        color: ${props.theme.name === 'dark'
+          ? props.theme.colors.text
+          : props.theme.colors.lightDark};
+      `};
       text-transform: uppercase;
       @media (max-width: 768px) {
         font-size: 24px;
@@ -160,7 +168,11 @@ export const NewsDescription = styled.div`
     }
     &-resume {
       font-family: 'BrandonGrotesqueLight';
-      color: ${props => props.theme.colors.lightDark};
+      ${props => css`
+        color: ${props.theme.name === 'dark'
+          ? props.theme.colors.text
+          : props.theme.colors.lightDark};
+      `};
       margin: 0px;
       line-height: 28px;
     }
@@ -172,7 +184,11 @@ export const NewsDescription = styled.div`
       transition: 0.5s;
       border-radius: 30px;
       margin-top: 50px;
-      background: ${props => props.theme.colors.dark};
+      ${props => css`
+        background: ${props.theme.name === 'dark'
+          ? props.theme.colors.primary
+          : props.theme.colors.dark};
+      `};
       &:hover {
         background: ${props => props.theme.colors.secondary};
       }

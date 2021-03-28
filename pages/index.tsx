@@ -10,6 +10,12 @@ import { IMenuState, useMenu, getMenuData } from '~/hooks/app/menu';
 
 import { IPostsState, usePosts, getPostsData } from '~/hooks/home/posts';
 
+import {
+  IPopularPostsState,
+  usePopularPosts,
+  getPopularPostsData,
+} from '~/hooks/home/popular-posts';
+
 import { IVideosState, useVideos, getVideosData } from '~/hooks/home/videos';
 
 import Loader from '~/components/global/loader';
@@ -32,6 +38,7 @@ interface IHomeProps {
   appInfo: IAppInfoState;
   menuItens: IMenuState[];
   posts: IPostsState[];
+  popularPosts: IPopularPostsState[];
   videos: IVideosState[];
   seoInfo: ISeoProps;
 }
@@ -40,6 +47,7 @@ export default function IndexPage({
   appInfo,
   menuItens,
   posts,
+  popularPosts,
   videos,
   seoInfo,
 }: IHomeProps) {
@@ -51,6 +59,8 @@ export default function IndexPage({
 
   const { handleSetPosts } = usePosts();
 
+  const { handleSetPopularPosts } = usePopularPosts();
+
   const { handleSetVideos } = useVideos();
 
   useEffect(() => {
@@ -60,15 +70,19 @@ export default function IndexPage({
 
     handleSetPosts(posts);
 
+    handleSetPopularPosts(popularPosts);
+
     handleSetVideos(videos);
   }, [
     handleSetAppInfo,
     handleSetMenuData,
     handleSetPosts,
+    handleSetPopularPosts,
     handleSetVideos,
     appInfo,
     menuItens,
     posts,
+    popularPosts,
     videos,
   ]);
 
@@ -105,6 +119,7 @@ export async function getStaticProps(): Promise<
       appInfo,
       menuItens: await getMenuData(),
       posts: await getPostsData(),
+      popularPosts: await getPopularPostsData(),
       videos: await getVideosData(),
       seoInfo: {
         seo_title: process.env.SEO_TITLE || '',

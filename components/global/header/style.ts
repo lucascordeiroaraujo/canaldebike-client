@@ -7,7 +7,14 @@ export default styled.header`
   height: 120px;
   position: relative;
   overflow: hidden;
-  background: ${props => props.theme.colors.dark};
+  ${props =>
+    props.theme.name === 'dark'
+      ? css`
+          background: ${props.theme.colors.lightDark};
+        `
+      : css`
+          background: ${props.theme.colors.dark};
+        `}
   &:before {
     content: '';
     width: 50%;
@@ -15,14 +22,24 @@ export default styled.header`
     position: absolute;
     top: 0px;
     left: 0px;
-    background: ${props => props.theme.colors.light};
+    background: ${props =>
+      props.theme.name === 'dark'
+        ? props.theme.colors.dark
+        : props.theme.colors.light};
   }
   .header-container {
     display: flex;
     justify-content: space-between;
     align-items: center;
     height: 100%;
-    background: ${props => props.theme.colors.dark};
+    ${props =>
+      props.theme.name === 'dark'
+        ? css`
+            background: ${props.theme.colors.lightDark};
+          `
+        : css`
+            background: ${props.theme.colors.dark};
+          `}
     .logo-container,
     .menu-container {
       display: flex;
@@ -48,8 +65,16 @@ export const Logo = styled.div<ILogo>`
   position: relative;
   padding-right: 77px;
   min-width: 270px;
-  background: url(${require('../../../public/images/header-background.png')})
-    right top no-repeat ${props => props.theme.colors.light};
+  ${props =>
+    props.theme.name === 'dark'
+      ? css`
+          background: url(${require('../../../public/images/header-background-dark-theme.png')})
+            right top no-repeat ${props.theme.colors.dark};
+        `
+      : css`
+          background: url(${require('../../../public/images/header-background.png')})
+            right top no-repeat ${props.theme.colors.light};
+        `}
   img {
     width: 100%;
     height: auto;
@@ -134,7 +159,14 @@ export const MenuItem = styled.li<IMenuItem>`
     left: 0px;
     width: 100%;
     height: 5px;
-    background: ${props => props.theme.colors.dark};
+    ${props =>
+      props.theme.name === 'dark'
+        ? css`
+            background: ${props.theme.colors.lightDark};
+          `
+        : css`
+            background: ${props.theme.colors.dark};
+          `}
     ${props =>
       props.currentCategory &&
       css`

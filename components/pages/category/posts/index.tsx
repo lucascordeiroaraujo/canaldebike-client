@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { useCatPosts } from '~/hooks/category/catPosts';
+import { useCatPosts } from '~/hooks/category/cat-posts';
 
 import PostsContainer from './style';
 

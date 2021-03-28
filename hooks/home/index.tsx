@@ -2,6 +2,8 @@ import React, { ReactNode } from 'react';
 
 import { PostsProvider } from './posts';
 
+import { PopularPostsProvider } from './popular-posts';
+
 import { VideosProvider } from './videos';
 
 interface IProps {
@@ -10,7 +12,9 @@ interface IProps {
 
 const HomeProvider = ({ children }: IProps) => (
   <PostsProvider>
-    <VideosProvider>{children}</VideosProvider>
+    <PopularPostsProvider>
+      <VideosProvider>{children}</VideosProvider>
+    </PopularPostsProvider>
   </PostsProvider>
 );
 

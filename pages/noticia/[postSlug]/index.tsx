@@ -158,6 +158,15 @@ export async function getStaticProps({
       : process.env[defaultPropName];
   };
 
+  fetch(`${process.env.API_URL}/cdb/post-views`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({ postSlug: post.slug || '' }),
+    redirect: 'follow',
+  });
+
   return {
     props: {
       appInfo,

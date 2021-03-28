@@ -51,6 +51,14 @@ export default function MyApp({ Component, pageProps }: AppProps) {
     }
   }, []);
 
+  const themeLabel = () => {
+    if (theme === 'light') {
+      return 'Tema<br/> Escuro';
+    } else {
+      return 'Tema<br/> Claro';
+    }
+  };
+
   return (
     <>
       <Head>
@@ -166,14 +174,14 @@ export default function MyApp({ Component, pageProps }: AppProps) {
 
           <AppBox>
             <AppProvider>
-              <SwitchTheme onClick={handleToggleTheme}>
-                Alterar
-                <br /> Tema
-              </SwitchTheme>
+              <SwitchTheme
+                onClick={handleToggleTheme}
+                dangerouslySetInnerHTML={{ __html: themeLabel() }}
+              />
 
               <Header />
 
-              <Component {...pageProps} />
+              <Component {...pageProps} theme={theme} />
 
               <Footer />
             </AppProvider>

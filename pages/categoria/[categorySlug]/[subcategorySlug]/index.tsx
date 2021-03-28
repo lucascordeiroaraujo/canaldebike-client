@@ -18,7 +18,7 @@ import {
   ICatPostsState,
   useCatPosts,
   getPostsData,
-} from '~/hooks/category/catPosts';
+} from '~/hooks/category/cat-posts';
 
 import Loader from '~/components/global/loader';
 
