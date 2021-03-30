@@ -19,6 +19,10 @@ export default styled.header`
     strong {
       font-family: 'BrandonGrotesqueBlack';
     }
+    @media (max-width: 769px) {
+      width: 100%;
+      text-align: center;
+    }
   }
   @media (max-width: 768px) {
     flex-direction: column;

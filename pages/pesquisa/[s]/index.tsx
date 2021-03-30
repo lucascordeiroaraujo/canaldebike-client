@@ -24,8 +24,6 @@ import SearchHeader from '~/components/pages/search/header';
 
 import SearchPosts from '~/components/pages/search/posts';
 
-import SearchPagination from '~/components/global/pagination';
-
 interface ICategoryProps {
   appInfo: IAppInfoState;
   menuItens: IMenuState[];
@@ -73,8 +71,6 @@ export default function SearchPage({
           <SearchHeader searchTerm={router.query.s as string} />
 
           <SearchPosts />
-
-          <SearchPagination />
         </SearchContainer>
       </Container>
     </>

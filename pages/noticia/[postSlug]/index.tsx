@@ -22,6 +22,8 @@ import Loader from '~/components/global/loader';
 
 import Seo, { ISeoProps } from '~/components/Seo';
 
+import BackToHome from '~/components/global/back-home';
+
 import Post from '~/components/pages/news/post';
 
 import Comments from '~/components/pages/news/comments';
@@ -29,12 +31,6 @@ import Comments from '~/components/pages/news/comments';
 import Sidebar from '~/components/pages/news/sidebar';
 
 import RelatedNews from '~/components/pages/news/related-news';
-
-import { FaLongArrowAltLeft } from 'react-icons/fa';
-
-import Link from 'next/link';
-
-import Fade from 'react-reveal/Fade';
 
 interface IPostProps {
   appInfo: IAppInfoState;
@@ -88,17 +84,7 @@ export default function IndexPage({
 
       <Container smallContainer>
         <News>
-          <Fade>
-            <div className="back-to-home-link-container">
-              <Link href="/">
-                <a title="Voltar para a página inicial">
-                  <FaLongArrowAltLeft />
-
-                  <span>Voltar para o ínicio</span>
-                </a>
-              </Link>
-            </div>
-          </Fade>
+          <BackToHome />
 
           <PostContainer>
             <Post postUrl={postUrl} />

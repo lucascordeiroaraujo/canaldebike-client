@@ -11,6 +11,7 @@ declare module 'styled-components' {
       light: string;
       text: string;
       bg: string;
+      error: string;
     };
   }
 }

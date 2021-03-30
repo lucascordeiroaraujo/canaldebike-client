@@ -1,15 +1,25 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 
 import { useAppInfo } from '../../../hooks/app/app';
 
-import Footer, { CopyRight } from './style';
+import { useMenu } from '../../../hooks/app/menu';
+
+import Footer, { Newsletter, SocialNetworking, CopyRight } from './style';
 
 import { Container } from '~/styles/global';
 
 import { FaInstagram, FaYoutube, FaFacebook, FaTwitter } from 'react-icons/fa';
 
+import Link from 'next/link';
+
+import { BiLoaderCircle } from 'react-icons/bi';
+
+import { FaCheckCircle, FaRegWindowClose } from 'react-icons/fa';
+
 const footer = () => {
   const { appInfo } = useAppInfo();
+
+  const { menuData } = useMenu();
 
   const [currentYear, setCurrentYear] = useState();
 
@@ -18,6 +28,93 @@ const footer = () => {
   useEffect(() => {
     getYear();
   }, []);
+
+  const NEWSLETTER_INITIAL_STATE = {
+    email: '',
+  };
+
+  const [newsletter, setNewsletter] = React.useState(NEWSLETTER_INITIAL_STATE);
+
+  const [feedbackForm, setFeedbackForm] = React.useState({
+    loader: false,
+    show: false,
+    success: true,
+  });
+
+  const sendNewsletter = async (event: any) => {
+    event.preventDefault();
+
+    setFeedbackForm({
+      loader: true,
+      show: true,
+      success: false,
+    });
+
+    try {
+      await fetch(
+        `https://adm.canaldebike.com.br/?rest_route=/cdb/registerNewsletter`,
+        {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          mode: 'cors',
+          body: JSON.stringify({
+            body: Object.values(newsletter),
+          }),
+        },
+      );
+
+      setNewsletter(NEWSLETTER_INITIAL_STATE);
+
+      setFeedbackForm({
+        loader: false,
+        show: true,
+        success: true,
+      });
+    } catch (e) {
+      setFeedbackForm({
+        loader: false,
+        show: true,
+        success: false,
+      });
+    }
+
+    setTimeout(() => {
+      setFeedbackForm({
+        ...feedbackForm,
+        show: false,
+      });
+    }, 10000);
+  };
+
+  const resolveFeedback = useCallback(() => {
+    if (feedbackForm.loader) {
+      return (
+        <>
+          <BiLoaderCircle className="loader" />
+
+          <span>Enviando informações...</span>
+        </>
+      );
+    } else if (!feedbackForm.success) {
+      return (
+        <>
+          <FaRegWindowClose className="error" />
+
+          <span>Erro ao salvar informações, tente novamente.</span>
+        </>
+      );
+    } else {
+      return (
+        <>
+          <FaCheckCircle className="success" />
+
+          <span>Cadastro realizado com sucesso.</span>
+        </>
+      );
+    }
+  }, [feedbackForm]);
 
   return (
     <Footer>
@@ -36,40 +133,25 @@ const footer = () => {
           <strong>Categorias</strong>
 
           <ul>
-            <li>
-              <a href="#" title="Confira as últimas notícias do Canal de Bike">
-                Últimas notícias
-              </a>
-            </li>
-
-            <li>
-              <a href="#" title="Confira os vídoes do Canal de Bike">
-                Vídeos
-              </a>
-            </li>
-
-            <li>
-              <a href="#" title="Confira os posts da categoria MTB">
-                MTB
-              </a>
-            </li>
-
-            <li>
-              <a href="#" title="Confira os posts da categoria Speed">
-                Speed
-              </a>
-            </li>
-
-            <li>
-              <a
-                href="#"
-                title="Acessar a loja do Canal de Bike"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Loja do Canal
-              </a>
-            </li>
+            {menuData.map(menuItem => (
+              <li key={menuItem.id}>
+                {menuItem.target === '_self' ? (
+                  <Link href={`/categoria/${menuItem.slug}`}>
+                    <a title={menuItem.attr_title}>
+                      <span>{menuItem.title}</span>
+                    </a>
+                  </Link>
+                ) : (
+                  <a
+                    href={menuItem.slug}
+                    title={menuItem.attr_title}
+                    target={menuItem.target}
+                  >
+                    {menuItem.title}
+                  </a>
+                )}
+              </li>
+            ))}
           </ul>
         </div>
 
@@ -86,17 +168,32 @@ const footer = () => {
             </a>
           )}
 
-          <form action="#" method="post">
+          <Newsletter method="post" onSubmit={sendNewsletter}>
             <strong>Newsletter</strong>
 
             <p>Receba em primeira mão tudo sobre o mundo da bike</p>
 
-            <div>
-              <input type="text" placeholder="digite seu e-mail" />
+            <div className="fields-container">
+              <input
+                type="text"
+                placeholder="digite seu e-mail"
+                value={newsletter.email}
+                disabled={feedbackForm.loader}
+                onChange={e =>
+                  setNewsletter({
+                    ...newsletter,
+                    email: e.target.value,
+                  })
+                }
+              />
 
               <input type="submit" value="Assinar" />
             </div>
-          </form>
+
+            {feedbackForm.show && (
+              <div className="feedback-form">{resolveFeedback()}</div>
+            )}
+          </Newsletter>
         </div>
 
         <div>
@@ -105,7 +202,7 @@ const footer = () => {
             <br /> Redes Sociais
           </strong>
 
-          <div className="social-networking">
+          <SocialNetworking>
             {appInfo.instagram && (
               <a
                 href={appInfo.instagram}
@@ -151,7 +248,7 @@ const footer = () => {
                 <FaTwitter />
               </a>
             )}
-          </div>
+          </SocialNetworking>
         </div>
       </Container>
 

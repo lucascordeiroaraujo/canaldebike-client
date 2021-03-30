@@ -103,12 +103,12 @@ export default createGlobalStyle`
       border-radius: 30px;
       border: none;
       font-size: 16px;
-      color: #222221;
+      color: ${props => props.theme.colors.dark};
       padding: 15px;
       transition: 0.5s;
-      background: #ffffff;
+      background: ${props => props.theme.colors.light};
       &::placeholder {
-        color: #222221;
+        color: ${props => props.theme.colors.dark};
       }
       &[type='submit'] {
         padding: 0px;

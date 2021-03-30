@@ -34,8 +34,16 @@ export const PostsContainer = styled.div`
     &:not(:last-child) {
       margin-bottom: 50px;
     }
+    @media (min-width: 993px) {
+      &:not(:nth-child(3n)) {
+        margin-right: 2%;
+      }
+    }
     @media (max-width: 992px) {
-      width: 48%;
+      width: 49%;
+      &:not(:nth-child(2n)) {
+        margin-right: 2%;
+      }
     }
     @media (max-width: 576px) {
       width: 100%;

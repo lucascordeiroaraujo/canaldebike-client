@@ -30,8 +30,6 @@ import CategoryHeader from '~/components/pages/category/header';
 
 import CategoryPosts from '~/components/pages/category/posts';
 
-import CategoryPagination from '~/components/global/pagination';
-
 interface ICategoryProps {
   appInfo: IAppInfoState;
   menuItens: IMenuState[];
@@ -85,8 +83,6 @@ export default function SubCategoryPage({
           <CategoryHeader />
 
           <CategoryPosts />
-
-          <CategoryPagination />
         </CategoryContainer>
       </Container>
     </>

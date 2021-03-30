@@ -29,13 +29,13 @@ export default styled.section`
     display: flex;
     justify-content: center;
     align-items: center;
-    background: #ff0000;
+    background: ${props => props.theme.colors.error};
     svg {
       font-size: 30px;
       margin-right: 10px;
     }
     &:hover {
-      background: ${shade(0.2, '#ff0000')};
+      background: ${props => shade(0.2, props.theme.colors.error)};
     }
     @media (max-width: 576px) {
       width: 96%;

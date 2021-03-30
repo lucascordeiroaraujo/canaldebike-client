@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 
 export default styled.footer`
   width: 100%;
@@ -52,73 +52,6 @@ export default styled.footer`
           background: ${props => props.theme.colors.primary};
         }
       }
-      form {
-        width: 100%;
-        max-width: 380px;
-        display: flex;
-        flex-direction: column;
-        margin-top: 45px;
-        p {
-          color: ${props => props.theme.colors.light};
-          margin: 0px 0px 15px 0px;
-          font-size: 17px;
-        }
-        div {
-          width: 100%;
-          display: flex;
-          justify-content: flex-start;
-          align-items: center;
-          input {
-            height: 45px;
-            border-radius: 25px;
-            &[type='text'] {
-              flex: 1;
-              padding-right: 55px;
-            }
-            &[type='submit'] {
-              width: 125px;
-              font-family: 'BrandonGrotesqueBlack';
-              font-size: 16px;
-              text-transform: uppercase;
-              color: ${props => props.theme.colors.light};
-              margin-left: -40px;
-              background: ${props => props.theme.colors.secondary};
-              &:hover {
-                background: ${props => props.theme.colors.primary};
-              }
-            }
-          }
-        }
-        @media (max-width: 576px) {
-          max-width: 300px;
-        }
-      }
-      div.social-networking {
-        width: 100%;
-        display: flex;
-        justify-content: flex-start;
-        align-items: center;
-        flex-wrap: wrap;
-        a {
-          margin: 0px 15px 15px 0px;
-          color: ${props => props.theme.colors.light};
-          font-size: 32px;
-          line-height: 10px;
-          transition: 0.5s;
-          &.youtube {
-            font-size: 39px;
-          }
-          &.facebook {
-            font-size: 28px;
-          }
-          &:hover {
-            color: ${props => props.theme.colors.primary};
-          }
-        }
-        @media (max-width: 576px) {
-          justify-content: center;
-        }
-      }
       @media (max-width: 1100px) {
         width: 50%;
         &:first-child {
@@ -141,6 +74,101 @@ export default styled.footer`
         }
       }
     }
+  }
+`;
+
+const loaderAnimation = keyframes`
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+`;
+
+export const Newsletter = styled.form`
+  width: 100%;
+  max-width: 380px;
+  display: flex;
+  flex-direction: column;
+  margin-top: 45px;
+  p {
+    color: ${props => props.theme.colors.light};
+    margin: 0px 0px 15px 0px;
+    font-size: 17px;
+  }
+  div {
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    &.fields-container input {
+      height: 45px;
+      border-radius: 25px;
+      &[type='text'] {
+        flex: 1;
+        padding-right: 55px;
+      }
+      &[type='submit'] {
+        width: 125px;
+        font-family: 'BrandonGrotesqueBlack';
+        font-size: 16px;
+        text-transform: uppercase;
+        color: ${props => props.theme.colors.light};
+        margin-left: -40px;
+        background: ${props => props.theme.colors.secondary};
+        &:hover {
+          background: ${props => props.theme.colors.primary};
+        }
+      }
+    }
+    &.feedback-form {
+      color: ${props => props.theme.colors.light};
+      margin-top: 10px;
+      font-size: 14px;
+      svg {
+        margin-right: 10px;
+        &.loader {
+          animation: ${loaderAnimation} 2s linear infinite;
+        }
+        &.error {
+          color: ${props => props.theme.colors.error};
+        }
+        &.success {
+          color: ${props => props.theme.colors.primary};
+        }
+      }
+    }
+  }
+  @media (max-width: 576px) {
+    max-width: 300px;
+  }
+`;
+
+export const SocialNetworking = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-wrap: wrap;
+  a {
+    margin: 0px 15px 15px 0px;
+    color: ${props => props.theme.colors.light};
+    font-size: 32px;
+    line-height: 10px;
+    transition: 0.5s;
+    &.youtube {
+      font-size: 39px;
+    }
+    &.facebook {
+      font-size: 28px;
+    }
+    &:hover {
+      color: ${props => props.theme.colors.primary};
+    }
+  }
+  @media (max-width: 576px) {
+    justify-content: center;
   }
 `;
 

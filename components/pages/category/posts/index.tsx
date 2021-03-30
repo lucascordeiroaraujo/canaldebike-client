@@ -8,18 +8,26 @@ import Post from '../../../global/post';
 
 import Fade from 'react-reveal/Fade';
 
+import EmptyState from '~/components/global/empty-state';
+
 const posts = () => {
   const { catPosts } = useCatPosts();
 
   return (
     <PostsContainer>
-      {catPosts.map((news, index) => (
-        <div key={news.id} className="post-container">
-          <Fade delay={index * 150}>
-            <Post {...news} />
-          </Fade>
-        </div>
-      ))}
+      {!catPosts.length ? (
+        <EmptyState description="Ainda não temos posts nesta categoria 😔" />
+      ) : (
+        <>
+          {catPosts.map((news, index) => (
+            <div key={news.id} className="post-container">
+              <Fade delay={index * 150}>
+                <Post {...news} />
+              </Fade>
+            </div>
+          ))}
+        </>
+      )}
     </PostsContainer>
   );
 };

@@ -8,5 +8,6 @@ export default {
     light: '#ffffff',
     text: '#ffffff',
     bg: '#222221',
+    error: '#ff0000',
   },
 };
