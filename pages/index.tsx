@@ -18,6 +18,12 @@ import {
 
 import { IVideosState, useVideos, getVideosData } from '~/hooks/home/videos';
 
+import {
+  IInstagramState,
+  useInstagram,
+  getInstaMedias,
+} from '~/hooks/home/instagram';
+
 import Loader from '~/components/global/loader';
 
 import Seo, { ISeoProps } from '~/components/Seo';
@@ -40,6 +46,7 @@ interface IHomeProps {
   posts: IPostsState[];
   popularPosts: IPopularPostsState[];
   videos: IVideosState[];
+  instagram: IInstagramState[];
   seoInfo: ISeoProps;
 }
 
@@ -49,6 +56,7 @@ export default function IndexPage({
   posts,
   popularPosts,
   videos,
+  instagram,
   seoInfo,
 }: IHomeProps) {
   const { isFallback } = useRouter();
@@ -63,6 +71,8 @@ export default function IndexPage({
 
   const { handleSetVideos } = useVideos();
 
+  const { handleSetInstaMedias } = useInstagram();
+
   useEffect(() => {
     handleSetAppInfo(appInfo);
 
@@ -73,17 +83,21 @@ export default function IndexPage({
     handleSetPopularPosts(popularPosts);
 
     handleSetVideos(videos);
+
+    handleSetInstaMedias(instagram);
   }, [
     handleSetAppInfo,
     handleSetMenuData,
     handleSetPosts,
     handleSetPopularPosts,
     handleSetVideos,
+    handleSetInstaMedias,
     appInfo,
     menuItens,
     posts,
     popularPosts,
     videos,
+    instagram,
   ]);
 
   if (isFallback) {
@@ -121,6 +135,7 @@ export async function getStaticProps(): Promise<
       posts: await getPostsData(),
       popularPosts: await getPopularPostsData(),
       videos: await getVideosData(),
+      instagram: await getInstaMedias(),
       seoInfo: {
         seo_title: process.env.SEO_TITLE || '',
         seo_description: process.env.SEO_DESCRIPTION || '',

@@ -60,7 +60,7 @@ const popularPosts = () => {
   };
 
   const showSlideControls = () => {
-    return popularPosts && popularPosts.length > 3;
+    return popularPosts && popularPosts.length > 2;
   };
 
   return (

@@ -19,6 +19,7 @@ export interface ICurrentPostState {
     width: string;
     height: string;
   };
+  old_site_image: string;
   categories: Array<{
     parentSlug: string;
     id: string;

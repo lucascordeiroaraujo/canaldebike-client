@@ -92,7 +92,7 @@ const videos = () => {
             rel="noopener noreferrer"
             className="youtube-link"
           >
-            <FaYoutube /> Ver mais vídeos do meu canal
+            <FaYoutube /> Ver mais vídeos no canal
           </a>
         </Fade>
       )}

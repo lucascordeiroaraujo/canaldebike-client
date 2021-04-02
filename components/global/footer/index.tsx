@@ -205,7 +205,7 @@ const footer = () => {
           <SocialNetworking>
             {appInfo.instagram && (
               <a
-                href={appInfo.instagram}
+                href={`https://www.instagram.com/${appInfo.instagram}`}
                 title="Confira as fotos no nosso Instagram"
                 target="_blank"
                 rel="noopener noreferrer"
@@ -216,7 +216,7 @@ const footer = () => {
 
             {appInfo.youtube && (
               <a
-                href={appInfo.youtube}
+                href={`https://www.youtube.com/channel/${appInfo.youtube}`}
                 title="Inscreva-se no canal do YouTube"
                 target="_blank"
                 rel="noopener noreferrer"
@@ -228,7 +228,7 @@ const footer = () => {
 
             {appInfo.facebook && (
               <a
-                href={appInfo.facebook}
+                href={`https://www.facebook.com/${appInfo.facebook}`}
                 title="Curta nossa página no Facebook"
                 target="_blank"
                 rel="noopener noreferrer"
@@ -240,7 +240,7 @@ const footer = () => {
 
             {appInfo.twitter && (
               <a
-                href={appInfo.twitter}
+                href={`https://www.twitter.com/${appInfo.twitter}`}
                 title="Siga-nos no Twitter"
                 target="_blank"
                 rel="noopener noreferrer"

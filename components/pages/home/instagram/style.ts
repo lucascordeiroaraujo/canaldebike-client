@@ -81,8 +81,19 @@ export const PhotosContainer = styled.div`
   align-items: flex-start;
   flex-wrap: wrap;
   margin-top: 95px;
-  .image-container {
+  .media-container {
     width: 16.66%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: ${props => props.theme.colors.dark};
+    img,
+    video {
+      width: 100%;
+      height: auto;
+      outline: none;
+    }
     @media (max-width: 1200px) {
       width: 33.33%;
     }

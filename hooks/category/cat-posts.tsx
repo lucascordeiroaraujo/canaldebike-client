@@ -19,6 +19,7 @@ export interface ICatPostsState {
     width: string;
     height: string;
   };
+  old_site_image: string;
   categories: Array<{
     id: string;
     title: string;

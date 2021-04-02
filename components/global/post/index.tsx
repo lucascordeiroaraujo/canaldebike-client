@@ -19,6 +19,7 @@ interface IPost {
     width: string;
     height: string;
   };
+  old_site_image: string;
   title: string;
   date: string;
   resume: string;
@@ -30,12 +31,25 @@ const post = ({
   categories,
   slug,
   image,
+  old_site_image,
   title,
   date,
   resume,
   nextImage = true,
   slider = false,
 }: IPost) => {
+  const postImage = () => {
+    return old_site_image ? old_site_image : image.url;
+  };
+
+  const postWidth = () => {
+    return old_site_image ? '460' : image.width;
+  };
+
+  const postHeight = () => {
+    return old_site_image ? '280' : image.height;
+  };
+
   return (
     <Post hasCategories={!categories ? false : true} isSlider={slider}>
       <div className="post-image-container">
@@ -45,21 +59,21 @@ const post = ({
           <a title="Confira a matéria completa">
             {nextImage ? (
               <Image
-                src={image.url}
+                src={postImage()}
                 alt={title}
                 title={title}
-                width={image.width}
-                height={image.height}
+                width={postWidth()}
+                height={postHeight()}
                 layout="responsive"
                 className="post-image"
               />
             ) : (
               <img
-                src={image.url}
+                src={postImage()}
                 alt={title}
                 title={title}
-                width={image.width}
-                height={image.height}
+                width={postWidth()}
+                height={postHeight()}
                 className="post-image"
               />
             )}

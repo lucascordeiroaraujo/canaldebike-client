@@ -17,7 +17,6 @@ const nextConfig = {
     deviceSizes: [320, 640, 768, 1024, 1600],
     domains: [
       'localhost',
-      'picsum.photos',
       'img.youtube.com',
       'canaldebike.com.br',
       'adm.canaldebike.com.br',

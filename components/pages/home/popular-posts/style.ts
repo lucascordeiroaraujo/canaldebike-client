@@ -25,6 +25,9 @@ export default styled.section`
     &-container {
       .slick-list .slick-slide > div {
         padding: 0 30px;
+        article {
+          margin-bottom: 30px;
+        }
       }
     }
     &-slider-controls {
