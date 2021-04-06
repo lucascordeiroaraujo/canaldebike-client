@@ -86,7 +86,7 @@ const latestNews = () => {
               <div key={post.id} className="news-slider-container">
                 <News>
                   <NewsImage>
-                    {postImage}
+                    {postImage(post)}
 
                     <SliderControls>
                       <button onClick={() => sliderPrevNext('next')}>
