@@ -40,7 +40,7 @@ interface ISearchPostsProviderProps {
 
 export const getSearchPostsData = async (searchTerm: string) => {
   const response = await fetch(
-    `${process.env.API_URL}/cdb/search/${searchTerm}`,
+    `${process.env.API_URL}/cdb/search&s=${searchTerm}`,
   );
 
   return await response.json();
