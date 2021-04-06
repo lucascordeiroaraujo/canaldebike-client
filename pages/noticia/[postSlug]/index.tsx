@@ -26,8 +26,6 @@ import BackToHome from '~/components/global/back-home';
 
 import Post from '~/components/pages/news/post';
 
-import Comments from '~/components/pages/news/comments';
-
 import Sidebar from '~/components/pages/news/sidebar';
 
 import RelatedNews from '~/components/pages/news/related-news';
@@ -88,8 +86,6 @@ export default function IndexPage({
 
           <PostContainer>
             <Post postUrl={postUrl} />
-
-            <Comments postUrl={postUrl} />
           </PostContainer>
 
           <SidebarContainer>
