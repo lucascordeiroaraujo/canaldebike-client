@@ -134,17 +134,29 @@ export const PostContent = styled.div`
   .sub-title {
     margin-top: -10px;
   }
+  p,
+  p span {
+    color: ${props => props.theme.colors.text} !important;
+    font-family: 'BrandonGrotesqueRegular' !important;
+    font-size: 22px !important;
+    line-height: 40px !important;
+  }
   p {
-    width: 100%;
-    color: ${props => props.theme.colors.text};
-    font-family: 'BrandonGrotesqueRegular';
-    font-size: 22px;
-    line-height: 40px;
-    margin: 0px 0px 40px 0px;
+    width: 100% !important;
+    margin: 0px 0px 40px 0px !important;
     @media (max-width: 992px) {
-      font-size: 18px;
-      line-height: 26px;
-      margin: 0px 0px 30px 0px;
+      font-size: 18px !important;
+      line-height: 26px !important;
+      margin: 0px 0px 30px 0px !important;
+    }
+    a {
+      color: ${props => props.theme.colors.primary};
+    }
+    em {
+      font-style: italic;
+    }
+    strong {
+      font-weight: bold;
     }
   }
   h3 {
@@ -154,11 +166,15 @@ export const PostContent = styled.div`
     margin: 0px 0px 20px 0px;
   }
   img {
-    width: 80%;
-    height: auto;
+    width: 80% !important;
+    height: auto !important;
     margin: 0px auto;
+    display: block;
     @media (max-width: 992px) {
       width: 100%;
     }
+  }
+  iframe {
+    width: 100%;
   }
 `;

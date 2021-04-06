@@ -2,6 +2,8 @@ import React, { useRef } from 'react';
 
 import { usePosts } from '~/hooks/home/posts';
 
+import { IPopularPostsState } from '~/hooks/home/popular-posts';
+
 import LatestNews, {
   SliderContainer,
   News,
@@ -51,6 +53,24 @@ const latestNews = () => {
 
   const lastFourPosts = posts.slice(0, 4);
 
+  const postImage = (post: IPopularPostsState) => {
+    if (post.old_site_image) {
+      return (
+        <img src={post.old_site_image} alt={post.title} title={post.title} />
+      );
+    } else {
+      return (
+        <img
+          src={post.image.url}
+          alt={post.title}
+          title={post.title}
+          width={post.image.width}
+          height={post.image.height}
+        />
+      );
+    }
+  };
+
   return (
     <Container smallContainer>
       <LatestNews>
@@ -66,13 +86,7 @@ const latestNews = () => {
               <div key={post.id} className="news-slider-container">
                 <News>
                   <NewsImage>
-                    <img
-                      src={post.image.url}
-                      alt={post.title}
-                      title={post.title}
-                      width={post.image.width}
-                      height={post.image.height}
-                    />
+                    {postImage}
 
                     <SliderControls>
                       <button onClick={() => sliderPrevNext('next')}>
