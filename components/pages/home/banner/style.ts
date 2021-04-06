@@ -2,9 +2,19 @@ import styled from 'styled-components';
 
 export default styled.div`
   width: 100%;
-  .slick-slide img {
-    width: 100%;
-    height: auto;
+  .slick-slide .banner-container {
+    position: relative;
+    img {
+      width: 100%;
+      height: auto;
+    }
+    a {
+      position: absolute;
+      top: 0px;
+      left: 0px;
+      width: 100%;
+      height: 100%;
+    }
   }
   .slick-dots {
     bottom: 28px;

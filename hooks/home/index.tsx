@@ -2,6 +2,8 @@ import React, { ReactNode } from 'react';
 
 import { PostsProvider } from './posts';
 
+import { BannersProvider } from './banners';
+
 import { PopularPostsProvider } from './popular-posts';
 
 import { VideosProvider } from './videos';
@@ -13,13 +15,15 @@ interface IProps {
 }
 
 const HomeProvider = ({ children }: IProps) => (
-  <PostsProvider>
-    <PopularPostsProvider>
-      <VideosProvider>
-        <InstagramProvider>{children}</InstagramProvider>
-      </VideosProvider>
-    </PopularPostsProvider>
-  </PostsProvider>
+  <BannersProvider>
+    <PostsProvider>
+      <PopularPostsProvider>
+        <VideosProvider>
+          <InstagramProvider>{children}</InstagramProvider>
+        </VideosProvider>
+      </PopularPostsProvider>
+    </PostsProvider>
+  </BannersProvider>
 );
 
 export default HomeProvider;

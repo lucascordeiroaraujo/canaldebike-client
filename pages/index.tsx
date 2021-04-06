@@ -8,6 +8,8 @@ import { IAppInfoState, useAppInfo, getAppInfoData } from '~/hooks/app/app';
 
 import { IMenuState, useMenu, getMenuData } from '~/hooks/app/menu';
 
+import { IBannerState, useBanners, getBannerData } from '~/hooks/home/banners';
+
 import { IPostsState, usePosts, getPostsData } from '~/hooks/home/posts';
 
 import {
@@ -43,6 +45,7 @@ import Instagram from '~/components/pages/home/instagram';
 interface IHomeProps {
   appInfo: IAppInfoState;
   menuItens: IMenuState[];
+  banners: IBannerState[];
   posts: IPostsState[];
   popularPosts: IPopularPostsState[];
   videos: IVideosState[];
@@ -53,6 +56,7 @@ interface IHomeProps {
 export default function IndexPage({
   appInfo,
   menuItens,
+  banners,
   posts,
   popularPosts,
   videos,
@@ -64,6 +68,8 @@ export default function IndexPage({
   const { handleSetAppInfo } = useAppInfo();
 
   const { handleSetMenuData } = useMenu();
+
+  const { handleSetBanners } = useBanners();
 
   const { handleSetPosts } = usePosts();
 
@@ -78,6 +84,8 @@ export default function IndexPage({
 
     handleSetMenuData(menuItens);
 
+    handleSetBanners(banners);
+
     handleSetPosts(posts);
 
     handleSetPopularPosts(popularPosts);
@@ -88,12 +96,14 @@ export default function IndexPage({
   }, [
     handleSetAppInfo,
     handleSetMenuData,
+    handleSetBanners,
     handleSetPosts,
     handleSetPopularPosts,
     handleSetVideos,
     handleSetInstaMedias,
     appInfo,
     menuItens,
+    banners,
     posts,
     popularPosts,
     videos,
@@ -132,6 +142,7 @@ export async function getStaticProps(): Promise<
     props: {
       appInfo,
       menuItens: await getMenuData(),
+      banners: await getBannerData(),
       posts: await getPostsData(),
       popularPosts: await getPopularPostsData(),
       videos: await getVideosData(),
