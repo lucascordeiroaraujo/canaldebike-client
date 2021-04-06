@@ -19,7 +19,7 @@ const news = () => {
 
   if (!posts) return null;
 
-  const lastNinePosts = posts.slice(5, 13);
+  const lastNinePosts = posts.slice(4, 13);
 
   if (!lastNinePosts.length) return null;
 
@@ -33,9 +33,9 @@ const news = () => {
         </Fade>
 
         <PostsContainer>
-          {lastNinePosts.map((news, index) => (
+          {lastNinePosts.map(news => (
             <div key={news.id} className="post-container">
-              <Fade delay={index * 150}>
+              <Fade>
                 <Post {...news} />
               </Fade>
             </div>

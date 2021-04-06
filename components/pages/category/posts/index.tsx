@@ -19,9 +19,9 @@ const posts = () => {
         <EmptyState description="Ainda não temos posts nesta categoria 😔" />
       ) : (
         <>
-          {catPosts.map((news, index) => (
+          {catPosts.map(news => (
             <div key={news.id} className="post-container">
-              <Fade delay={index * 150}>
+              <Fade>
                 <Post {...news} />
               </Fade>
             </div>

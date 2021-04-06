@@ -30,6 +30,8 @@ import CategoryHeader from '~/components/pages/category/header';
 
 import CategoryPosts from '~/components/pages/category/posts';
 
+import CategoryPagination from '~/components/global/pagination';
+
 interface ICategoryProps {
   appInfo: IAppInfoState;
   menuItens: IMenuState[];
@@ -83,6 +85,13 @@ export default function CategoryPage({
           <CategoryHeader />
 
           <CategoryPosts />
+
+          <CategoryPagination
+            {...category.pagination}
+            slug={`categoria/${
+              category.slug === 'cdb' ? 'ultimas-noticias' : category.slug
+            }`}
+          />
         </CategoryContainer>
       </Container>
     </>
@@ -90,7 +99,7 @@ export default function CategoryPage({
 }
 
 interface ICategoriesList {
-  id: Number;
+  id: number;
   slug: string;
 }
 
@@ -125,7 +134,7 @@ export async function getStaticProps({
       appInfo: await getAppInfoData(),
       menuItens: await getMenuData(),
       category: await getCurrentCategoryData(categorySlug),
-      posts: await getPostsData(categorySlug),
+      posts: await getPostsData({ slug: categorySlug }),
     },
     revalidate: 10,
   };

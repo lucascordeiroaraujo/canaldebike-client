@@ -6,6 +6,8 @@ import React, {
   ReactNode,
 } from 'react';
 
+import { IPaginationProps } from '~/components/global/pagination';
+
 interface ICurrentCategoryContextData {
   currentCategory: ICurrentCategoryState;
   handleSetCurrentCategory(currentCategory: ICurrentCategoryState): void;
@@ -15,6 +17,7 @@ export interface ICurrentCategoryState {
   id: string;
   slug: string;
   name: string;
+  pagination: IPaginationProps;
   subcategories: Array<{
     id: string;
     slug: string;

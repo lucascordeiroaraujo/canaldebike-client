@@ -19,9 +19,9 @@ const posts = () => {
         <EmptyState description="Não encontramos nenhuma notícia com o termo digitado 😔" />
       ) : (
         <>
-          {searchPosts.map((news, index) => (
+          {searchPosts.map(news => (
             <div key={news.id} className="post-container">
-              <Fade delay={index * 150}>
+              <Fade>
                 <Post {...news} />
               </Fade>
             </div>

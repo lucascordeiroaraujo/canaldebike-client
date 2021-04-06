@@ -38,9 +38,16 @@ interface ICatPostsProviderProps {
   children: ReactNode;
 }
 
-export const getPostsData = async (categorySlug: string) => {
+interface IPostsData {
+  slug: string;
+  page?: string;
+}
+
+export const getPostsData = async ({ slug, page }: IPostsData) => {
+  const withPage = page ? `/${page}` : '';
+
   const response = await fetch(
-    `${process.env.API_URL}/cdb/category-posts/${categorySlug}`,
+    `${process.env.API_URL}/cdb/category-posts/${slug}${withPage}`,
   );
 
   return await response.json();

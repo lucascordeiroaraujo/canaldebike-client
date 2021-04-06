@@ -6,17 +6,37 @@ import Link from 'next/link';
 
 import Fade from 'react-reveal/Fade';
 
-const pagination = () => {
+export interface IPaginationProps {
+  show: boolean;
+  totalPosts: number;
+  totalPages: number;
+  numbers: Array<{
+    number: number;
+    active: boolean;
+  }>;
+}
+
+interface IProps extends IPaginationProps {
+  slug: string;
+}
+
+const pagination = ({ show, numbers, slug }: IProps) => {
+  if (!show) return null;
+
   return (
     <Fade>
       <Pagination>
-        <li className="pagination-item current-page">
-          <Link href="/">
-            <a title="Ir para a página 1">1</a>
-          </Link>
-        </li>
+        {numbers.map(page => (
+          <li
+            className={`pagination-item ${page.active ? 'current-page' : ''}`}
+          >
+            <Link href={`/${slug}/${page.number}`}>
+              <a title={`Ir para a página ${page.number}`}>{page.number}</a>
+            </Link>
+          </li>
+        ))}
 
-        <li className="pagination-item">
+        {/* <li className="pagination-item">
           <Link href="/">
             <a title="Ir para a página 2">2</a>
           </Link>
@@ -48,7 +68,7 @@ const pagination = () => {
           <Link href="/">
             <a title="Ir para a página 50">50</a>
           </Link>
-        </li>
+        </li> */}
       </Pagination>
     </Fade>
   );

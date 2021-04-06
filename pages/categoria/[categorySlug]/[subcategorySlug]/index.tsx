@@ -22,7 +22,7 @@ import {
 
 import Loader from '~/components/global/loader';
 
-import { Container } from '~/styles/global';
+import { Container } from '../../../../styles/global';
 
 import CategoryContainer from './style';
 
@@ -91,7 +91,7 @@ export default function SubCategoryPage({
 
 interface ICategoriesList {
   parentSlug: string;
-  id: Number;
+  id: number;
   slug: string;
 }
 
@@ -131,7 +131,7 @@ export async function getStaticProps({
       appInfo: await getAppInfoData(),
       menuItens: await getMenuData(),
       category: await getCurrentCategoryData(subcategorySlug),
-      posts: await getPostsData(subcategorySlug),
+      posts: await getPostsData({ slug: subcategorySlug }),
     },
     revalidate: 10,
   };

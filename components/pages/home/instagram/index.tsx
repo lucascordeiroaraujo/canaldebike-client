@@ -41,7 +41,11 @@ const instagram = () => {
 
       <PhotosContainer>
         {instaMedias.map(media => (
-          <div className="media-container" key={media.id}>
+          <div
+            className="media-container"
+            key={media.id}
+            style={{ backgroundImage: `url(${media.media_url})` }}
+          >
             <Link href={media.permalink}>
               <a
                 title="Confira no Instagram"
