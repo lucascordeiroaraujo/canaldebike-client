@@ -9,8 +9,6 @@ import Post, {
   PostContent,
 } from './style';
 
-import Image from 'next/image';
-
 import Link from 'next/link';
 
 import Fade from 'react-reveal/Fade';
@@ -27,6 +25,7 @@ const post = ({ postUrl }: IProps) => {
   if (!currentPost) return null;
 
   const {
+    old_site_image,
     image,
     categories,
     author,
@@ -40,28 +39,28 @@ const post = ({ postUrl }: IProps) => {
     return categories && categories.length >= 1;
   };
 
-  const replacedDescription = description.replace(
-    /<p><iframe/gi,
-    '<p class="video-content"><iframe',
-  );
+  const replacedDescription = description
+    ? description.replace(/<p><iframe/gi, '<p class="video-content"><iframe')
+    : '';
+
+  const postImage = () => {
+    return old_site_image
+      ? old_site_image
+      : image && image.url
+      ? image.url
+      : '';
+  };
 
   return (
     <Post>
       <Fade>
-        <FeaturedImage>
-          {image && image.url && (
+        {postImage() && (
+          <FeaturedImage>
             <Fade>
-              <Image
-                src={image.url}
-                alt={title}
-                title=""
-                width={image.width}
-                height={image.height}
-                layout="responsive"
-              />
+              <img src={postImage()} alt={title} title="" />
             </Fade>
-          )}
-        </FeaturedImage>
+          </FeaturedImage>
+        )}
       </Fade>
 
       <CategoriesAndShared>

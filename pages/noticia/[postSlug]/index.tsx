@@ -100,16 +100,16 @@ export default function IndexPage({
 }
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  // const response = await fetch(`${process.env.API_URL}/cdb/posts-slug`);
+  const response = await fetch(`${process.env.API_URL}/cdb/posts-slug`);
 
-  // const result = await response.json();
+  const result = await response.json();
 
-  // const paths = result.map((postSlug2: string) => {
-  //   return { params: { postSlug: postSlug2 } };
-  // });
+  const paths = result.map((postSlug2: string) => {
+    return { params: { postSlug: postSlug2 } };
+  });
 
   return {
-    paths: [],
+    paths: paths || [],
     fallback: true,
   };
 };

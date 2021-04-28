@@ -12,6 +12,10 @@ export const FeaturedImage = styled.div`
   width: 100%;
   margin-bottom: 30px;
   background: ${props => props.theme.colors.primary};
+  img {
+    width: 100%;
+    height: auto;
+  }
 `;
 
 export const CategoriesAndShared = styled.div`
