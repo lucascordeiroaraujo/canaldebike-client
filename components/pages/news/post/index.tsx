@@ -40,19 +40,26 @@ const post = ({ postUrl }: IProps) => {
     return categories && categories.length >= 1;
   };
 
+  const replacedDescription = description.replace(
+    /<p><iframe/gi,
+    '<p class="video-content"><iframe',
+  );
+
   return (
     <Post>
       <Fade>
         <FeaturedImage>
           {image && image.url && (
-            <Image
-              src={image.url}
-              alt={title}
-              title=""
-              width={image.width}
-              height={image.height}
-              layout="responsive"
-            />
+            <Fade>
+              <Image
+                src={image.url}
+                alt={title}
+                title=""
+                width={image.width}
+                height={image.height}
+                layout="responsive"
+              />
+            </Fade>
           )}
         </FeaturedImage>
       </Fade>
@@ -145,7 +152,7 @@ const post = ({ postUrl }: IProps) => {
         <span className="title-separator"></span>
 
         <Fade delay={200}>
-          <div dangerouslySetInnerHTML={{ __html: description }} />
+          <div dangerouslySetInnerHTML={{ __html: replacedDescription }} />
         </Fade>
       </PostContent>
     </Post>

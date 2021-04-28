@@ -11,6 +11,7 @@ export default styled.article`
 export const FeaturedImage = styled.div`
   width: 100%;
   margin-bottom: 30px;
+  background: ${props => props.theme.colors.primary};
 `;
 
 export const CategoriesAndShared = styled.div`
@@ -143,14 +144,18 @@ export const PostContent = styled.div`
   }
   p {
     width: 100% !important;
-    margin: 0px 0px 40px 0px !important;
+    position: relative;
+    &.video-content {
+      padding-bottom: 56.25%;
+      height: 0;
+    }
+    &:not(:last-child) {
+      margin: 0px 0px 40px 0px !important;
+    }
     @media (max-width: 992px) {
       font-size: 18px !important;
       line-height: 26px !important;
       margin: 0px 0px 30px 0px !important;
-    }
-    a {
-      color: ${props => props.theme.colors.primary};
     }
     em {
       font-style: italic;
@@ -175,6 +180,13 @@ export const PostContent = styled.div`
     }
   }
   iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
     width: 100%;
+    height: 100%;
+  }
+  a {
+    color: ${props => props.theme.colors.primary};
   }
 `;

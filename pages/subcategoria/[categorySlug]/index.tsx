@@ -88,7 +88,7 @@ export default function CategoryPage({
 
           <CategoryPagination
             {...category.pagination}
-            slug={`categoria/${
+            slug={`subcategoria/${
               category.slug === 'cdb' ? 'ultimas-noticias' : category.slug
             }`}
           />

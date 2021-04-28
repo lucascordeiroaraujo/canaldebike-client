@@ -28,6 +28,7 @@ const pagination = ({ show, numbers, slug }: IProps) => {
       <Pagination>
         {numbers.map(page => (
           <li
+            key={page.number}
             className={`pagination-item ${page.active ? 'current-page' : ''}`}
           >
             <Link href={`/${slug}/${page.number}`}>
@@ -35,40 +36,6 @@ const pagination = ({ show, numbers, slug }: IProps) => {
             </Link>
           </li>
         ))}
-
-        {/* <li className="pagination-item">
-          <Link href="/">
-            <a title="Ir para a página 2">2</a>
-          </Link>
-        </li>
-
-        <li className="pagination-item">
-          <Link href="/">
-            <a title="Ir para a página 3">3</a>
-          </Link>
-        </li>
-
-        <li className="pagination-item">
-          <Link href="/">
-            <a title="Ir para a página 4">4</a>
-          </Link>
-        </li>
-
-        <li className="pagination-item">
-          <Link href="/">
-            <a title="Ir para a página 5">5</a>
-          </Link>
-        </li>
-
-        <li className="pagination-item">
-          <span>...</span>
-        </li>
-
-        <li className="pagination-item">
-          <Link href="/">
-            <a title="Ir para a página 50">50</a>
-          </Link>
-        </li> */}
       </Pagination>
     </Fade>
   );

@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export default styled.ul`
   width: 100%;
-  display: none;
+  display: flex;
   justify-content: center;
   align-items: center;
   margin-top: 50px;

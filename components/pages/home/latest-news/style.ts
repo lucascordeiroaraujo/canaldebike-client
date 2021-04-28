@@ -149,12 +149,14 @@ export const NewsDescription = styled.div`
       font-size: 30px;
       line-height: 35px;
       font-family: 'BrandonGrotesqueBlack';
-      ${props => css`
-        color: ${props.theme.name === 'dark'
-          ? props.theme.colors.text
-          : props.theme.colors.lightDark};
-      `};
       text-transform: uppercase;
+      a {
+        ${props => css`
+          color: ${props.theme.name === 'dark'
+            ? props.theme.colors.text
+            : props.theme.colors.lightDark};
+        `};
+      }
       @media (max-width: 768px) {
         font-size: 24px;
         line-height: 28px;
@@ -168,13 +170,15 @@ export const NewsDescription = styled.div`
     }
     &-resume {
       font-family: 'BrandonGrotesqueLight';
-      ${props => css`
-        color: ${props.theme.name === 'dark'
-          ? props.theme.colors.text
-          : props.theme.colors.lightDark};
-      `};
       margin: 0px;
       line-height: 28px;
+      a {
+        ${props => css`
+          color: ${props.theme.name === 'dark'
+            ? props.theme.colors.text
+            : props.theme.colors.lightDark};
+        `};
+      }
     }
     &-call-to-action {
       padding: 10px 30px;

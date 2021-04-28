@@ -45,7 +45,7 @@ export default function CategoryPage({
   category,
   posts,
 }: ICategoryProps) {
-  const { isFallback } = useRouter();
+  const router = useRouter();
 
   const { handleSetAppInfo } = useAppInfo();
 
@@ -74,7 +74,7 @@ export default function CategoryPage({
     posts,
   ]);
 
-  if (isFallback) {
+  if (router.isFallback) {
     return <Loader />;
   }
 
@@ -88,7 +88,7 @@ export default function CategoryPage({
 
           <CategoryPagination
             {...category.pagination}
-            slug={`categoria/${
+            slug={`categoria/${router.query.categorySlug}/${
               category.slug === 'cdb' ? 'ultimas-noticias' : category.slug
             }`}
           />
@@ -98,43 +98,69 @@ export default function CategoryPage({
   );
 }
 
-interface ICategoriesList {
-  id: number;
-  slug: string;
-}
+// interface ICategoriesList {
+//   id: string;
+//   slug: string;
+//   totalPages: number;
+// }
+
+// interface IPaths {
+//   params: {
+//     categorySlug: string;
+//     pageOrSubCategory: string;
+//   };
+// }
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const response = await fetch(`${process.env.API_URL}/cdb/categories`);
+  // const response = await fetch(`${process.env.API_URL}/cdb/categories`);
 
-  const result = await response.json();
+  // const result = await response.json();
 
-  const paths = result.map((category: ICategoriesList) => {
-    return { params: { categorySlug: category.slug } };
-  });
+  // const paths = [] as IPaths[];
+
+  // result.forEach((category: ICategoriesList) => {
+  //   const limitPages = 5;
+
+  //   const pages =
+  //     category.totalPages < limitPages ? category.totalPages : limitPages;
+
+  //   for (let index = 1; index <= pages; index++) {
+  //     paths.push({
+  //       params: { categorySlug: category.slug, page: index.toString() },
+  //     });
+  //   }
+  // });
 
   return {
-    paths,
+    paths: [],
     fallback: true,
   };
 };
 
 interface IStaticProps {
   params: {
-    categorySlug: string;
+    pageOrSubCategory: string;
+    subCategoryPage: string;
   };
 }
 
 export async function getStaticProps({
   params,
 }: IStaticProps): Promise<GetStaticPropsResult<ICategoryProps>> {
-  const { categorySlug } = params;
+  const { pageOrSubCategory, subCategoryPage } = params;
 
   return {
     props: {
       appInfo: await getAppInfoData(),
       menuItens: await getMenuData(),
-      category: await getCurrentCategoryData({ categorySlug }),
-      posts: await getPostsData({ slug: categorySlug }),
+      category: await getCurrentCategoryData({
+        categorySlug: pageOrSubCategory,
+        page: subCategoryPage,
+      }),
+      posts: await getPostsData({
+        slug: pageOrSubCategory,
+        page: subCategoryPage,
+      }),
     },
     revalidate: 10,
   };

@@ -86,7 +86,11 @@ const latestNews = () => {
               <div key={post.id} className="news-slider-container">
                 <News>
                   <NewsImage>
-                    {postImage(post)}
+                    <Link href={`/noticia/${post.slug}`}>
+                      <a title="Confira a matéria completa">
+                        {postImage(post)}
+                      </a>
+                    </Link>
 
                     <SliderControls>
                       <button onClick={() => sliderPrevNext('next')}>
@@ -122,11 +126,21 @@ const latestNews = () => {
                         criado em {post.date}
                       </span>
 
-                      <h1 className="news-description-title">{post.title}</h1>
+                      <h1 className="news-description-title">
+                        <Link href={`/noticia/${post.slug}`}>
+                          <a title="Confira a matéria completa">{post.title}</a>
+                        </Link>
+                      </h1>
 
                       <span className="news-description-separator"></span>
 
-                      <p className="news-description-resume">{post.resume}</p>
+                      <p className="news-description-resume">
+                        <Link href={`/noticia/${post.slug}`}>
+                          <a title="Confira a matéria completa">
+                            {post.resume}
+                          </a>
+                        </Link>
+                      </p>
 
                       <Link href={`/noticia/${post.slug}`}>
                         <a

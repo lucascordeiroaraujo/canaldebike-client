@@ -44,7 +44,7 @@ interface IPostsData {
 }
 
 export const getPostsData = async ({ slug, page }: IPostsData) => {
-  const withPage = page ? `/${page}` : '';
+  const withPage = page !== '' ? `/${page}` : '1';
 
   const response = await fetch(
     `${process.env.API_URL}/cdb/category-posts/${slug}${withPage}`,

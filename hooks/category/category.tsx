@@ -33,9 +33,19 @@ interface ICurrentCategoryProviderProps {
   children: ReactNode;
 }
 
-export const getCurrentCategoryData = async (categorySlug: string) => {
+interface ICatData {
+  categorySlug: string;
+  page?: string;
+}
+
+export const getCurrentCategoryData = async ({
+  categorySlug,
+  page,
+}: ICatData) => {
+  const withPage = page !== '' ? `/${page}` : '1';
+
   const response = await fetch(
-    `${process.env.API_URL}/cdb/category-info/${categorySlug}`,
+    `${process.env.API_URL}/cdb/category-info/${categorySlug}${withPage}`,
   );
 
   return await response.json();

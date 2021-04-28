@@ -132,33 +132,35 @@ const footer = () => {
         <div>
           <strong>Categorias</strong>
 
-          <ul>
-            {menuData.map(menuItem => (
-              <li key={menuItem.id}>
-                {menuItem.target === '_self' ? (
-                  <Link href={`/categoria/${menuItem.slug}`}>
-                    <a title={menuItem.attr_title}>
-                      <span>{menuItem.title}</span>
+          {menuData && (
+            <ul>
+              {menuData.map(menuItem => (
+                <li key={menuItem.id}>
+                  {menuItem.target === '_self' ? (
+                    <Link href={`/categoria/${menuItem.slug}`}>
+                      <a title={menuItem.attr_title}>
+                        <span>{menuItem.title}</span>
+                      </a>
+                    </Link>
+                  ) : (
+                    <a
+                      href={menuItem.slug}
+                      title={menuItem.attr_title}
+                      target={menuItem.target}
+                    >
+                      {menuItem.title}
                     </a>
-                  </Link>
-                ) : (
-                  <a
-                    href={menuItem.slug}
-                    title={menuItem.attr_title}
-                    target={menuItem.target}
-                  >
-                    {menuItem.title}
-                  </a>
-                )}
-              </li>
-            ))}
-          </ul>
+                  )}
+                </li>
+              ))}
+            </ul>
+          )}
         </div>
 
         <div>
           <strong>Contato</strong>
 
-          {appInfo.email_address && (
+          {appInfo && appInfo.email_address && (
             <a
               href={`mailto:${appInfo.email_address}`}
               title="Enviar e-mail"
@@ -203,7 +205,7 @@ const footer = () => {
           </strong>
 
           <SocialNetworking>
-            {appInfo.instagram && (
+            {appInfo && appInfo.instagram && (
               <a
                 href={`https://www.instagram.com/${appInfo.instagram}`}
                 title="Confira as fotos no nosso Instagram"
@@ -214,7 +216,7 @@ const footer = () => {
               </a>
             )}
 
-            {appInfo.youtube && (
+            {appInfo && appInfo.youtube && (
               <a
                 href={`https://www.youtube.com/channel/${appInfo.youtube}`}
                 title="Inscreva-se no canal do YouTube"
@@ -226,7 +228,7 @@ const footer = () => {
               </a>
             )}
 
-            {appInfo.facebook && (
+            {appInfo && appInfo.facebook && (
               <a
                 href={`https://www.facebook.com/${appInfo.facebook}`}
                 title="Curta nossa página no Facebook"
@@ -238,7 +240,7 @@ const footer = () => {
               </a>
             )}
 
-            {appInfo.twitter && (
+            {appInfo && appInfo.twitter && (
               <a
                 href={`https://www.twitter.com/${appInfo.twitter}`}
                 title="Siga-nos no Twitter"

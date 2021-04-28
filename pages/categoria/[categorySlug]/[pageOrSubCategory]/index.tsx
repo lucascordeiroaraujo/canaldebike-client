@@ -2,6 +2,8 @@ import React, { useEffect } from 'react';
 
 import { GetStaticPaths, GetStaticPropsResult } from 'next';
 
+import { slugType } from '~/utils/slug-type';
+
 import { useRouter } from 'next/router';
 
 import { IAppInfoState, useAppInfo, getAppInfoData } from '~/hooks/app/app';
@@ -20,7 +22,7 @@ import {
   getPostsData,
 } from '~/hooks/category/cat-posts';
 
-import Loader from '~/components/global/loader';
+import Loader from '../../../../components/global/loader';
 
 import { Container } from '~/styles/global';
 
@@ -45,7 +47,7 @@ export default function CategoryPage({
   category,
   posts,
 }: ICategoryProps) {
-  const { isFallback } = useRouter();
+  const router = useRouter();
 
   const { handleSetAppInfo } = useAppInfo();
 
@@ -74,9 +76,19 @@ export default function CategoryPage({
     posts,
   ]);
 
-  if (isFallback) {
+  if (router.isFallback) {
     return <Loader />;
   }
+
+  const { type } = slugType({
+    parentCategorySlug: router.query.categorySlug,
+    currentCategorySlug: router.query.pageOrSubCategory,
+  });
+
+  console.log('type', type);
+
+  const includeParentCat =
+    type === 'subcategory' ? `${router.query.categorySlug}/` : '';
 
   return (
     <>
@@ -88,7 +100,7 @@ export default function CategoryPage({
 
           <CategoryPagination
             {...category.pagination}
-            slug={`categoria/${
+            slug={`categoria/${includeParentCat}${
               category.slug === 'cdb' ? 'ultimas-noticias' : category.slug
             }`}
           />
@@ -98,22 +110,41 @@ export default function CategoryPage({
   );
 }
 
-interface ICategoriesList {
-  id: number;
-  slug: string;
-}
+// interface ICategoriesList {
+//   id: string;
+//   slug: string;
+//   totalPages: number;
+// }
+
+// interface IPaths {
+//   params: {
+//     categorySlug: string;
+//     pageOrSubCategory: string;
+//   };
+// }
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const response = await fetch(`${process.env.API_URL}/cdb/categories`);
+  // const response = await fetch(`${process.env.API_URL}/cdb/categories`);
 
-  const result = await response.json();
+  // const result = await response.json();
 
-  const paths = result.map((category: ICategoriesList) => {
-    return { params: { categorySlug: category.slug } };
-  });
+  // const paths = [] as IPaths[];
+
+  // result.forEach((category: ICategoriesList) => {
+  //   const limitPages = 5;
+
+  //   const pages =
+  //     category.totalPages < limitPages ? category.totalPages : limitPages;
+
+  //   for (let index = 1; index <= pages; index++) {
+  //     paths.push({
+  //       params: { categorySlug: category.slug, page: index.toString() },
+  //     });
+  //   }
+  // });
 
   return {
-    paths,
+    paths: [],
     fallback: true,
   };
 };
@@ -121,20 +152,26 @@ export const getStaticPaths: GetStaticPaths = async () => {
 interface IStaticProps {
   params: {
     categorySlug: string;
+    pageOrSubCategory: string;
   };
 }
 
 export async function getStaticProps({
   params,
 }: IStaticProps): Promise<GetStaticPropsResult<ICategoryProps>> {
-  const { categorySlug } = params;
+  const { categorySlug, pageOrSubCategory } = params;
+
+  const { page, catSlug } = slugType({
+    parentCategorySlug: categorySlug,
+    currentCategorySlug: pageOrSubCategory,
+  });
 
   return {
     props: {
       appInfo: await getAppInfoData(),
       menuItens: await getMenuData(),
-      category: await getCurrentCategoryData({ categorySlug }),
-      posts: await getPostsData({ slug: categorySlug }),
+      category: await getCurrentCategoryData({ categorySlug: catSlug, page }),
+      posts: await getPostsData({ slug: catSlug, page }),
     },
     revalidate: 10,
   };

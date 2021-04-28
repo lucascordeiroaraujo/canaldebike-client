@@ -6,6 +6,8 @@ const withFonts = require('next-fonts');
 
 const withCSS = require('@zeit/next-css');
 
+const redirectsUrls = require('./redirects');
+
 const nextConfig = {
   webpack: config => {
     config.node = {
@@ -24,7 +26,13 @@ const nextConfig = {
   },
 };
 
+const redirects = {
+  async redirects() {
+    return redirectsUrls;
+  },
+};
+
 module.exports = withPlugins(
-  [[withImages], [withFonts], [withCSS]],
+  [[withImages], [withFonts], [withCSS], [redirects]],
   nextConfig,
 );

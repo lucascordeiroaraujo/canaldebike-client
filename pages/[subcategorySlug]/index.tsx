@@ -22,15 +22,13 @@ import {
 
 import Loader from '~/components/global/loader';
 
-import { Container } from '~/styles/global';
+import { Container } from '../../styles/global';
 
 import CategoryContainer from './style';
 
 import CategoryHeader from '~/components/pages/category/header';
 
 import CategoryPosts from '~/components/pages/category/posts';
-
-import CategoryPagination from '~/components/global/pagination';
 
 interface ICategoryProps {
   appInfo: IAppInfoState;
@@ -39,7 +37,7 @@ interface ICategoryProps {
   posts: ICatPostsState[];
 }
 
-export default function CategoryPage({
+export default function SubCategoryPage({
   appInfo,
   menuItens,
   category,
@@ -85,13 +83,6 @@ export default function CategoryPage({
           <CategoryHeader />
 
           <CategoryPosts />
-
-          <CategoryPagination
-            {...category.pagination}
-            slug={`categoria/${
-              category.slug === 'cdb' ? 'ultimas-noticias' : category.slug
-            }`}
-          />
         </CategoryContainer>
       </Container>
     </>
@@ -99,17 +90,23 @@ export default function CategoryPage({
 }
 
 interface ICategoriesList {
+  parentSlug: string;
   id: number;
   slug: string;
 }
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const response = await fetch(`${process.env.API_URL}/cdb/categories`);
+  const response = await fetch(`${process.env.API_URL}/cdb/sub-categories/mtb`);
 
   const result = await response.json();
 
   const paths = result.map((category: ICategoriesList) => {
-    return { params: { categorySlug: category.slug } };
+    return {
+      params: {
+        categorySlug: category.parentSlug,
+        subcategorySlug: category.slug,
+      },
+    };
   });
 
   return {
@@ -120,21 +117,21 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
 interface IStaticProps {
   params: {
-    categorySlug: string;
+    subcategorySlug: string;
   };
 }
 
 export async function getStaticProps({
   params,
 }: IStaticProps): Promise<GetStaticPropsResult<ICategoryProps>> {
-  const { categorySlug } = params;
+  const { subcategorySlug } = params;
 
   return {
     props: {
       appInfo: await getAppInfoData(),
       menuItens: await getMenuData(),
-      category: await getCurrentCategoryData({ categorySlug }),
-      posts: await getPostsData({ slug: categorySlug }),
+      category: await getCurrentCategoryData(subcategorySlug),
+      posts: await getPostsData({ slug: subcategorySlug }),
     },
     revalidate: 10,
   };
