@@ -81,11 +81,9 @@ export default function CategoryPage({
   }
 
   const { type } = slugType({
-    parentCategorySlug: router.query.categorySlug,
-    currentCategorySlug: router.query.pageOrSubCategory,
+    parentCategorySlug: router.query.categorySlug as string,
+    currentCategorySlug: router.query.pageOrSubCategory as string,
   });
-
-  console.log('type', type);
 
   const includeParentCat =
     type === 'subcategory' ? `${router.query.categorySlug}/` : '';
