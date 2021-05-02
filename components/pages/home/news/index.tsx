@@ -43,7 +43,7 @@ const news = () => {
         </PostsContainer>
 
         <Tada>
-          <Link href="/ultimas-noticias">
+          <Link href="/categoria/ultimas-noticias">
             <a title="Confira todas as notícias" className="button-all-news">
               ver todas as notícias
             </a>
