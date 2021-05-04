@@ -33,6 +33,6 @@ const redirects = {
 };
 
 module.exports = withPlugins(
-  [[withImages], [withFonts], [withCSS]],
+  [[withImages], [withFonts], [withCSS], [redirects]],
   nextConfig,
 );

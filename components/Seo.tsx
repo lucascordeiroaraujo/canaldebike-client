@@ -21,13 +21,15 @@ const Seo = ({
 }: ISeoProps) => {
   const router = useRouter();
 
+  console.log(appUrl, router);
+
   return (
     <Head>
       <title>{seo_title}</title>
 
       <meta name="description" content={seo_description} />
 
-      <link rel="canonical" href={`${appUrl}${router.asPath}`} />
+      {/* <link rel="canonical" href={`${appUrl}${router.asPath}`} /> */}
 
       <meta property="og:locale" content="pt_BR" />
 
@@ -37,7 +39,7 @@ const Seo = ({
 
       <meta property="og:description" content={seo_description} />
 
-      <meta property="og:url" content={appUrl} />
+      {/* <meta property="og:url" content={`${appUrl}${router.asPath}`} /> */}
 
       <meta property="og:site_name" content="Canal de Bike" />
 
