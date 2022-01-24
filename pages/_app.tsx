@@ -166,6 +166,22 @@ export default function MyApp({ Component, pageProps }: AppProps) {
           type="text/css"
           href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick-theme.min.css"
         />
+
+        <script
+          async
+          src="https://www.googletagmanager.com/gtag/js?id=G-YYR5QBGCDZ"
+        ></script>
+
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){window.dataLayer.push(arguments);}
+            gtag('js', new Date());
+
+            gtag('config', 'G-YYR5QBGCDZ');`,
+          }}
+        />
       </Head>
 
       <ThemeProvider theme={theme == 'light' ? lightTheme : darkTheme}>
